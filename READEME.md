@@ -1,2 +1,3 @@
-cub3d
-modify
+# cub3d
+
+An unbelievable game :)

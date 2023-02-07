@@ -1,0 +1,8 @@
+*.o
+cub3d
+.vscode
+*.a
+*.out
+*.out.*
+*.txt
+*.json
