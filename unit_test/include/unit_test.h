@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 13:56:02 by yoav              #+#    #+#             */
-/*   Updated: 2023/02/07 10:56:56 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/02/07 11:10:34 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # define TEST_RES "unit_test_tmp.txt"
 # define TEST_FILE "test_file"
 # define TEST_FILE2 "test_file2"
-
 
 extern CU_SuiteInfo	g_suites[];
 extern CU_TestInfo	g_dll_tests[];
