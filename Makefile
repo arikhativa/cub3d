@@ -6,7 +6,7 @@
 #    By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/07 10:47:18 by yrabby            #+#    #+#              #
-#    Updated: 2023/02/07 10:58:05 by yrabby           ###   ########.fr        #
+#    Updated: 2023/02/07 11:07:02 by yrabby           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ HEAD_DIR 				= include
 HEAD_NAME 				= \
 	dll.h \
 	tab.h \
+	main.h \
 	macro.h \
 	error_code.h \
 
@@ -37,6 +38,7 @@ SRC 					= \
 	src/dll/dll_get.c \
 	src/tab/tab2.c \
 	src/tab/tab.c \
+	src/main/main.c \
 
 #---------- OBJ ----------
 OBJ_DIR 				= obj
