@@ -25,6 +25,7 @@
 
 extern CU_SuiteInfo	g_suites[];
 extern CU_TestInfo	g_dll_tests[];
+extern CU_TestInfo	g_parser_tests[];
 
 // main
 int		init_suite(void);
@@ -41,5 +42,8 @@ void	test_dll_get_last_elem(void);
 void	test_dll_remove_first_elem(void);
 void	test_dll_remove_last_elem(void);
 void	test_dll_remove_elem(void);
+
+// parser tests
+void	test_parser(void);
 
 #endif

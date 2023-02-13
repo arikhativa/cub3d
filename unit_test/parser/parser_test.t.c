@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_suites.t.c                                    :+:      :+:    :+:   */
+/*   dll_swap.t.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/12 16:22:13 by yoav              #+#    #+#             */
-/*   Updated: 2023/02/07 10:55:13 by yrabby           ###   ########.fr       */
+/*   Created: 2022/09/06 14:21:17 by yoav              #+#    #+#             */
+/*   Updated: 2022/09/13 10:54:12 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "parser.h"
 #include "unit_test.h"
 
-CU_SuiteInfo	g_suites[] = {
+void	test_parser(void)
 {
-	"dll",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_dll_tests,
-},
-{
-	"parser",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_parser_tests,
-},
-	CU_SUITE_INFO_NULL,
-};
+	int	ret;
+
+	ret = check_arg_count(2);
+	CU_ASSERT_EQUAL(0, ret);
+	ret = check_arg_count(3);
+	CU_ASSERT_EQUAL(-1, ret);
+	ret = check_arg_count(0);
+	CU_ASSERT_EQUAL(-1, ret);
+
+}

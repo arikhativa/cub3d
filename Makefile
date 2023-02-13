@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+         #
+#    By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/07 10:47:18 by yrabby            #+#    #+#              #
-#    Updated: 2023/02/07 11:07:02 by yrabby           ###   ########.fr        #
+#    Updated: 2023/02/13 12:49:05 by ycarro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRC 					= \
 	src/tab/tab2.c \
 	src/tab/tab.c \
 	src/main/main.c \
+	src/parser/parse_args.c \
 
 #---------- OBJ ----------
 OBJ_DIR 				= obj
@@ -66,15 +67,19 @@ export NORMINETTE_RES	= norminette_result.txt
 TEST_SRC 				= $(wildcard $(TEST_DIR)/**/*.t.c)
 TEST_OBJ 				= $(TEST_SRC:.t.c=.t.o)
 
+#---------- CUNIT ----------
+CUNIT_DIR				= $(HOME)/.brew/Cellar/cunit/2.1-3/include
+LCUNIT_DIR				= $(HOME)/.brew/Cellar/cunit/2.1-3/lib
+
 #---------- SCRIPT ----------
 SCRIPT_DIR				= script
 TEST_SCRIPT				= $(addprefix $(SCRIPT_DIR)/, test.sh)
 
 #---------- FLAGS ----------
 CC 						= cc
-HEAD_FLAG				= -I$(HEAD_DIR) -I$(LIBFT_HEAD_DIR) 
+HEAD_FLAG				= -I$(HEAD_DIR) -I$(LIBFT_HEAD_DIR) #-I$(CUNIT_DIR)
 CFLAGS 					= -c -Wall -Wextra -Werror $(HEAD_FLAG)
-LDFLAGS 				= -L$(LIBFT_DIR) 
+LDFLAGS 				= -L$(LIBFT_DIR) #-L$(LCUNIT_DIR)
 LDLIBS 					= -lft
 
 #---------- IMPLICT RULES ----------
