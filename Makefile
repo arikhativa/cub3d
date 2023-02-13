@@ -6,7 +6,7 @@
 #    By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/07 10:47:18 by yrabby            #+#    #+#              #
-#    Updated: 2023/02/13 14:14:23 by yrabby           ###   ########.fr        #
+#    Updated: 2023/02/13 14:22:27 by yrabby           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ LIBX_NAME := libmlx.a
 LIBX_DIR := minilibx_mac
 LIBX_FLAGS := -lmlx -framework OpenGL -framework AppKit
 endif
+
 
 #---------- LIBX ----------
 LIBX = $(addprefix $(LIBX_DIR)/, $(LIBX_NAME))
@@ -67,15 +68,19 @@ export NORMINETTE_RES	= norminette_result.txt
 TEST_SRC 				= $(wildcard $(TEST_DIR)/**/*.t.c)
 TEST_OBJ 				= $(TEST_SRC:.t.c=.t.o)
 
+#---------- CUNIT -----------
+CUNIT_DIR				:= $(HOME)/.brew/Cellar/cunit/2.1-3/include
+LCUNIT_DIR				:= $(HOME)/.brew/Cellar/cunit/2.1-3/lib
+
 #---------- SCRIPT ----------
 SCRIPT_DIR				= script
 TEST_SCRIPT				= $(addprefix $(SCRIPT_DIR)/, test.sh)
 
 #---------- FLAGS ----------
 CC 						= cc
-HEAD_FLAG				= -I$(HEAD_DIR) -I$(LIBFT_HEAD_DIR) -I$(LIBX_HEAD_DIR)
+HEAD_FLAG				= -I$(HEAD_DIR) -I$(LIBFT_HEAD_DIR) -I$(LIBX_HEAD_DIR) -I$(CUNIT_DIR)
 CFLAGS 					= -c -Wall -Wextra -Werror $(HEAD_FLAG) 
-LDFLAGS 				= -L$(LIBFT_DIR) -L$(LIBX_DIR)
+LDFLAGS 				= -L$(LIBFT_DIR) -L$(LIBX_DIR) -L$(LCUNIT_DIR)
 LDLIBS 					= -lft $(LIBX_FLAGS)
 
 #---------- IMPLICT RULES ----------
