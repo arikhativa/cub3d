@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_code.h                                       :+:      :+:    :+:   */
+/*   point.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/13 09:45:15 by yoav              #+#    #+#             */
-/*   Updated: 2023/02/13 12:10:29 by yrabby           ###   ########.fr       */
+/*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
+/*   Updated: 2023/02/13 12:09:42 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_CODE_H
-# define ERROR_CODE_H
+#include "point.h"
 
-typedef enum s_error_code
+t_point	*point_create(void)
 {
-	ERROR = -1,
-	SUCCESS = 0,
-	ALLOCATION_ERROR,
-}	t_error_code;
+	t_point	*ret;
 
-#endif
+	ret = (t_point *)ft_calloc(1, sizeof(t_point));
+	if (!ret)
+		return (NULL);
+	return (ret);
+}
+
+void	point_destroy(t_point *obj)
+{
+	ft_bzero(obj, sizeof(t_point));
+	free(obj);
+}

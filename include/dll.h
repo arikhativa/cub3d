@@ -16,6 +16,7 @@
 # include <stddef.h>
 # include <stdlib.h>
 
+# include "macro.h"
 # include "error_code.h"
 # include "libft.h"
 
