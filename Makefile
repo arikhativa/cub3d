@@ -6,7 +6,7 @@
 #    By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/07 10:47:18 by yrabby            #+#    #+#              #
-#    Updated: 2023/02/13 12:49:05 by ycarro           ###   ########.fr        #
+#    Updated: 2023/02/13 12:56:56 by ycarro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,9 +77,9 @@ TEST_SCRIPT				= $(addprefix $(SCRIPT_DIR)/, test.sh)
 
 #---------- FLAGS ----------
 CC 						= cc
-HEAD_FLAG				= -I$(HEAD_DIR) -I$(LIBFT_HEAD_DIR) #-I$(CUNIT_DIR)
+HEAD_FLAG				= -I$(HEAD_DIR) -I$(LIBFT_HEAD_DIR) -I$(CUNIT_DIR)
 CFLAGS 					= -c -Wall -Wextra -Werror $(HEAD_FLAG)
-LDFLAGS 				= -L$(LIBFT_DIR) #-L$(LCUNIT_DIR)
+LDFLAGS 				= -L$(LIBFT_DIR) -L$(LCUNIT_DIR)
 LDLIBS 					= -lft
 
 #---------- IMPLICT RULES ----------
