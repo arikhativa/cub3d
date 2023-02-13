@@ -6,7 +6,7 @@
 #    By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/07 10:47:18 by yrabby            #+#    #+#              #
-#    Updated: 2023/02/12 10:51:20 by yrabby           ###   ########.fr        #
+#    Updated: 2023/02/13 14:05:09 by yrabby           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,11 @@ NAME 					= cub3d
 export ROOT_DIR			= $(CURDIR)
 
 #---------- LIBX ----------
-LIBX_NAME = libmlx_Linux.a
-LIBX_DIR = minilibx_linux
+# TODO
+LIBX_NAME = libmlx.a
+LIBX_DIR = minilibx_mac
+# LIBX_NAME = libmlx_Linux.a
+# LIBX_DIR = minilibx_linux
 LIBX = $(addprefix $(LIBX_DIR)/, $(LIBX_NAME))
 LIBX_HEAD_DIR = $(LIBX_DIR)
 LIBX_LINUX_EXTRA = $(addprefix $(LIBX_DIR)/, libmlx.a)
