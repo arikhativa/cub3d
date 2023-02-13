@@ -6,7 +6,7 @@
 #    By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/07 10:47:18 by yrabby            #+#    #+#              #
-#    Updated: 2023/02/13 14:09:15 by yrabby           ###   ########.fr        #
+#    Updated: 2023/02/13 14:14:23 by yrabby           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,16 +15,19 @@ include makefile_util.mk
 NAME 					= cub3d
 export ROOT_DIR			= $(CURDIR)
 
+# MAC vs Linux
+OS := $(shell uname -s)
+ifeq ($(OS),Linux)
+LIBX_FLAGS := -lmlx_Linux -lXext -lX11 -lm -lz
+LIBX_NAME := libmlx_Linux.a
+LIBX_DIR := minilibx_linux
+else
+LIBX_NAME := libmlx.a
+LIBX_DIR := minilibx_mac
+LIBX_FLAGS := -lmlx -framework OpenGL -framework AppKit
+endif
+
 #---------- LIBX ----------
-# TODO
-LIBX_SHORT_NAME = mlx
-LIBX_NAME = libmlx.a
-LIBX_DIR = minilibx_mac
-LIBX_FLAGS = -lmlx -framework OpenGL -framework AppKit
-# LIBX_FLAGS = -lXext -lX11 -lm -lz
-# LIBX_SHORT_NAME = mlx_Linux.a
-# LIBX_NAME = libmlx_Linux.a
-# LIBX_DIR = minilibx_linux
 LIBX = $(addprefix $(LIBX_DIR)/, $(LIBX_NAME))
 LIBX_HEAD_DIR = $(LIBX_DIR)
 LIBX_LINUX_EXTRA = $(addprefix $(LIBX_DIR)/, libmlx.a)
@@ -73,7 +76,7 @@ CC 						= cc
 HEAD_FLAG				= -I$(HEAD_DIR) -I$(LIBFT_HEAD_DIR) -I$(LIBX_HEAD_DIR)
 CFLAGS 					= -c -Wall -Wextra -Werror $(HEAD_FLAG) 
 LDFLAGS 				= -L$(LIBFT_DIR) -L$(LIBX_DIR)
-LDLIBS 					= -lft -l$(LIBX_SHORT_NAME) $(LIBX_FLAGS)
+LDLIBS 					= -lft $(LIBX_FLAGS)
 
 #---------- IMPLICT RULES ----------
 $(addprefix $(OBJ_DIR)/, %.o): $(addprefix $(SRC_DIR)/, %.c) $(HEAD)
