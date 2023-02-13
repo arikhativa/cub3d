@@ -6,7 +6,7 @@
 #    By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/07 10:47:18 by yrabby            #+#    #+#              #
-#    Updated: 2023/02/13 14:07:15 by yrabby           ###   ########.fr        #
+#    Updated: 2023/02/13 14:07:43 by yrabby           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ export ROOT_DIR			= $(CURDIR)
 
 #---------- LIBX ----------
 # TODO
-LIBX_SHORT_NAME = mlx.a
+LIBX_SHORT_NAME = mlx
 LIBX_NAME = libmlx.a
 LIBX_DIR = minilibx_mac
 # LIBX_SHORT_NAME = mlx_Linux.a
