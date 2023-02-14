@@ -9,7 +9,7 @@ on:
 jobs:
   link-to-project:
     name: Link PR to Project
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/add-to-project@v0.4.0
         with:
