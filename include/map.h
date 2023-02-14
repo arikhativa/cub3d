@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   point.t.c                                          :+:      :+:    :+:   */
+/*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/06 14:21:17 by yoav              #+#    #+#             */
-/*   Updated: 2023/02/15 13:48:34 by yrabby           ###   ########.fr       */
+/*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
+/*   Updated: 2023/02/15 13:59:05 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "point.h"
-#include "unit_test.h"
+#ifndef MAP_H
+# define MAP_H
 
-void	test_point(void)
+# include <stdlib.h>
+
+# include "libft.h"
+# include "player.h"
+# include "error_code.h"
+# include "point.h"
+
+// textures
+// color planes
+typedef struct s_map
 {
-	t_point	p1;
-	t_point	p2;
+	t_player	*p;
+	t_point		size;
+	char		**map;
+}				t_map;
 
-	p1 = point_init(1, 2);
-	p2 = point_copy(p1);
-	CU_ASSERT_EQUAL(p1.x, 1);
-	CU_ASSERT_EQUAL(p1.y, 2);
-	CU_ASSERT_EQUAL(p1.x, p2.x);
-	CU_ASSERT_EQUAL(p1.y, p2.y);
-}
+t_error_code	map_create(t_map **ret);
+void			map_destroy(t_map **obj);
 
-void	test_point_init(void)
-{
-	t_point		p;
-
-	p = point_init(5, 6);
-	CU_ASSERT_EQUAL(5, p.x);
-	CU_ASSERT_EQUAL(6, p.y);
-}
+#endif
