@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 13:56:02 by yoav              #+#    #+#             */
-/*   Updated: 2023/02/07 11:10:34 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/02/14 12:31:27 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define TEST_FILE2 "test_file2"
 
 extern CU_SuiteInfo	g_suites[];
+extern CU_TestInfo	g_point_tests[];
 extern CU_TestInfo	g_dll_tests[];
 extern CU_TestInfo	g_parser_tests[];
 
@@ -45,5 +46,8 @@ void	test_dll_remove_elem(void);
 
 // parser tests
 void	test_parser(void);
+
+// point
+void	test_point(void);
 
 #endif

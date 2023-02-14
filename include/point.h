@@ -1,41 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_suites.t.c                                    :+:      :+:    :+:   */
+/*   point.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/12 16:22:13 by yoav              #+#    #+#             */
-/*   Updated: 2023/02/07 10:55:13 by yrabby           ###   ########.fr       */
+/*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
+/*   Updated: 2023/02/14 12:29:47 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "unit_test.h"
+#ifndef POINT_H
+# define POINT_H
 
-CU_SuiteInfo	g_suites[] = {
+# include <stdlib.h>
+
+# include "libft.h"
+# include "error_code.h"
+
+typedef struct s_point
 {
-	"dll",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_dll_tests,
-},
-{
-	"parser",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_parser_tests,
-},
-{
-	"point",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_point_tests,
-},
-	CU_SUITE_INFO_NULL,
-};
+	int	x;
+	int	y;
+}				t_point;
+
+t_point	point_init(int x, int y);
+t_point	point_copy(t_point src);
+
+#endif
