@@ -6,24 +6,17 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 09:50:39 by al7aro            #+#    #+#             */
-/*   Updated: 2023/02/12 10:07:04 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/02/15 10:57:09 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 #include "mlx.h"
 
-// TODO should be removed - here only for testing libx
-int	main(int argc, char **argv, char **envp)
+int	main(int argc, char **argv)
 {
-	void	*mlx;
-	void	*mlx_win;
+	t_error_code	err;
 
-	(void)argc;
-	(void)argv;
-	(void)envp;
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	(void)mlx_win;
-	mlx_loop(mlx);
+	err = parser_arg_check(argc, argv);
+	return (error_code_print_on_exit(err));
 }

@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 09:45:15 by yoav              #+#    #+#             */
-/*   Updated: 2023/02/07 10:46:51 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/02/15 11:07:54 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,31 +20,22 @@
 # include "macro.h"
 # include "libft.h"
 
+# define EXT_NO_ARG_MSG			"'.cub' map not specified"
+# define EXT_TOO_MANY_ARG_MSG	"Too many arguments"
+# define EXT_INVALID_FILE_MSG	"Invalid file suffix.\
+	 format should be -> <file>.cub"
+
 typedef enum s_error_code
 {
 	ERROR = -1,
 	SUCCESS = 0,
-	BUILTIN_RET_VAL_ERROR = 1,
-	NO_BUILTIN_ERROR,
 	ALLOCATION_ERROR,
-	SYNTAX_ERROR,
-	NEW_PROC_ERROR,
-	END,
-	CONTINUE,
-	PIPE_LIMIT_ERROR,
-	EOF_SUCCESS,
-	HEREDOC_ERR_ON_INTERACTIVE_MODE,
-	HEREDOC_SIGNAL_EXIT,
-	NO_INPUT,
-	SIGNAL_ERROR,
-	OPEN_ERROR,
-	END_OF_TRANSMISSION,
-	CLOSE_ERROR,
-	EXPORT_INVALID_INPUT,
-	EXPORT_IGNORE_INPUT,
+	EXT_TOO_MANY_ARG,
+	EXT_NO_ARG,
+	EXT_INVALID_FILE,
 }	t_error_code;
 
-t_error_code	error_code_print_internal_err(t_error_code err);
+t_error_code	error_code_print_on_exit(t_error_code err);
 void			error_code_print(int size, ...);
 
 #endif
