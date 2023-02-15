@@ -21,9 +21,9 @@
 # include "error_code.h"
 # include "libft.h"
 
-void	arg_check(int argc, char **argv);
-int		check_arg_count(int argc);
-int		check_first_arg(char *file_name);
-int		check_extension(char *file_name);
+t_error_code	parser_arg_check(int argc, char **argv);
+t_error_code	parser_check_arg_count(int argc);
+t_error_code	parser_check_first_arg(char *file_name);
+t_error_code	parser_check_extension(char *file_name);
 
 #endif

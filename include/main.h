@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 15:19:46 by yoav              #+#    #+#             */
-/*   Updated: 2023/02/15 10:34:52 by yrabby           ###   ########.fr       */
+/*   Created: 2023/02/15 11:13:44 by yrabby            #+#    #+#             */
+/*   Updated: 2023/02/15 11:14:56 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 # define MAIN_H
 
 # include "error_code.h"
+# include "parser.h"
 
 #endif
