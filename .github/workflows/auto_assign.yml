@@ -1,4 +1,4 @@
-name: 'Auto Assign'
+name: Auto Assign
 
 on:
   pull_request:
@@ -7,7 +7,7 @@ on:
 
 
 jobs:
-  add-reviews:
+  auto-assign:
     permissions: write-all
     runs-on: ubuntu-22.04
     steps:
