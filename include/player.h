@@ -1,49 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_suites.t.c                                    :+:      :+:    :+:   */
+/*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/12 16:22:13 by yoav              #+#    #+#             */
-/*   Updated: 2023/02/07 10:55:13 by yrabby           ###   ########.fr       */
+/*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
+/*   Updated: 2023/02/15 13:38:07 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "unit_test.h"
+#ifndef PLAYER_H
+# define PLAYER_H
 
-CU_SuiteInfo	g_suites[] = {
+# include <stdlib.h>
+
+# include "libft.h"
+# include "error_code.h"
+# include "direction.h"
+# include "point.h"
+
+typedef struct s_player
 {
-	"dll",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_dll_tests,
-},
-{
-	"parser",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_parser_tests,
-},
-{
-	"point",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_point_tests,
-},
-{
-	"player",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_player_tests,
-},
-	CU_SUITE_INFO_NULL,
-};
+	t_point		pos;
+	t_direction	dir;
+}				t_player;
+
+t_error_code	player_create(t_player **ret);
+void			player_init(t_player *obj, t_point pos, t_direction dir);
+void			player_destroy(t_player **obj);
+
+#endif

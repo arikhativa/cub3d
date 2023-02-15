@@ -1,49 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_suites.t.c                                    :+:      :+:    :+:   */
+/*   direction.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/12 16:22:13 by yoav              #+#    #+#             */
-/*   Updated: 2023/02/07 10:55:13 by yrabby           ###   ########.fr       */
+/*   Created: 2023/02/15 13:32:07 by yrabby            #+#    #+#             */
+/*   Updated: 2023/02/15 13:38:26 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "unit_test.h"
+#ifndef DIRECTION_H
+# define DIRECTION_H
 
-CU_SuiteInfo	g_suites[] = {
+typedef enum _direction
 {
-	"dll",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_dll_tests,
-},
-{
-	"parser",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_parser_tests,
-},
-{
-	"point",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_point_tests,
-},
-{
-	"player",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_player_tests,
-},
-	CU_SUITE_INFO_NULL,
-};
+	NORTH,
+	SOUTH,
+	EAST,
+	WEST,
+}	t_direction;
+
+#endif

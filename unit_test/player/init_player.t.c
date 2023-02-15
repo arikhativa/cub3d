@@ -1,49 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_suites.t.c                                    :+:      :+:    :+:   */
+/*   init_player.t.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/12 16:22:13 by yoav              #+#    #+#             */
-/*   Updated: 2023/02/07 10:55:13 by yrabby           ###   ########.fr       */
+/*   Created: 2023/02/14 10:05:13 by yrabby            #+#    #+#             */
+/*   Updated: 2023/02/15 13:35:06 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "unit_test.h"
 
-CU_SuiteInfo	g_suites[] = {
+CU_TestInfo	g_player_tests[] = {
 {
-	"dll",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_dll_tests,
+	"test_player_create_destroy",
+	test_player_create_destroy,
 },
 {
-	"parser",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_parser_tests,
+	"test_player_init",
+	test_player_init,
 },
-{
-	"point",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_point_tests,
-},
-{
-	"player",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_player_tests,
-},
-	CU_SUITE_INFO_NULL,
+	CU_TEST_INFO_NULL,
 };
