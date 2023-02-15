@@ -1,1 +1,6 @@
 addAssignees: author
+addReviewers: true
+numberOfReviewers: 1
+reviewers:
+  - arikhativa
+  - m00nbyt3
