@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 09:42:34 by yoav              #+#    #+#             */
-/*   Updated: 2023/02/15 11:14:35 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/02/15 11:16:30 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ t_error_code	error_code_print_internal_err(t_error_code err)
 		error_code_print_msg("UNKNOWN_ERROR", err);
 	return (err);
 }
-<<<<<<< HEAD
-=======
 
 t_error_code	error_code_print_external_err(t_error_code err)
 {
@@ -78,4 +76,3 @@ t_error_code	error_code_print_on_exit(t_error_code err)
 		err = error_code_print_internal_err(err);
 	return (err);
 }
->>>>>>> e9cb043... ErrorClass
