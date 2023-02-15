@@ -1,23 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   point.c                                            :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/15 13:47:28 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/02/15 13:58:46 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "point.h"
+#include "map.h"
 
-t_point	point_init(int x, int y)
+t_error_code	map_create(t_map **ret)
 {
-	return ((t_point){x, y});
+	t_error_code	err;
+	t_map			*tmp;
+
+	if (!ret)
+		return (ERROR);
+	tmp = (t_map *)ft_calloc(1, sizeof(t_map));
+	if (!tmp)
+		return (ALLOCATION_ERROR);
+	err = player_create(&(tmp->p));
+	if (SUCCESS != err)
+	{
+		map_destroy(&tmp);
+		return (ALLOCATION_ERROR);
+	}
+	*ret = tmp;
+	return (SUCCESS);
 }
 
-t_point	point_copy(t_point src)
+void	map_destroy(t_map **obj)
 {
-	return ((t_point){src.x, src.y});
+	t_map	*tmp;
+
+	if (!obj || !*obj)
+		return ;
+	tmp = *obj;
+	if (tmp->p)
+		player_destroy(&(tmp->p));
+	ft_bzero(tmp, sizeof(t_map));
+	free(tmp);
+	*obj = NULL;
 }

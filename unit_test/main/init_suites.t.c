@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:22:13 by yoav              #+#    #+#             */
-/*   Updated: 2023/02/07 10:55:13 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/02/15 14:01:51 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,14 @@ CU_SuiteInfo	g_suites[] = {
 	NULL,
 	NULL,
 	g_player_tests,
+},
+{
+	"map",
+	init_suite,
+	clean_suite,
+	NULL,
+	NULL,
+	g_map_tests,
 },
 	CU_SUITE_INFO_NULL,
 };
