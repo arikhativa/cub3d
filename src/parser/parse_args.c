@@ -12,35 +12,31 @@
 
 #include "parser.h"
 
-void	arg_check(int argc, char **argv)
+t_error_code	parser_arg_check(int argc, char **argv)
 {
-	check_arg_count(argc);
-	check_first_arg(argv[1]);
+	t_error_code	err;
+
+	err = parser_check_arg_count(argc);
+	if (SUCCESS == err)
+		err = parser_check_first_arg(argv[1]);
+	return (err);
 }
 
-int	check_arg_count(int argc)
+t_error_code	parser_check_arg_count(int argc)
 {
 	if (argc < 2)
-	{
-		printf("%s\n", "ERROR: '.cub' map not specified\n");
-		return (-1);
-	}
+		return (EXT_NO_ARG);
 	if (argc > 2)
-	{
-		printf("%s\n", "ERROR: Too many arguments, \
-			program only requires a map...\n");
-		return (-1);
-	}
-	return (0);
+		return (EXT_TOO_MANY_ARG);
+	return (SUCCESS);
 }
 
-int	check_first_arg(char *file_name)
+t_error_code	parser_check_first_arg(char *file_name)
 {
-	check_extension(file_name);
-	return (0);
+	return (parser_check_extension(file_name));
 }
 
-int	check_extension(char *file_name)
+t_error_code	parser_check_extension(char *file_name)
 {
 	char	*extension;
 	int		filename_len;
@@ -58,10 +54,6 @@ int	check_extension(char *file_name)
 		i--;
 	}
 	if (filename_len < 5 || ft_strncmp(extension, ".cub", 4))
-	{
-		printf("%s\n", "ERROR: Invalid map format\n");
-		printf("%s\n", "Map format should be: map_name.cub\n");
-		return (-1);
-	}
-	return (0);
+		return (EXT_INVALID_FILE);
+	return (SUCCESS);
 }

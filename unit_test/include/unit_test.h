@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 13:56:02 by yoav              #+#    #+#             */
-/*   Updated: 2023/02/14 12:31:27 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/02/15 11:07:11 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	test_dll_remove_elem(void);
 
 // parser tests
 void	test_parser(void);
+void	test_suffix(void);
 
 // point
 void	test_point(void);
