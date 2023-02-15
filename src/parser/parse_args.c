@@ -54,6 +54,10 @@ t_error_code	parser_check_extension(char *file_name)
 		i--;
 	}
 	if (filename_len < 5 || ft_strncmp(extension, ".cub", 4))
+	{
+		free(extension);
 		return (EXT_INVALID_FILE);
+	}
+	free(extension);
 	return (SUCCESS);
 }
