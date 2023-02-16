@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 13:56:02 by yoav              #+#    #+#             */
-/*   Updated: 2023/02/15 14:02:35 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/02/16 10:48:12 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define TEST_FILE2 "test_file2"
 
 extern CU_SuiteInfo	g_suites[];
+extern CU_TestInfo	g_sprite_tests[];
 extern CU_TestInfo	g_map_tests[];
 extern CU_TestInfo	g_player_tests[];
 extern CU_TestInfo	g_point_tests[];
@@ -65,5 +66,9 @@ void	test_player_create_destroy(void);
 
 // point
 void	test_point_init(void);
+
+// sprite
+void	test_sprite_create_destroy(void);
+void	test_sprite_is_loaded(void);
 
 #endif

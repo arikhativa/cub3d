@@ -12,3 +12,6 @@ sudo apt-get install python3
 # Norminette - (syntax norm check)
 python3 -m pip install --upgrade pip setuptools
 python3 -m pip install norminette
+
+# minilibx dep
+sudo apt-get update && sudo apt-get install xorg libxext-dev zlib1g-dev libbsd-dev
