@@ -1,41 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sprite.c                                           :+:      :+:    :+:   */
+/*   class.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/16 11:14:53 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/02/14 10:47:54 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sprite.h"
+#ifndef SPRITE_MNGR_H
+# define SPRITE_MNGR_H
 
-t_error_code	sprite_create(t_sprite **ret, void *mlx)
+# include <stdlib.h>
+
+# include "libft.h"
+# include "error_code.h"
+# include "sprite.h"
+# include "direction.h"
+
+# define SPRITES_IN_MAP 4
+
+typedef struct s_sprite_mngr
 {
-	t_sprite		*tmp;
+	t_sprite	*sprites[SPRITES_IN_MAP];
+}				t_sprite_mngr;
 
-	if (!ret)
-		return (ERROR);
-	tmp = (t_sprite *)ft_calloc(1, sizeof(t_sprite));
-	if (!tmp)
-		return (ALLOCATION_ERROR);
-	tmp->mlx = mlx;
-	*ret = tmp;
-	return (SUCCESS);
-}
+t_error_code	sprite_mngr_create(t_sprite_mngr **ret, void *mlx);
+void			sprite_mngr_destroy(t_sprite_mngr **obj);
 
-void	sprite_destroy(t_sprite **obj)
-{
-	t_sprite	*tmp;
-
-	if (!obj || !*obj)
-		return ;
-	tmp = *obj;
-	if (sprite_is_loaded(tmp))
-		sprite_unload(tmp);
-	ft_bzero(tmp, sizeof(t_sprite));
-	free(tmp);
-	*obj = NULL;
-}
+#endif
