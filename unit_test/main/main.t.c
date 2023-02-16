@@ -13,7 +13,7 @@
 #include "unit_test.h"
 
 static FILE	*g_temp_file = NULL;
-char		**g_envp = NULL;
+void	*g_mlx = NULL;
 
 int	init_suite(void)
 {

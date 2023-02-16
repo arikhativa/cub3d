@@ -20,8 +20,6 @@
 # include "error_code.h"
 
 # define TEST_RES "unit_test_tmp.txt"
-# define TEST_FILE "test_file"
-# define TEST_FILE2 "test_file2"
 
 extern CU_SuiteInfo	g_suites[];
 extern CU_TestInfo	g_sprite_mngr_tests[];
@@ -31,6 +29,8 @@ extern CU_TestInfo	g_player_tests[];
 extern CU_TestInfo	g_point_tests[];
 extern CU_TestInfo	g_dll_tests[];
 extern CU_TestInfo	g_parser_tests[];
+
+extern void	*g_mlx;
 
 // main
 int		init_suite(void);
