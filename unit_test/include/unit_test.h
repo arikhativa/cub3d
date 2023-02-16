@@ -24,6 +24,7 @@
 # define TEST_FILE2 "test_file2"
 
 extern CU_SuiteInfo	g_suites[];
+extern CU_TestInfo	g_sprite_mngr_tests[];
 extern CU_TestInfo	g_sprite_tests[];
 extern CU_TestInfo	g_map_tests[];
 extern CU_TestInfo	g_player_tests[];
@@ -70,5 +71,8 @@ void	test_point_init(void);
 // sprite
 void	test_sprite_create_destroy(void);
 void	test_sprite_is_loaded(void);
+
+// sprite_mngr
+void	test_sprite_mngr_create_destroy(void);
 
 #endif

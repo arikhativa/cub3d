@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   direction.h                                        :+:      :+:    :+:   */
+/*   utest.t.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 13:32:07 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/15 13:38:26 by yrabby           ###   ########.fr       */
+/*   Created: 2022/09/06 14:21:17 by yoav              #+#    #+#             */
+/*   Updated: 2023/02/14 12:27:39 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DIRECTION_H
-# define DIRECTION_H
+#include "sprite_mngr.h"
+#include "unit_test.h"
 
-typedef enum _direction
+void	test_sprite_mngr_create_destroy(void)
 {
-	NORTH = 0,
-	SOUTH = 1,
-	EAST = 2,
-	WEST = 3,
-}	t_direction;
+	t_error_code	err;
+	t_sprite_mngr		*obj;
 
-#endif
+	obj = NULL;
+	err = sprite_mngr_create(&obj, NULL);
+	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
+	sprite_mngr_destroy(&obj);
+	CU_ASSERT_PTR_NULL(obj);
+}

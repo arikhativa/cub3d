@@ -61,5 +61,13 @@ CU_SuiteInfo	g_suites[] = {
 	NULL,
 	g_sprite_tests,
 },
+{
+	"sprite_mngr",
+	init_suite,
+	clean_suite,
+	NULL,
+	NULL,
+	g_sprite_mngr_tests,
+},
 	CU_SUITE_INFO_NULL,
 };

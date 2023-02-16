@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   direction.h                                        :+:      :+:    :+:   */
+/*   init_utest.t.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 13:32:07 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/15 13:38:26 by yrabby           ###   ########.fr       */
+/*   Created: 2023/02/14 10:05:13 by yrabby            #+#    #+#             */
+/*   Updated: 2023/02/14 10:09:20 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DIRECTION_H
-# define DIRECTION_H
+#include "unit_test.h"
 
-typedef enum _direction
+CU_TestInfo	g_sprite_mngr_tests[] = {
 {
-	NORTH = 0,
-	SOUTH = 1,
-	EAST = 2,
-	WEST = 3,
-}	t_direction;
-
-#endif
+	"test_sprite_mngr_create_destroy",
+	test_sprite_mngr_create_destroy,
+},
+	CU_TEST_INFO_NULL,
+};
