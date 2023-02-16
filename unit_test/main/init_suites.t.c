@@ -53,5 +53,13 @@ CU_SuiteInfo	g_suites[] = {
 	NULL,
 	g_map_tests,
 },
+{
+	"sprite",
+	init_suite,
+	clean_suite,
+	NULL,
+	NULL,
+	g_sprite_tests,
+},
 	CU_SUITE_INFO_NULL,
 };

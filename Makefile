@@ -6,7 +6,7 @@
 #    By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/07 10:47:18 by yrabby            #+#    #+#              #
-#    Updated: 2023/02/13 14:22:27 by yrabby           ###   ########.fr        #
+#    Updated: 2023/02/16 11:21:21 by yrabby           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,6 @@ LIBX_NAME := libmlx.a
 LIBX_DIR := minilibx_mac
 LIBX_FLAGS := -lmlx -framework OpenGL -framework AppKit
 endif
-
 
 #---------- LIBX ----------
 LIBX = $(addprefix $(LIBX_DIR)/, $(LIBX_NAME))
@@ -59,7 +58,7 @@ TEST_HEAD_DIR			= $(addprefix $(TEST_DIR)/, include)
 TEST_HEAD_NAME			= $(notdir $(wildcard $(TEST_HEAD_DIR)/*.h))
 TEST_HEAD				= $(addprefix $(TEST_HEAD_DIR)/, $(TEST_HEAD_NAME))
 TEST_HEAD_FLAG			= -I$(TEST_HEAD_DIR)
-TEST_LDLIBS				= -lcunit -lft 
+TEST_LDLIBS				= -lcunit -lft $(LIBX_FLAGS)
 export TEST_EXEC		= test.out
 export TEST_RES			= unit_test_result.txt
 export VALGRIND_OUTPUT 	= valgrind_out.txt
@@ -111,7 +110,7 @@ $(NAME): $(OBJ) $(LIBFT) $(LIBX)
 	@$(CC) $(LDFLAGS) $(OBJ) $(LDLIBS) -o $@
 	@echo "$(GREEN)$(NAME) READY!$(NC)"
 
-$(TEST_EXEC): $(OBJ_DIR) $(OBJ_NO_MAIN) $(TEST_OBJ) $(LIBFT)
+$(TEST_EXEC): $(OBJ_DIR) $(OBJ_NO_MAIN) $(TEST_OBJ) $(LIBFT) $(LIBX)
 	@$(CC) $(LDFLAGS) $(OBJ_NO_MAIN) $(TEST_OBJ) $(TEST_LDLIBS) -o $(TEST_EXEC)
 
 check: $(TEST_EXEC)

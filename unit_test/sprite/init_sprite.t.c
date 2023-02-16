@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.h                                             :+:      :+:    :+:   */
+/*   init_sprite.t.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 11:13:44 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/16 10:53:33 by yrabby           ###   ########.fr       */
+/*   Created: 2023/02/14 10:05:13 by yrabby            #+#    #+#             */
+/*   Updated: 2023/02/16 10:48:02 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#include "unit_test.h"
 
-# include "error_code.h"
-# include "parser.h"
-# include "sprite.h"
-
-#endif
+CU_TestInfo	g_sprite_tests[] = {
+{
+	"test_sprite_create_destroy",
+	test_sprite_create_destroy,
+},
+{
+	"test_sprite_is_loaded",
+	test_sprite_is_loaded,
+},
+	CU_TEST_INFO_NULL,
+};
