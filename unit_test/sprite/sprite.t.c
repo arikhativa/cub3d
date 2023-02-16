@@ -19,7 +19,7 @@ void	test_sprite_create_destroy(void)
 	t_sprite		*obj;
 
 	obj = NULL;
-	err = sprite_create(&obj, NULL);
+	err = sprite_create(&obj, g_mlx);
 	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
 	sprite_destroy(&obj);
 	CU_ASSERT_PTR_NULL(obj);
@@ -34,7 +34,7 @@ void	test_sprite_is_loaded(void)
 	ret = sprite_is_loaded(NULL);
 	CU_ASSERT_EQUAL(ret, FALSE);
 
-	err = sprite_create(&obj, NULL);
+	err = sprite_create(&obj, g_mlx);
 	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
 	ret = sprite_is_loaded(obj);
 	CU_ASSERT_EQUAL(ret, FALSE);

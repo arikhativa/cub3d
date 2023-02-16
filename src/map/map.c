@@ -12,7 +12,7 @@
 
 #include "map.h"
 
-t_error_code	map_create(t_map **ret)
+t_error_code	map_create(t_map **ret, void *mlx)
 {
 	t_error_code	err;
 	t_map			*tmp;
@@ -23,6 +23,8 @@ t_error_code	map_create(t_map **ret)
 	if (!tmp)
 		return (ALLOCATION_ERROR);
 	err = player_create(&(tmp->p));
+	if (SUCCESS == err)
+		err = sprite_mngr_create(&(tmp->sm), mlx);
 	if (SUCCESS != err)
 	{
 		map_destroy(&tmp);
@@ -41,6 +43,8 @@ void	map_destroy(t_map **obj)
 	tmp = *obj;
 	if (tmp->p)
 		player_destroy(&(tmp->p));
+	if (tmp->sm)
+		sprite_mngr_destroy(&(tmp->sm));
 	ft_bzero(tmp, sizeof(t_map));
 	free(tmp);
 	*obj = NULL;

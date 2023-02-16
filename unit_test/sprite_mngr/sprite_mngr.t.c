@@ -19,7 +19,7 @@ void	test_sprite_mngr_create_destroy(void)
 	t_sprite_mngr		*obj;
 
 	obj = NULL;
-	err = sprite_mngr_create(&obj, NULL);
+	err = sprite_mngr_create(&obj, g_mlx);
 	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
 	sprite_mngr_destroy(&obj);
 	CU_ASSERT_PTR_NULL(obj);
