@@ -116,6 +116,8 @@ $(TEST_EXEC): $(OBJ_DIR) $(OBJ_NO_MAIN) $(TEST_OBJ) $(LIBFT) $(LIBX)
 check: $(TEST_EXEC)
 	@bash $(TEST_SCRIPT) unit_test
 
+check/all: check check/leaks check/norm
+
 check/leaks: $(TEST_EXEC)
 	@bash $(TEST_SCRIPT) memory
 

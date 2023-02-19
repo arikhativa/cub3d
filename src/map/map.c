@@ -25,6 +25,8 @@ t_error_code	map_create(t_map **ret, void *mlx)
 	err = player_create(&(tmp->p));
 	if (SUCCESS == err)
 		err = sprite_mngr_create(&(tmp->sm), mlx);
+	if (SUCCESS == err)
+		err = plane_mngr_create(&(tmp->pm));
 	if (SUCCESS != err)
 	{
 		map_destroy(&tmp);
@@ -45,6 +47,8 @@ void	map_destroy(t_map **obj)
 		player_destroy(&(tmp->p));
 	if (tmp->sm)
 		sprite_mngr_destroy(&(tmp->sm));
+	if (tmp->pm)
+		plane_mngr_destroy(&(tmp->pm));
 	ft_bzero(tmp, sizeof(t_map));
 	free(tmp);
 	*obj = NULL;
