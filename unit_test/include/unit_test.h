@@ -22,6 +22,7 @@
 # define TEST_RES "unit_test_tmp.txt"
 
 extern CU_SuiteInfo	g_suites[];
+extern CU_TestInfo	g_cub_tests[];
 extern CU_TestInfo	g_plane_mngr_tests[];
 extern CU_TestInfo	g_plane_tests[];
 extern CU_TestInfo	g_sprite_mngr_tests[];
@@ -63,6 +64,14 @@ void	test_player_init(void);
 
 // map
 void	test_map_create_destroy(void);
+void	test_map_validate(void);
+void	test_map_validate_ext_bad_prefix(void);
+void	test_map_validate_ext_bad_sprite_file(void);
+void	test_map_validate_ext_bad_char_in_plane(void);
+void	test_map_validate_ext_missing_plane_color(void);
+void	test_map_validate_map_not_bottom(void);
+void	test_map_validate_ext_invalid_line(void);
+void	test_map_validate_ext_bad_color(void);
 
 // player
 void	test_player_create_destroy(void);
@@ -82,5 +91,8 @@ void	test_plane_create_destroy(void);
 
 // plane_mngr
 void	test_plane_mngr_create_destroy(void);
+
+// cub
+void	test_cub_get_line_type(void);
 
 #endif
