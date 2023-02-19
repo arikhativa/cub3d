@@ -22,6 +22,7 @@
 # define TEST_RES "unit_test_tmp.txt"
 
 extern CU_SuiteInfo	g_suites[];
+extern CU_TestInfo	g_plane_mngr_tests[];
 extern CU_TestInfo	g_plane_tests[];
 extern CU_TestInfo	g_sprite_mngr_tests[];
 extern CU_TestInfo	g_sprite_tests[];
@@ -78,5 +79,8 @@ void	test_sprite_mngr_create_destroy(void);
 
 // plane
 void	test_plane_create_destroy(void);
+
+// plane_mngr
+void	test_plane_mngr_create_destroy(void);
 
 #endif

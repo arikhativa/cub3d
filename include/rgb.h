@@ -10,22 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLANE_H
-# define PLANE_H
+#ifndef RGB_H
+# define RGB_H
 
-# include <stdlib.h>
-
-# include "libft.h"
-# include "error_code.h"
-# include "rgb.h"
-
-typedef struct s_plane
+typedef struct s_rgb
 {
-	t_rgb	color;
-}				t_plane;
+	unsigned char	red;
+	unsigned char	blue;
+	unsigned char	green;
+}	t_rgb;
 
-t_error_code	plane_create(t_plane **ret);
-void			plane_init(t_plane *p, t_rgb color);
-void			plane_destroy(t_plane **obj);
+void	rgb_init(t_rgb *rgb, unsigned char red, unsigned char blue, \
+	unsigned char green);
 
 #endif
