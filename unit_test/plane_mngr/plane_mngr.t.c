@@ -10,22 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "plane.h"
+#include "plane_mngr.h"
 #include "unit_test.h"
 
-void	test_plane_create_destroy(void)
+void	test_plane_mngr_create_destroy(void)
 {
 	t_error_code	err;
-	t_plane		*obj;
+	t_plane_mngr	*pm;
 	t_rgb		color = {1, 2, 3};
 
-	obj = NULL;
-	err = plane_create(&obj);
+	pm = NULL;
+	err = plane_mngr_create(&pm);
 	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
-	plane_init(obj, color);
-	CU_ASSERT_EQUAL(obj->color.red, color.red);
-	CU_ASSERT_EQUAL(obj->color.blue, color.blue);
-	CU_ASSERT_EQUAL(obj->color.green, color.green);
-	plane_destroy(&obj);
-	CU_ASSERT_PTR_NULL(obj);
+	plane_mngr_init(pm, PLANE_TYPE_CEILING, color);
+	t_plane *p = plane_mngr_get_plane(pm, PLANE_TYPE_CEILING);
+	CU_ASSERT_EQUAL(p->color.red, color.red);
+	CU_ASSERT_EQUAL(p->color.blue, color.blue);
+	CU_ASSERT_EQUAL(p->color.green, color.green);
+	plane_mngr_destroy(&pm);
+	CU_ASSERT_PTR_NULL(pm);
 }

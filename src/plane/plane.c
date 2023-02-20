@@ -37,12 +37,9 @@ void	plane_destroy(t_plane **obj)
 	*obj = NULL;
 }
 
-void	plane_init(t_plane *p, unsigned char red, unsigned char blue, \
-	unsigned char green)
+void	plane_init(t_plane *p, t_rgb color)
 {
 	if (!p)
 		return ;
-	p->red = red;
-	p->blue = blue;
-	p->green = green;
+	p->color = color;
 }

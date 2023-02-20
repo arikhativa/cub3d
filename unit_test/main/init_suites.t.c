@@ -77,5 +77,13 @@ CU_SuiteInfo	g_suites[] = {
 	NULL,
 	g_plane_tests,
 },
+{
+	"plane_mngr",
+	init_suite,
+	clean_suite,
+	NULL,
+	NULL,
+	g_plane_mngr_tests,
+},
 	CU_SUITE_INFO_NULL,
 };
