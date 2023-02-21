@@ -19,12 +19,12 @@
 # include "player.h"
 # include "error_code.h"
 # include "sprite_mngr.h"
+# include "plane_mngr.h"
 # include "point.h"
 
-// textures
-// color planes
 typedef struct s_map
 {
+	t_plane_mngr	*pm;
 	t_sprite_mngr	*sm;
 	t_player		*p;
 	t_point			size;
