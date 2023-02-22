@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   angle.h                                            :+:      :+:    :+:   */
+/*   dda.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 13:57:17 by ycarro            #+#    #+#             */
-/*   Updated: 2023/02/22 15:03:22 by ycarro           ###   ########.fr       */
+/*   Created: 2023/02/22 14:48:30 by ycarro            #+#    #+#             */
+/*   Updated: 2023/02/22 15:03:29 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANGLE_H
-# define ANGLE_H
+#ifndef DDA_H
+# define DDA_H
 
+# include <stddef.h>
+# include <stdlib.h>
+# include <stdio.h>
 # include <math.h>
 
-# include "player.h"
+# include "error_code.h"
+# include "libft.h"
+# include "angle.h"
 
-typedef struct s_angle
+typedef struct s_ray
 {
-	double	radians;
-	double	min_in_range;
-	double	max_in_range;
-}				t_angle;
+	double	slope;
+	double	intercept;
+	double	incrementor;
+}				t_ray;
+
+t_point	dda(char **map, t_player *p, t_angle *ray_to_cast);
 
 #endif
-
-int		starting_angle(t_angle *angle, t_player *player);
-void	adjust_angle(t_angle *angle);
-void	set_angle_range(t_angle	*range);
