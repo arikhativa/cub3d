@@ -6,7 +6,7 @@
 /*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:48:17 by ycarro            #+#    #+#             */
-/*   Updated: 2023/02/22 15:14:41 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/02/22 16:34:33 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,9 @@ void	get_ray_data(t_ray *ray_data, double alpha, t_player *player)
 {
 	ray_data->slope = tan(alpha);
 	ray_data->intercept = player->pos->y - (player->pos->x * ray_data->slope);
-	
+	ray_data->x_pos->x = player->pos->x;
+	ray_data->x_pos->y = player->pos->y;
+	ray_data->y_pos->x = player->pos->x;
+	ray_data->y_pos->x = player->pos->y;
 }
+
