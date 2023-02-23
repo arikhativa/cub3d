@@ -6,7 +6,7 @@
 /*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:11:45 by ycarro            #+#    #+#             */
-/*   Updated: 2023/02/22 14:41:41 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/02/22 18:03:41 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	starting_angle(t_angle *angle, t_player *player)
 {
-	if (player->dir == NORD)
+	if (player->dir == NORTH)
 		angle->radians = (3.0 / 2.0) * M_PI;
 	if (player->dir == SOUTH)
 		angle->radians = (1.0 / 2.0) * M_PI;
@@ -24,7 +24,7 @@ void	starting_angle(t_angle *angle, t_player *player)
 		angle->radians = M_PI;
 }
 
-void	adjust_angle(double *angle)
+void	adjust_angle(double angle)
 {
 	if (angle > (2.0 * M_PI))
 		angle -= (2.0 * M_PI);

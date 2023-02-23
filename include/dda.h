@@ -6,21 +6,20 @@
 /*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:48:30 by ycarro            #+#    #+#             */
-/*   Updated: 2023/02/22 16:29:13 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/02/23 14:15:17 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DDA_H
 # define DDA_H
 
-# include <stddef.h>
 # include <stdlib.h>
 # include <stdio.h>
 # include <math.h>
 
-# include "error_code.h"
 # include "libft.h"
 # include "angle.h"
+# include "point.h"
 
 typedef struct s_ray
 {
@@ -28,9 +27,12 @@ typedef struct s_ray
 	t_point	y_pos;
 	double	slope;
 	double	intercept;
-	double	incrementor;
+	double	*incrementor;
+	t_angle	to_cast;
 }				t_ray;
 
-t_point	dda(char **map, t_player *p, t_angle *ray_to_cast);
+void	dda(char **map, t_player *p, t_ray	*ray_data, t_point *collision);
+void	set_incrementor(t_ray *ray_data, double alpha);
+void	get_ray_data(t_ray *ray_data, double alpha, t_player *player);
 
 #endif
