@@ -1,43 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.h                                              :+:      :+:    :+:   */
+/*   class.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/15 13:59:05 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/02/14 10:47:54 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_H
-# define MAP_H
+#ifndef CUB_H
+# define CUB_H
 
 # include <stdlib.h>
 
 # include "libft.h"
-# include "player.h"
 # include "error_code.h"
-# include "sprite_mngr.h"
-# include "plane_mngr.h"
-# include "point.h"
-# include "cub.h"
 # include "file_mngr.h"
-# include "tab.h"
+# include "atoi_overflow.h"
+# include "macro.h"
 
-typedef struct s_map
+# define NORTH_STR			"NO "
+# define SOUTH_STR			"SO "
+# define WEST_STR			"WE "
+# define EAST_STR			"EA "
+# define CEILING_STR		"C "
+# define FLOOR_STR			"F "
+# define VALID_MAP_CHARS	" 01NSWE"
+
+typedef enum e_line_type
 {
-	t_plane_mngr	*pm;
-	t_sprite_mngr	*sm;
-	t_player		*p;
-	t_point			size;
-	char			**map;
-	char			**file;
-}	t_map;
+	LINE_TYPE_NORTH,
+	LINE_TYPE_SOUTH,
+	LINE_TYPE_WEST,
+	LINE_TYPE_EAST,
+	LINE_TYPE_FLOOR,
+	LINE_TYPE_CEILING,
+	LINE_TYPE_EMPTY,
+	LINE_TYPE_MAP,
+	LINE_TYPE_INVALID,
+}				t_line_type;
 
-t_error_code	map_create(t_map **ret, void *mlx);
-t_error_code	map_read_raw(t_map *m, char *path);
-t_error_code	map_validate(char **file);
-void			map_destroy(t_map **obj);
+t_error_code	cub_validate_by_line(char **file);
+t_error_code	cub_validate_map_at_bottom(char **file);
+t_error_code	cub_validate_line(char *line);
+t_line_type		cub_get_line_type(char *line);
 
 #endif

@@ -21,6 +21,7 @@
 # include "libft.h"
 
 void			tab_print(char **input_table);
+void			tab_print_nl(char **input_table);
 t_error_code	tab_create(char	***ret, size_t size);
 void			tab_deep_destroy(char ***t);
 void			tab_shallow_destroy(char ***t);

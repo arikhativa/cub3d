@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.h                                             :+:      :+:    :+:   */
+/*   class.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 11:13:44 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/16 10:53:33 by yrabby           ###   ########.fr       */
+/*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
+/*   Updated: 2023/02/14 10:47:54 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#ifndef ATOI_OVERFLOW_H
+# define ATOI_OVERFLOW_H
 
+# include "libft.h"
 # include "error_code.h"
-# include "parser.h"
-# include "sprite.h"
-# include "map.h"
+
+int		atoi_overflow(const char *nptr, int *ret);
 
 #endif

@@ -12,6 +12,21 @@
 
 #include "tab.h"
 
+void	tab_print_nl(char **input_table)
+{
+	int	i;
+
+	i = 0;
+	if (input_table)
+	{
+		while (*(input_table + i))
+		{
+			printf("%s\n", *(input_table + i));
+			i++;
+		}
+	}
+}
+
 void	tab_print(char **input_table)
 {
 	int	i;
@@ -21,7 +36,7 @@ void	tab_print(char **input_table)
 	{
 		while (*(input_table + i))
 		{
-			printf("[%d]%s$\n", i, *(input_table + i));
+			printf("%s", *(input_table + i));
 			i++;
 		}
 	}
