@@ -6,7 +6,7 @@
 /*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:48:30 by ycarro            #+#    #+#             */
-/*   Updated: 2023/02/23 17:10:26 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/02/23 17:43:16 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "angle.h"
 # include "point.h"
 # include "player.h"
+# include "collision.h"
 
 typedef struct s_ray
 {
@@ -28,12 +29,13 @@ typedef struct s_ray
 	t_point	y_pos;
 	double	slope;
 	double	intercept;
-	double	*incrementor;
+	t_point	incrementor;
 	t_angle	to_cast;
 }				t_ray;
 
 void	dda(char **map, t_player *p, t_ray	*ray_data, t_point *collision);
 void	set_incrementor(t_ray *ray_data, double alpha);
 void	get_ray_data(t_ray *ray_data, double alpha, t_player *player);
+int		ray_differs_in_x(t_ray *ray_data);
 
 #endif
