@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.h                                             :+:      :+:    :+:   */
+/*   error_code.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 11:13:44 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/16 10:53:33 by yrabby           ###   ########.fr       */
+/*   Created: 2022/09/13 09:42:34 by yoav              #+#    #+#             */
+/*   Updated: 2023/02/15 11:16:30 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#include "error_code.h"
 
-# include "error_code.h"
-# include "parser.h"
-# include "sprite.h"
-# include "map.h"
+void	error_code_print(int size, ...)
+{
+	va_list			list;
+	char			*s;
+	int				i;
 
-#endif
+	ft_putstr_fd(CUB3D_STR, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	va_start(list, size);
+	i = 0;
+	while (i < size)
+	{
+		s = va_arg(list, char *);
+		ft_putstr_fd(s, STDERR_FILENO);
+		++i;
+	}
+	va_end(list);
+	ft_putstr_fd(NEW_LINE_STR, STDERR_FILENO);
+}

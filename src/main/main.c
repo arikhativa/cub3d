@@ -16,8 +16,21 @@
 int	main(int argc, char **argv)
 {
 	t_error_code	err;
+	t_map			*m;
 
 	err = parser_arg_check(argc, argv);
+	if (SUCCESS == err)
+	{
+		err = map_create(&m, NULL);
+		if (SUCCESS == err)
+		{
+			err = map_read_raw(m, argv[1]);
+			if (SUCCESS == err)
+			{
+				err = map_validate(m->file);
+			}
+		}
+	}
 	return (error_code_print_on_exit(err));
 }
 

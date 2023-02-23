@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.h                                             :+:      :+:    :+:   */
+/*   init_utest.t.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 11:13:44 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/16 10:53:33 by yrabby           ###   ########.fr       */
+/*   Created: 2023/02/14 10:05:13 by yrabby            #+#    #+#             */
+/*   Updated: 2023/02/14 10:09:20 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#include "unit_test.h"
 
-# include "error_code.h"
-# include "parser.h"
-# include "sprite.h"
-# include "map.h"
-
-#endif
+CU_TestInfo	g_cub_tests[] = {
+{
+	"test_cub_get_line_type",
+	test_cub_get_line_type,
+},
+	CU_TEST_INFO_NULL,
+};
