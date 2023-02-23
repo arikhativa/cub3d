@@ -1,43 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.h                                              :+:      :+:    :+:   */
+/*   class.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/15 13:59:05 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/02/15 13:55:57 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_H
-# define MAP_H
+#include "file_mngr.h"
 
-# include <stdlib.h>
-
-# include "libft.h"
-# include "player.h"
-# include "error_code.h"
-# include "sprite_mngr.h"
-# include "plane_mngr.h"
-# include "point.h"
-# include "cub.h"
-# include "file_mngr.h"
-# include "tab.h"
-
-typedef struct s_map
+t_error_code	file_mngr_open(int *ret, char *path)
 {
-	t_plane_mngr	*pm;
-	t_sprite_mngr	*sm;
-	t_player		*p;
-	t_point			size;
-	char			**map;
-	char			**file;
-}	t_map;
+	int	fd;
 
-t_error_code	map_create(t_map **ret, void *mlx);
-t_error_code	map_read_raw(t_map *m, char *path);
-t_error_code	map_validate(char **file);
-void			map_destroy(t_map **obj);
+	if (!ret || !path)
+		return (NULL_POINTER);
+	fd = open(path, O_RDONLY);
+	if (ERROR == fd)
+		return (OPEN_ERROR);
+	*ret = fd;
+	return (SUCCESS);
+}
 
-#endif
+t_bool	file_mngr_is_file(char *path)
+{
+	t_error_code	err;
+	int				fd;
+
+	err = file_mngr_open(&fd, path);
+	if (SUCCESS == err)
+	{
+		close(fd);
+		return (TRUE);
+	}
+	return (FALSE);
+}
