@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   direction.h                                        :+:      :+:    :+:   */
+/*   class.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 13:32:07 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/15 13:38:26 by yrabby           ###   ########.fr       */
+/*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
+/*   Updated: 2023/02/15 13:55:57 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DIRECTION_H
-# define DIRECTION_H
+#include "sprite_mngr.h"
 
-typedef enum e_direction
+t_error_code	sprite_mngr_load_sprite(t_sprite_mngr *sm, t_direction d, \
+	char *path)
 {
-	NORTH = 0,
-	SOUTH = 1,
-	EAST = 2,
-	WEST = 3,
-	DIR_INVALID = 4
-}	t_direction;
-
-#endif
+	if (sprite_is_loaded(sm->sprites[d]))
+		return (EXT_DUPLICATE_SETTING);
+	return (sprite_load(sm->sprites[d], path));
+}

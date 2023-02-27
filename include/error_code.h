@@ -39,6 +39,7 @@ typedef enum s_error_code
 {
 	ERROR = -1,
 	SUCCESS = 0,
+	STOP,
 	ALLOCATION_ERROR,
 	SPRITE_LOAD_GET_DATA_ADDR,
 	SPRITE_LOAD_FILE_TO_IMG,
@@ -54,6 +55,7 @@ typedef enum s_error_code
 	EXT_NO_ARG,
 	EXT_MAP_NOT_AT_BOTTOM,
 	EXT_INVALID_FILE,
+	EXT_DUPLICATE_SETTING,
 }	t_error_code;
 
 t_error_code	error_code_print_on_exit(t_error_code err);

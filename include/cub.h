@@ -16,9 +16,12 @@
 # include <stdlib.h>
 
 # include "libft.h"
+# include "plane_mngr.h"
 # include "error_code.h"
+# include "direction.h"
 # include "file_mngr.h"
 # include "atoi_overflow.h"
+# include "rgb.h"
 # include "macro.h"
 
 # define NORTH_STR			"NO "
@@ -46,5 +49,8 @@ t_error_code	cub_validate_by_line(char **file);
 t_error_code	cub_validate_map_at_bottom(char **file);
 t_error_code	cub_validate_line(char *line);
 t_line_type		cub_get_line_type(char *line);
+t_direction		cub_get_direction(char *prefix);
+t_plane_type	cub_get_plane_type(char *prefix);
+t_rgb			cub_get_rgb(char *line);
 
 #endif
