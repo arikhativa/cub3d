@@ -33,7 +33,7 @@ t_error_code	map_load_line(t_map *m, char *line)
 		return (map_load_plane(m, line, FLOOR_STR));
 	else if (LINE_TYPE_CEILING == type)
 		return (map_load_plane(m, line, CEILING_STR));
-	return (LINE_TYPE_INVALID);
+	return (EXT_INVALID_FILE);
 }
 
 t_error_code	map_load_settings(t_map *m)
