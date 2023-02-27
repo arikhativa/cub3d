@@ -3,39 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   angle.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:11:45 by ycarro            #+#    #+#             */
-/*   Updated: 2023/02/22 18:03:41 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/02/27 15:31:16 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "angle.h"
 
-void	starting_angle(t_angle *angle, t_player *player)
+void	angle_starting(t_angle *angle, t_player *player)
 {
 	if (player->dir == NORTH)
-		angle->radians = (3.0 / 2.0) * M_PI;
+		angle->radians = ANGLE_NORTH;
 	if (player->dir == SOUTH)
-		angle->radians = (1.0 / 2.0) * M_PI;
+		angle->radians = ANGLE_SOUTH;
 	if (player->dir == EAST)
-		angle->radians = 2.0 * M_PI;
+		angle->radians = ANGLE_EAST;
 	if (player->dir == WEST)
-		angle->radians = M_PI;
+		angle->radians = ANGLE_WEST;
 }
 
-void	adjust_angle(double angle)
+void	angle_adjust(double angle)
 {
-	if (angle > (2.0 * M_PI))
-		angle -= (2.0 * M_PI);
+	if (angle > ANGLE_MAX)
+		angle -= ANGLE_MAX;
 	if (angle < 0)
-		angle += (2.0 * M_PI);
+		angle += ANGLE_MAX;
 }
 
-void	set_angle_range(t_angle	*range)
+void	angle_set_range(t_angle	*range)
 {
-	range->min_in_range = range->radians - ((1.0 / 4.0) * M_PI);
-	range->max_in_range = range->radians + ((1.0 / 4.0) * M_PI);
-	adjust_angle(range->min_in_range);
-	adjust_angle(range->max_in_range);
+	range->min_in_range = range->radians - ANGLE_HALF_QUARTER;
+	range->max_in_range = range->radians + ANGLE_HALF_QUARTER;
+	angle_adjust(range->min_in_range);
+	angle_adjust(range->max_in_range);
 }

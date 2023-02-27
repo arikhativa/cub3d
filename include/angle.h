@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   angle.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:57:17 by ycarro            #+#    #+#             */
-/*   Updated: 2023/02/23 14:19:58 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/02/27 15:39:02 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@
 # include "player.h"
 # include "direction.h"
 
+# define ANGLE_NORTH			(3.0 / 2.0) * M_PI
+# define ANGLE_WEST				M_PI
+# define ANGLE_EAST				(1.0 / 2.0) * M_PI
+# define ANGLE_SOUTH			2.0 * M_PI
+# define ANGLE_MAX				2.0 * M_PI	
+# define ANGLE_HALF_QUARTER		(1.0 / 4.0) * M_PI
+
 typedef struct s_angle
 {
 	double	radians;
@@ -25,8 +32,8 @@ typedef struct s_angle
 	double	max_in_range;
 }				t_angle;
 
-void	starting_angle(t_angle *angle, t_player *player);
-void	adjust_angle(double angle);
-void	set_angle_range(t_angle	*range);
+void	angle_starting(t_angle *angle, t_player *player);
+void	angle_adjust(double angle);
+void	angle_set_range(t_angle	*range);
 
 #endif
