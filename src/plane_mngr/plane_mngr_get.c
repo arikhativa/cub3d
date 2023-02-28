@@ -16,3 +16,17 @@ t_plane	*plane_mngr_get_plane(t_plane_mngr *pm, t_plane_type type)
 {
 	return (pm->planes[type]);
 }
+
+void	plane_mngr_print(t_plane_mngr *pm)
+{
+	int	i;
+
+	if (!pm)
+		return ;
+	i = 0;
+	while (i < PLANES_IN_MAP)
+	{
+		plane_print(pm->planes[i]);
+		i++;
+	}
+}

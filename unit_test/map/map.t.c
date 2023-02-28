@@ -23,3 +23,54 @@ void	test_map_create_destroy(void)
 	map_destroy(&obj);
 	CU_ASSERT_PTR_NULL(obj);
 }
+
+void	test_map_get_map_index(void)
+{
+	int	i = 0;
+	char *file[] = {
+		"NO ./resource/xpm/wall.xpm",
+		"SO ./resource/xpm/wall.xpm",
+		"WE ./resource/xpm/wall.xpm",
+		"EA ./resource/xpm/wall.xpm",
+		"F 100,23,0",
+		"",
+		"C 100,23,0",
+		" 1111",
+		"10N1",
+		"1  1",
+		"1111",
+		NULL,
+	};
+
+	i = map_get_map_index(file);
+	CU_ASSERT_EQUAL(7, i);
+}
+
+void	test_map_get_size(void)
+{
+	t_error_code	err;
+	t_map			*m;
+	char *file[] = {
+		"NO ./resource/xpm/wall.xpm",
+		"SO ./resource/xpm/wall.xpm",
+		"WE ./resource/xpm/wall.xpm",
+		"EA ./resource/xpm/wall.xpm",
+		"F 100,23,0",
+		"",
+		"C 100,23,0",
+		" 1111",
+		"10N1",
+		"1  1",
+		"1111",
+		NULL,
+	};
+
+	err = map_create(&m, g_mlx);
+	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
+	m->file = file;
+	map_get_size(m);
+	CU_ASSERT_EQUAL(m->size.x, 6);
+	CU_ASSERT_EQUAL(m->size.y, 4);
+	m->file = NULL;
+	map_destroy(&m);
+}

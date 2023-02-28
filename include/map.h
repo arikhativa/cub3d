@@ -38,6 +38,14 @@ typedef struct s_map
 t_error_code	map_create(t_map **ret, void *mlx);
 t_error_code	map_read_raw(t_map *m, char *path);
 t_error_code	map_validate(char **file);
+t_error_code	map_alloc_map(t_map *m);
 void			map_destroy(t_map **obj);
+t_error_code	map_load(t_map *m);
+t_error_code	map_load_map(t_map *m);
+t_error_code	map_load_sprite(t_map *m, char *line, char *prefix);
+t_error_code	map_load_plane(t_map *m, char *line, char *prefix);
+void			map_print(t_map *m);
+int				map_get_map_index(char **file);
+void			map_get_size(t_map *m);
 
 #endif
