@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   collision.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 14:59:18 by ycarro            #+#    #+#             */
-/*   Updated: 2023/02/23 17:12:59 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/02/28 12:38:51 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <collision.h>
+#include "collision.h"
 
-int	it_collides(t_ray *ray_data, char **map, t_point *collision)
+int	is_collides(t_ray *ray_data, char **map, t_point *collision)
 {
 	int	ray_num;
 
