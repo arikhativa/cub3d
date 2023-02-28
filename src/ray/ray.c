@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:50:12 by anonymous         #+#    #+#             */
-/*   Updated: 2023/02/28 13:44:45 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/02/28 13:53:10 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,19 @@ void	ray_increment(t_ray	*ray_data)
 		ray_data->y_pos.y = (ray_data->slope * ray_data->y_pos.x \
 			+ ray_data->intercept);
 	}
+}
+
+int	ray_differs_in_x(t_ray *ray_data)
+{
+	if (ray_data->incrementor.x == 1)
+	{
+		if ((int)ray_data->x_pos.x <= (int)ray_data->y_pos.x)
+			return (1);
+	}
+	if (ray_data->incrementor.x == -1)
+	{
+		if ((int)ray_data->x_pos.x >= (int)ray_data->y_pos.x)
+			return (1);
+	}
+	return (0);
 }

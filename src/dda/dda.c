@@ -6,21 +6,17 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:10:14 by anonymous         #+#    #+#             */
-/*   Updated: 2023/02/28 13:44:06 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/02/28 13:57:23 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "dda.h"
 
 void	dda(char **map, t_player *p, t_ray	*ray_data, t_point *collision)
 {
-	(void)map;
-	(void)collision;
-
-	set_incrementor(ray_data, ray_data->to_cast.radians);
-	get_ray_data(ray_data, ray_data->to_cast.radians, p);
-	while (!it_collides(ray_data, map, collision))
+	dda_set_incrementor(ray_data, ray_data->to_cast.radians);
+	dda_set_ray_data(ray_data, ray_data->to_cast.radians, p);
+	while (!is_collides(ray_data, map, collision))
 	{
 		ray_increment(ray_data);
 	}
@@ -28,7 +24,6 @@ void	dda(char **map, t_player *p, t_ray	*ray_data, t_point *collision)
 
 void	dda_set_incrementor(t_ray *ray_data, double alpha)
 {
-	ray_data->incrementor = ft_calloc(2, sizeof(double));
 	while (alpha > (2.0 * M_PI))
 		alpha -= (2.0 * M_PI);
 	if (alpha >= ((3.0 / 2.0) * M_PI))
@@ -61,19 +56,4 @@ void	dda_set_ray_data(t_ray *ray_data, double alpha, t_player *player)
 	ray_data->x_pos.y = player->pos.y;
 	ray_data->y_pos.x = player->pos.x;
 	ray_data->y_pos.x = player->pos.y;
-}
-
-int	ray_differs_in_x(t_ray *ray_data)
-{
-	if (ray_data->incrementor.x == 1)
-	{
-		if ((int)ray_data->x_pos.x <= (int)ray_data->y_pos.x)
-			return (1);
-	}
-	if (ray_data->incrementor.x == -1)
-	{
-		if ((int)ray_data->x_pos.x >= (int)ray_data->y_pos.x)
-			return (1);
-	}
-	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:10:14 by anonymous         #+#    #+#             */
-/*   Updated: 2023/02/28 13:42:32 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/02/28 13:58:10 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 # include "angle.h"
 # include "point.h"
 # include "ray.h"
+# include "collision.h"
+
+typedef struct s_ray	t_ray;
 
 void	dda(char **map, t_player *p, t_ray	*ray_data, t_point *collision);
 void	dda_set_incrementor(t_ray *ray_data, double alpha);
