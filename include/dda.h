@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 14:48:30 by ycarro            #+#    #+#             */
-/*   Updated: 2023/02/28 13:03:32 by anonymous        ###   ########.fr       */
+/*   Created: 2023/02/27 15:10:14 by anonymous         #+#    #+#             */
+/*   Updated: 2023/02/28 13:42:32 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,10 @@
 # include "libft.h"
 # include "angle.h"
 # include "point.h"
-# include "player.h"
-# include "collision.h"
-
-typedef struct s_ray
-{
-	t_point	x_pos;
-	t_point	y_pos;
-	double	slope;
-	double	intercept;
-	t_point	incrementor;
-	t_angle	to_cast;
-}				t_ray;
+# include "ray.h"
 
 void	dda(char **map, t_player *p, t_ray	*ray_data, t_point *collision);
-void	set_incrementor(t_ray *ray_data, double alpha);
-void	get_ray_data(t_ray *ray_data, double alpha, t_player *player);
-int		ray_differs_in_x(t_ray *ray_data);
-void	ray_increment(t_ray	*ray_data);
+void	dda_set_incrementor(t_ray *ray_data, double alpha);
+void	dda_set_ray_data(t_ray *ray_data, double alpha, t_player *player);
 
 #endif

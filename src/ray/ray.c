@@ -6,11 +6,11 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:50:12 by anonymous         #+#    #+#             */
-/*   Updated: 2023/02/28 13:30:21 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/02/28 13:44:45 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "dda.h"
+#include "ray.h"
 
 void	ray_increment(t_ray	*ray_data)
 {
