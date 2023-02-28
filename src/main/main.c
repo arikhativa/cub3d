@@ -13,23 +13,40 @@
 #include "main.h"
 #include "mlx.h"
 
+static void	ignore(void *mlx, char **argv)
+{
+	t_map			*m;
+	t_error_code	err;
+
+	err = map_create(&m, mlx);
+	if (SUCCESS == err)
+	{
+		err = map_read_raw(m, argv[1]);
+		if (SUCCESS == err)
+			err = map_validate(m->file);
+		if (SUCCESS == err)
+			err = map_load(m);
+		if (SUCCESS == err)
+			map_print(m);
+		map_destroy(&m);
+	}
+}
+
 int	main(int argc, char **argv)
 {
+	void			*mlx;
+	void			*win;
 	t_error_code	err;
-	t_map			*m;
 
 	err = parser_arg_check(argc, argv);
 	if (SUCCESS == err)
 	{
-		err = map_create(&m, NULL);
-		if (SUCCESS == err)
-		{
-			err = map_read_raw(m, argv[1]);
-			if (SUCCESS == err)
-			{
-				err = map_validate(m->file);
-			}
-		}
+		mlx = mlx_init();
+		win = mlx_new_window(mlx, 400, 400, "hey");
+		ignore(mlx, argv);
+		mlx_destroy_window(mlx, win);
+		mlx_destroy_display(mlx);
+		free(mlx);
 	}
 	return (error_code_print_on_exit(err));
 }

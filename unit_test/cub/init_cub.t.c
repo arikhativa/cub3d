@@ -14,8 +14,20 @@
 
 CU_TestInfo	g_cub_tests[] = {
 {
+	"test_cub_get_rgb",
+	test_cub_get_rgb,
+},
+{
+	"test_cub_get_plane_type",
+	test_cub_get_plane_type,
+},
+{
 	"test_cub_get_line_type",
 	test_cub_get_line_type,
+},
+{
+	"test_cub_get_dir",
+	test_cub_get_dir,
 },
 	CU_TEST_INFO_NULL,
 };

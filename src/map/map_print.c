@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   direction.h                                        :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 13:32:07 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/15 13:38:26 by yrabby           ###   ########.fr       */
+/*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
+/*   Updated: 2023/02/15 13:58:46 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DIRECTION_H
-# define DIRECTION_H
+#include "map.h"
 
-typedef enum e_direction
+void	map_print(t_map *m)
 {
-	NORTH = 0,
-	SOUTH = 1,
-	EAST = 2,
-	WEST = 3,
-	DIR_INVALID = 4
-}	t_direction;
-
-#endif
+	printf("map:\nsize: {x: %d, y: %d}\n", m->size.x, m->size.y);
+	plane_mngr_print(m->pm);
+	printf("\n");
+	tab_print_nl(m->map);
+}
