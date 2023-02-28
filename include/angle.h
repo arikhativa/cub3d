@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:57:17 by ycarro            #+#    #+#             */
-/*   Updated: 2023/02/27 15:39:02 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/02/28 12:24:09 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,6 @@
 
 # include "player.h"
 # include "direction.h"
-
-# define ANGLE_NORTH			(3.0 / 2.0) * M_PI
-# define ANGLE_WEST				M_PI
-# define ANGLE_EAST				(1.0 / 2.0) * M_PI
-# define ANGLE_SOUTH			2.0 * M_PI
-# define ANGLE_MAX				2.0 * M_PI	
-# define ANGLE_HALF_QUARTER		(1.0 / 4.0) * M_PI
 
 typedef struct s_angle
 {

@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:48:17 by ycarro            #+#    #+#             */
-/*   Updated: 2023/02/27 15:37:59 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/02/28 12:23:36 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,19 @@ void	dda(char **map, t_player *p, t_ray	*ray_data, t_point *collision)
 void	dda_set_incrementor(t_ray *ray_data, double alpha)
 {
 	ray_data->incrementor = ft_calloc(2, sizeof(double));
-	while (alpha > ANGLE_MAX)
-		alpha -= ANGLE_MAX;
-	if (alpha >= ANGLE_NORTH)
+	while (alpha > (2.0 * M_PI))
+		alpha -= (2.0 * M_PI);
+	if (alpha >= ((3.0 / 2.0) * M_PI))
 	{
 		ray_data->incrementor[0] = 1;
 		ray_data->incrementor[1] = -1;
 	}
-	else if (alpha >= ANGLE_WEST)
+	else if (alpha >= M_PI)
 	{
 		ray_data->incrementor[0] = -1;
 		ray_data->incrementor[1] = -1;
 	}
-	else if (alpha >= ANGLE_EAST)
+	else if (alpha >= ((1.0 / 2.0) * M_PI))
 	{
 		ray_data->incrementor[0] = -1;
 		ray_data->incrementor[1] = 1;

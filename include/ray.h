@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:12:10 by anonymous         #+#    #+#             */
-/*   Updated: 2023/02/27 15:14:31 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/02/28 12:24:32 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,5 @@ typedef struct s_ray
 	double	*incrementor;
 	t_angle	to_cast;
 }				t_ray;
-
 
 #endif
