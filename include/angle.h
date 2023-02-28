@@ -6,10 +6,9 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:10:14 by anonymous         #+#    #+#             */
-/*   Updated: 2023/02/28 12:39:38 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/02/28 12:42:16 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef ANGLE_H
 # define ANGLE_H
