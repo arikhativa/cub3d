@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:48:17 by ycarro            #+#    #+#             */
-/*   Updated: 2023/02/23 17:42:22 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/02/28 13:04:20 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,7 @@ void	dda(char **map, t_player *p, t_ray	*ray_data, t_point *collision)
 	get_ray_data(ray_data, ray_data->to_cast.radians, p);
 	while (!it_collides(ray_data, map, collision))
 	{
-		if (ray_differs_in_x(ray_data))
-		{
-			ray_data->x_pos.x += (double)(ray_data->incrementor.x * 100);
-			ray_data->x_pos.y = (ray_data->slope * ray_data->x_pos.x \
-				+ ray_data->intercept);
-		}
-		else
-		{
-			ray_data->y_pos.x += (double)(ray_data->incrementor.x * 100);
-			ray_data->y_pos.y = (ray_data->slope * ray_data->x_pos.x \
-				+ ray_data->intercept);
-		}
+		ray_increment(ray_data);
 	}
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:48:30 by ycarro            #+#    #+#             */
-/*   Updated: 2023/02/23 17:43:16 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/02/28 13:03:32 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ void	dda(char **map, t_player *p, t_ray	*ray_data, t_point *collision);
 void	set_incrementor(t_ray *ray_data, double alpha);
 void	get_ray_data(t_ray *ray_data, double alpha, t_player *player);
 int		ray_differs_in_x(t_ray *ray_data);
+void	ray_increment(t_ray	*ray_data);
 
 #endif
