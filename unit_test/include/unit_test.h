@@ -72,6 +72,8 @@ void	test_map_validate_ext_missing_plane_color(void);
 void	test_map_validate_map_not_bottom(void);
 void	test_map_validate_ext_invalid_line(void);
 void	test_map_validate_ext_bad_color(void);
+void	test_map_get_map_index(void);
+void	test_map_get_size(void);
 
 // player
 void	test_player_create_destroy(void);
@@ -94,5 +96,8 @@ void	test_plane_mngr_create_destroy(void);
 
 // cub
 void	test_cub_get_line_type(void);
+void	test_cub_get_dir(void);
+void	test_cub_get_plane_type(void);
+void	test_cub_get_rgb(void);
 
 #endif

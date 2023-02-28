@@ -29,5 +29,7 @@ typedef struct s_sprite_mngr
 
 t_error_code	sprite_mngr_create(t_sprite_mngr **ret, void *mlx);
 void			sprite_mngr_destroy(t_sprite_mngr **obj);
+t_error_code	sprite_mngr_load_sprite(t_sprite_mngr *sm, t_direction d, \
+	char *path);
 
 #endif

@@ -14,6 +14,14 @@
 
 CU_TestInfo	g_map_tests[] = {
 {
+	"test_map_get_size",
+	test_map_get_size,
+},
+{
+	"test_map_get_map_index",
+	test_map_get_map_index,
+},
+{
 	"test_map_create_destroy",
 	test_map_create_destroy,
 },

@@ -27,5 +27,6 @@ typedef struct s_plane
 t_error_code	plane_create(t_plane **ret);
 void			plane_init(t_plane *p, t_rgb color);
 void			plane_destroy(t_plane **obj);
+void			plane_print(t_plane *p);
 
 #endif
