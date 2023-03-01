@@ -29,7 +29,7 @@ void	map_get_size(t_map *m)
 			len_x = tmp_len;
 		++i;
 	}
-	m->size = point_init(len_x + 1, i);
+	m->size = point_init(len_x, i);
 }
 
 static t_error_code	map_init_lines(t_map *m)
@@ -39,7 +39,7 @@ static t_error_code	map_init_lines(t_map *m)
 	i = 0;
 	while (i < m->size.y)
 	{
-		m->map[i] = ft_calloc(1, m->size.x);
+		m->map[i] = ft_calloc(1, (m->size.x + 1));
 		if (!m->map[i])
 			return (ALLOCATION_ERROR);
 		++i;

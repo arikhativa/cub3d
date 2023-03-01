@@ -53,7 +53,6 @@ t_error_code	map_load_settings(t_map *m)
 	return (err);
 }
 
-// TODO think about error
 t_error_code	map_load(t_map *m)
 {
 	t_error_code	err;

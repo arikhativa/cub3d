@@ -69,7 +69,7 @@ void	test_map_get_size(void)
 	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
 	m->file = file;
 	map_get_size(m);
-	CU_ASSERT_EQUAL(m->size.x, 6);
+	CU_ASSERT_EQUAL(m->size.x, 5);
 	CU_ASSERT_EQUAL(m->size.y, 4);
 	m->file = NULL;
 	map_destroy(&m);
