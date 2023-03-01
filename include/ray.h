@@ -13,7 +13,8 @@
 #ifndef RAY_H
 # define RAY_H
 
-# include "dda.h"
+# include "point.h"
+# include "angle.h"
 
 typedef struct s_ray
 {

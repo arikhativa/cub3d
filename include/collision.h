@@ -14,10 +14,17 @@
 # define COLLISION_H
 
 # include "dda.h"
+# include "macro.h"
+# include "ray.h"
 
-typedef struct s_ray	t_ray;
+typedef enum e_collision
+{
+	NO_COLLISION = -1,
+	X_COLLISION = 0,
+	Y_COLLISION = 1,
+}	t_collision;
 
-int	is_collides(t_ray *ray_data, char **map, t_point *collision);
-int	check_in_range(t_ray *ray_data, char **map);
+t_bool	is_collides(t_ray *ray_data, char **map, t_point *collision);
+t_collision		check_in_range(t_ray *ray_data, char **map);
 
 #endif

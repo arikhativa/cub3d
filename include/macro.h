@@ -16,6 +16,7 @@
 # define CUB3D_STR		"cub3d"
 # define NEW_LINE_STR	"\n"
 # define EMPTY_STR		""
+# define WALL_CHAR		'1'
 
 typedef enum e_bool
 {

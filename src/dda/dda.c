@@ -17,9 +17,7 @@ void	dda(char **map, t_player *p, t_ray	*ray_data, t_point *collision)
 	dda_set_incrementor(ray_data, ray_data->to_cast.radians);
 	dda_set_ray_data(ray_data, ray_data->to_cast.radians, p);
 	while (!is_collides(ray_data, map, collision))
-	{
 		ray_increment(ray_data);
-	}
 }
 
 void	dda_set_incrementor(t_ray *ray_data, double alpha)
@@ -37,23 +35,19 @@ void	dda_set_incrementor(t_ray *ray_data, double alpha)
 		ray_data->incrementor.y = -1;
 	}
 	else if (alpha >= ((1.0 / 2.0) * M_PI))
-	{
-		ray_data->incrementor.x = -1;
-		ray_data->incrementor.y = 1;
-	}
+		ray_data->incrementor = point_init(-1, 1);
 	else
-	{
-		ray_data->incrementor.x = 1;
-		ray_data->incrementor.y = 1;
-	}
+		ray_data->incrementor = point_init(1, 1);
 }
 
 void	dda_set_ray_data(t_ray *ray_data, double alpha, t_player *player)
 {
 	ray_data->slope = tan(alpha);
 	ray_data->intercept = player->pos.y - (player->pos.x * ray_data->slope);
-	ray_data->x_pos.x = player->pos.x;
-	ray_data->x_pos.y = player->pos.y;
-	ray_data->y_pos.x = player->pos.x;
-	ray_data->y_pos.x = player->pos.y;
+	ray_data->x_pos = point_copy(player);
+	ray_data->y_pos = point_copy(player);
+	// ray_data->x_pos.x = player->pos.x;
+	// ray_data->x_pos.y = player->pos.y;
+	// ray_data->y_pos.x = player->pos.x;
+	// ray_data->y_pos.x = player->pos.y;
 }

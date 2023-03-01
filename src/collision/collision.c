@@ -12,7 +12,7 @@
 
 #include "collision.h"
 
-int	is_collides(t_ray *ray_data, char **map, t_point *collision)
+t_bool	is_collides(t_ray *ray_data, char **map, t_point *collision)
 {
 	int	ray_num;
 
@@ -21,28 +21,28 @@ int	is_collides(t_ray *ray_data, char **map, t_point *collision)
 	{
 		collision->x = ray_data->x_pos.x;
 		collision->y = ray_data->x_pos.y;
-		return (1);
+		return (TRUE);
 	}
 	if (ray_num == 1)
 	{
 		collision->x = ray_data->y_pos.x;
 		collision->y = ray_data->y_pos.y;
-		return (1);
+		return (TRUE);
 	}
-	return (0);
+	return (FALSE);
 }
 
-int	check_in_range(t_ray *ray_data, char **map)
+t_collision	check_in_range(t_ray *ray_data, char **map)
 {
 	t_point	collider;
 
 	collider.x = ray_data->x_pos.x / 100;
 	collider.y = ray_data->x_pos.y / 100;
-	if (map[collider.x][collider.y] == 1)
-		return (0);
+	if (map[collider.x][collider.y] == WALL_CHAR)
+		return (X_COLLISION);
 	collider.x = ray_data->y_pos.x / 100;
 	collider.y = ray_data->y_pos.y / 100;
-	if (map[collider.x][collider.y] == 1)
-		return (1);
-	return (-1);
+	if (map[collider.x][collider.y] == WALL_CHAR)
+		return (Y_COLLISION);
+	return (NO_COLLISION);
 }

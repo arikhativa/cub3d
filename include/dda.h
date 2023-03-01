@@ -23,8 +23,6 @@
 # include "ray.h"
 # include "collision.h"
 
-typedef struct s_ray	t_ray;
-
 void	dda(char **map, t_player *p, t_ray	*ray_data, t_point *collision);
 void	dda_set_incrementor(t_ray *ray_data, double alpha);
 void	dda_set_ray_data(t_ray *ray_data, double alpha, t_player *player);
