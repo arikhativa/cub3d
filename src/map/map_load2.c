@@ -28,6 +28,13 @@ int	map_get_map_index(char **file)
 	return (ERROR);
 }
 
+// TODO: fix this
+		// while (x < m->size.x)
+		// {
+		// 	if (m->map[i][x] == '\0')
+		// 		m->map[i][x] = ' ';
+		// 	++x;
+		// }
 t_error_code	map_load_map(t_map *m)
 {
 	int		file_index;
