@@ -63,6 +63,7 @@ t_error_code	map_load_sprite(t_map *m, char *line, char *prefix)
 	return (ERROR);
 }
 
+// TODO check for duplicate planes!
 t_error_code	map_load_plane(t_map *m, char *line, char *prefix)
 {
 	t_plane_type	type;
