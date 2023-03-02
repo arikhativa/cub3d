@@ -6,7 +6,7 @@
 /*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:50:12 by anonymous         #+#    #+#             */
-/*   Updated: 2023/03/02 15:35:32 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/03/02 16:06:04 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ray_increment(t_ray	*ray_data)
 {
-	if (ray_differs_in_x(ray_data))
+	if (should_inc_x(ray_data))
 	{
 		ray_data->x_pos.x += ray_data->incrementor.x * 100;
 		ray_data->x_pos.y = (ray_data->slope * ray_data->x_pos.x \
