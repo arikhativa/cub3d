@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:12:10 by anonymous         #+#    #+#             */
-/*   Updated: 2023/02/28 14:01:17 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/03/02 15:34:55 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include "point.h"
 # include "angle.h"
+
+# define POSITIVE	1
+# define NEGATIVE	-1
 
 typedef struct s_ray
 {
@@ -27,6 +30,6 @@ typedef struct s_ray
 }				t_ray;
 
 void	ray_increment(t_ray	*ray_data);
-int		ray_differs_in_x(t_ray *ray_data);
+t_bool	should_inc_x(t_ray *ray_data);
 
 #endif
