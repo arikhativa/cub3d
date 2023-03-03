@@ -12,13 +12,43 @@
 
 #include "map.h"
 
-void	map_print(t_map *m)
+static t_error_code	map_load_player_by_line(t_map *m, int y)
 {
-	printf("map:\nsize: ");
-	point_print(m->size);
-	printf("\n");
-	plane_mngr_print(m->pm);
-	player_print(m->p);
-	printf("\n");
-	tab_print_nl(m->map);
+	char		*line;
+	int			x;
+	t_point		pos;
+	t_direction	dir;
+
+	x = 0;
+	line = m->map[y];
+	while (line[x])
+	{
+		if (ft_strchr(PLAYER_DIR_STR, line[x]))
+		{
+			if (player_is_loaded(m->p))
+				return (EXT_DUPLICATE_SETTING);
+			pos = point_init(x, y);
+			dir = direction_char_to_dir(line[x]);
+			player_init(m->p, pos, dir);
+		}
+		++x;
+	}
+	return (SUCCESS);
+}
+
+t_error_code	map_load_player(t_map *m)
+{
+	t_error_code	err;
+	int				y;
+
+	y = 0;
+	err = SUCCESS;
+	while (y < m->size.y)
+	{
+		err = map_load_player_by_line(m, y);
+		if (err != SUCCESS)
+			return (EXT_DUPLICATE_SETTING);
+		++y;
+	}
+	return (SUCCESS);
 }

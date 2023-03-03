@@ -49,7 +49,7 @@ void	plane_print(t_plane *p)
 {
 	if (!p)
 		return ;
-	printf("plane rgb: {%d %d %d}\n", p->color.red, p->color.blue, \
+	printf("plane rgb: {%d, %d, %d}\n", p->color.red, p->color.blue, \
 		p->color.green);
 }
 
