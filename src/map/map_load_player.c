@@ -47,8 +47,10 @@ t_error_code	map_load_player(t_map *m)
 	{
 		err = map_load_player_by_line(m, y);
 		if (err != SUCCESS)
-			return (EXT_DUPLICATE_SETTING);
+			return (err);
 		++y;
 	}
-	return (SUCCESS);
+	if (SUCCESS == err && !player_is_loaded(m->p))
+		return (EXT_MISSING_PLAYER);
+	return (err);
 }
