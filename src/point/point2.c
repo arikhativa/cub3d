@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   point.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/15 13:58:46 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/02/15 13:47:28 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
+#include "point.h"
 
-t_error_code	map_validate(char **file)
+t_point	point_up(t_point p)
 {
-	t_error_code	err;
-
-	err = cub_validate_by_line(file);
-	if (SUCCESS != err)
-		return (err);
-	err = cub_validate_map_at_bottom(file);
-	return (err);
+	return ((t_point){p.x, p.y - 1});
 }
 
-t_error_code	map_post_load_validation(t_map *m)
+t_point	point_down(t_point p)
 {
-	if (!map_is_closed(m))
-		return (EXT_MAP_OPEN);
-	return (SUCCESS);
+	return ((t_point){p.x, p.y + 1});
+}
+
+t_point	point_left(t_point p)
+{
+	return ((t_point){p.x - 1, p.y});
+}
+
+t_point	point_right(t_point p)
+{
+	return ((t_point){p.x + 1, p.y});
 }

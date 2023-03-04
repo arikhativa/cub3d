@@ -19,7 +19,7 @@ static char	*get_line(int fd)
 
 	line = get_next_line(fd);
 	len = ft_strlen(line);
-	if (len > 0)
+	if (len > 0 && NEW_LINE_CHAR == line[len - 1])
 		line[len - 1] = 0;
 	return (line);
 }

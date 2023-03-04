@@ -28,6 +28,8 @@ static t_error_code	main2(void *mlx, char **argv)
 			err = map_load(m);
 		if (SUCCESS == err)
 			map_print(m);
+		if (SUCCESS == err)
+			err = map_post_load_validation(m);
 		map_destroy(&m);
 	}
 	return (err);
