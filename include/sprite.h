@@ -24,7 +24,7 @@
 typedef struct s_sprite
 {
 	void		*mlx;
-	void		*ref;
+	char		*ref;
 	t_point		size;
 	char		*pixel;
 	int			bits_per_pixel;

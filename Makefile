@@ -78,7 +78,8 @@ TEST_SCRIPT				= $(addprefix $(SCRIPT_DIR)/, test.sh)
 #---------- FLAGS ----------
 CC 						= cc
 HEAD_FLAG				= -I$(HEAD_DIR) -I$(LIBFT_HEAD_DIR) -I$(LIBX_HEAD_DIR) -I$(CUNIT_DIR)
-CFLAGS 					= -c -Wall -Wextra -Werror $(HEAD_FLAG)
+CFLAGS 					= -c $(HEAD_FLAG)
+# CFLAGS 					= -c -Wall -Wextra -Werror $(HEAD_FLAG)
 LDFLAGS 				= -L$(LIBFT_DIR) -L$(LIBX_DIR) -L$(LCUNIT_DIR)
 LDLIBS 					= -lft $(LIBX_FLAGS)
 
