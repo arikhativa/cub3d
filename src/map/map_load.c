@@ -64,5 +64,8 @@ t_error_code	map_load(t_map *m)
 	if (SUCCESS != err)
 		return (err);
 	err = map_load_map(m);
+	if (SUCCESS != err)
+		return (err);
+	err = map_load_player(m);
 	return (err);
 }

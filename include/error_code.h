@@ -55,6 +55,7 @@ typedef enum s_error_code
 	EXT_NO_ARG,
 	EXT_MAP_NOT_AT_BOTTOM,
 	EXT_INVALID_FILE,
+	EXT_MISSING_PLAYER,
 	EXT_DUPLICATE_SETTING,
 }	t_error_code;
 

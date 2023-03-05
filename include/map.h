@@ -47,5 +47,6 @@ t_error_code	map_load_plane(t_map *m, char *line, char *prefix);
 void			map_print(t_map *m);
 int				map_get_map_index(char **file);
 void			map_get_size(t_map *m);
+t_error_code	map_load_player(t_map *m);
 
 #endif

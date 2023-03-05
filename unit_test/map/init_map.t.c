@@ -14,6 +14,18 @@
 
 CU_TestInfo	g_map_tests[] = {
 {
+	"test_map_load_player_err_dup_player",
+	test_map_load_player_err_dup_player,
+},
+{
+	"test_map_load_player_err_no_player",
+	test_map_load_player_err_no_player,
+},
+{
+	"test_map_load_player",
+	test_map_load_player,
+},
+{
 	"test_map_get_size",
 	test_map_get_size,
 },

@@ -13,6 +13,11 @@
 #ifndef DIRECTION_H
 # define DIRECTION_H
 
+# define NORTH_CHAR	'N'
+# define SOUTH_CHAR	'S'
+# define WEST_CHAR	'W'
+# define EAST_CHAR	'E'
+
 typedef enum e_direction
 {
 	NORTH = 0,
@@ -21,5 +26,8 @@ typedef enum e_direction
 	WEST = 3,
 	DIR_INVALID = 4
 }	t_direction;
+
+t_direction		direction_char_to_dir(char c);
+char			direction_dir_to_char(t_direction dir);
 
 #endif
