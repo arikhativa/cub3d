@@ -77,6 +77,9 @@ void	test_map_get_size(void);
 void	test_map_load_player(void);
 void	test_map_load_player_err_no_player(void);
 void	test_map_load_player_err_dup_player(void);
+void	test_map_is_closed(void);
+void	test_map_is_closed_err1(void);
+void	test_map_is_closed_err2(void);
 
 // player
 void	test_player_create_destroy(void);

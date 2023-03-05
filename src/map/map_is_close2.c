@@ -12,20 +12,22 @@
 
 #include "map.h"
 
-t_error_code	map_validate(char **file)
+t_bool	map_is_valid_pos(char **m, t_point pos)
 {
-	t_error_code	err;
-
-	err = cub_validate_by_line(file);
-	if (SUCCESS != err)
-		return (err);
-	err = cub_validate_map_at_bottom(file);
-	return (err);
+	return (m && m[pos.y] && m[pos.y][pos.x]);
 }
 
-t_error_code	map_post_load_validation(t_map *m)
+t_bool	map_is_space(char **m, t_point pos)
 {
-	if (!map_is_closed(m))
-		return (EXT_MAP_OPEN);
-	return (SUCCESS);
+	return (SPACE_CHAR == m[pos.y][pos.x]);
+}
+
+t_bool	map_is_old_pos(char **m, t_point pos)
+{
+	return (TMP_CHAR == m[pos.y][pos.x]);
+}
+
+t_bool	map_is_wall(char **m, t_point pos)
+{
+	return (WALL_CHAR == m[pos.y][pos.x]);
 }
