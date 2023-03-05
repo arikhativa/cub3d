@@ -28,13 +28,23 @@ int	map_get_map_index(char **file)
 	return (ERROR);
 }
 
-// TODO: fix this
-		// while (x < m->size.x)
-		// {
-		// 	if (m->map[i][x] == '\0')
-		// 		m->map[i][x] = ' ';
-		// 	++x;
-		// }
+static void	fill_line(char *map, char *file, int size)
+{
+	int	i;
+
+	i = 0;
+	while (file[i])
+	{
+		map[i] = file[i];
+		++i;
+	}
+	while (i < size)
+	{
+		map[i] = ' ';
+		++i;
+	}
+}
+
 t_error_code	map_load_map(t_map *m)
 {
 	int		file_index;
@@ -46,8 +56,7 @@ t_error_code	map_load_map(t_map *m)
 	i = 0;
 	while (m->file[file_index + i])
 	{
-		ft_memcpy(m->map[i], m->file[file_index + i], \
-			ft_strlen(m->file[file_index + i]));
+		fill_line(m->map[i], m->file[file_index + i], m->size.x);
 		++i;
 	}
 	return (SUCCESS);
@@ -73,6 +82,8 @@ t_error_code	map_load_plane(t_map *m, char *line, char *prefix)
 	type = cub_get_plane_type(prefix);
 	if (PLANE_TYPE_ERROR == type)
 		return (ERROR);
+	if (plane_mngr_is_loaded(m->pm, type))
+		return (EXT_DUPLICATE_SETTING);
 	plane_mngr_init(m->pm, type, rgb);
 	return (SUCCESS);
 }

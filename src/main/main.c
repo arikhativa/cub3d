@@ -13,7 +13,7 @@
 #include "main.h"
 #include "mlx.h"
 
-static t_error_code	ignore(void *mlx, char **argv)
+static t_error_code	main2(void *mlx, char **argv)
 {
 	t_map			*m;
 	t_error_code	err;
@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 	{
 		mlx = mlx_init();
 		win = mlx_new_window(mlx, 400, 400, "hey");
-		err = ignore(mlx, argv);
+		err = main2(mlx, argv);
 		mlx_destroy_window(mlx, win);
 		mlx_destroy_display(mlx);
 		free(mlx);
