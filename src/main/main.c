@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 09:50:39 by al7aro            #+#    #+#             */
-/*   Updated: 2023/02/16 11:19:44 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/03/07 14:39:58 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int argc, char **argv)
 		win = mlx_new_window(mlx, 400, 400, "hey");
 		ignore(mlx, argv);
 		mlx_destroy_window(mlx, win);
-		mlx_destroy_display(mlx);
+		//mlx_destroy_display(mlx);
 		free(mlx);
 	}
 	return (error_code_print_on_exit(err));

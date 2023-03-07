@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unit_test.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 13:56:02 by yoav              #+#    #+#             */
-/*   Updated: 2023/02/16 10:48:12 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/03/07 15:10:26 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ extern CU_TestInfo	g_player_tests[];
 extern CU_TestInfo	g_point_tests[];
 extern CU_TestInfo	g_dll_tests[];
 extern CU_TestInfo	g_parser_tests[];
+extern CU_TestInfo	g_collision_tests[];
 
 extern void	*g_mlx;
 
@@ -99,5 +100,8 @@ void	test_cub_get_line_type(void);
 void	test_cub_get_dir(void);
 void	test_cub_get_plane_type(void);
 void	test_cub_get_rgb(void);
+
+//collison
+void	test_check_collision(void);
 
 #endif
