@@ -26,5 +26,10 @@ typedef struct s_point
 
 t_point	point_init(int x, int y);
 t_point	point_copy(t_point src);
+void	point_print(t_point p);
+t_point	point_up(t_point p);
+t_point	point_down(t_point p);
+t_point	point_left(t_point p);
+t_point	point_right(t_point p);
 
 #endif

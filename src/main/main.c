@@ -13,7 +13,7 @@
 #include "main.h"
 #include "mlx.h"
 
-static void	ignore(void *mlx, char **argv)
+static t_error_code	main2(void *mlx, char **argv)
 {
 	t_map			*m;
 	t_error_code	err;
@@ -28,8 +28,11 @@ static void	ignore(void *mlx, char **argv)
 			err = map_load(m);
 		if (SUCCESS == err)
 			map_print(m);
+		if (SUCCESS == err)
+			err = map_post_load_validation(m);
 		map_destroy(&m);
 	}
+	return (err);
 }
 
 int	main(int argc, char **argv)
@@ -43,7 +46,7 @@ int	main(int argc, char **argv)
 	{
 		mlx = mlx_init();
 		win = mlx_new_window(mlx, 400, 400, "hey");
-		ignore(mlx, argv);
+		err = main2(mlx, argv);
 		mlx_destroy_window(mlx, win);
 		mlx_destroy_display(mlx);
 		free(mlx);

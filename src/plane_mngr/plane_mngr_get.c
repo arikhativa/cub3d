@@ -30,3 +30,10 @@ void	plane_mngr_print(t_plane_mngr *pm)
 		i++;
 	}
 }
+
+t_bool	plane_mngr_is_loaded(t_plane_mngr *pm, t_plane_type t)
+{
+	if (PLANE_TYPE_ERROR != t)
+		return (plane_is_loaded(pm->planes[t]));
+	return (FALSE);
+}

@@ -14,8 +14,11 @@
 
 void	map_print(t_map *m)
 {
-	printf("map:\nsize: {x: %d, y: %d}\n", m->size.x, m->size.y);
+	printf("map:\nsize: ");
+	point_print(m->size);
+	printf("\n");
 	plane_mngr_print(m->pm);
+	player_print(m->p);
 	printf("\n");
 	tab_print_nl(m->map);
 }

@@ -13,64 +13,71 @@
 #include "map.h"
 #include "unit_test.h"
 
-void	test_map_create_destroy(void)
-{
-	t_error_code	err;
-	t_map			*obj;
-
-	err = map_create(&obj, g_mlx);
-	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
-	map_destroy(&obj);
-	CU_ASSERT_PTR_NULL(obj);
-}
-
-void	test_map_get_map_index(void)
-{
-	int	i = 0;
-	char *file[] = {
-		"NO ./resource/xpm/wall.xpm",
-		"SO ./resource/xpm/wall.xpm",
-		"WE ./resource/xpm/wall.xpm",
-		"EA ./resource/xpm/wall.xpm",
-		"F 100,23,0",
-		"",
-		"C 100,23,0",
-		" 1111",
-		"10N1",
-		"1  1",
-		"1111",
-		NULL,
-	};
-
-	i = map_get_map_index(file);
-	CU_ASSERT_EQUAL(7, i);
-}
-
-void	test_map_get_size(void)
+void	test_map_load_player(void)
 {
 	t_error_code	err;
 	t_map			*m;
-	char *file[] = {
-		"NO ./resource/xpm/wall.xpm",
-		"SO ./resource/xpm/wall.xpm",
-		"WE ./resource/xpm/wall.xpm",
-		"EA ./resource/xpm/wall.xpm",
-		"F 100,23,0",
-		"",
-		"C 100,23,0",
+	char *map[] = {
 		" 1111",
 		"10N1",
-		"1  1",
+		"1001",
 		"1111",
 		NULL,
 	};
 
 	err = map_create(&m, g_mlx);
 	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
-	m->file = file;
-	map_get_size(m);
-	CU_ASSERT_EQUAL(m->size.x, 5);
-	CU_ASSERT_EQUAL(m->size.y, 4);
-	m->file = NULL;
+	m->map = map;
+	m->size = point_init(5, 4);
+	err = map_load_player(m);
+	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
+	CU_ASSERT_EQUAL(m->p->dir, NORTH);
+	CU_ASSERT_EQUAL(m->p->pos.x, 2);
+	CU_ASSERT_EQUAL(m->p->pos.y, 1);
+	m->map = NULL;
+	map_destroy(&m);
+}
+
+void	test_map_load_player_err_no_player(void)
+{
+	t_error_code	err;
+	t_map			*m;
+	char *map[] = {
+		" 1111",
+		"1001",
+		"1001",
+		"1111",
+		NULL,
+	};
+
+	err = map_create(&m, g_mlx);
+	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
+	m->map = map;
+	m->size = point_init(5, 4);
+	err = map_load_player(m);
+	CU_ASSERT_EQUAL(EXT_MISSING_PLAYER, err);
+	m->map = NULL;
+	map_destroy(&m);
+}
+
+void	test_map_load_player_err_dup_player(void)
+{
+	t_error_code	err;
+	t_map			*m;
+	char *map[] = {
+		" 1111",
+		"1SS1",
+		"1001",
+		"1111",
+		NULL,
+	};
+
+	err = map_create(&m, g_mlx);
+	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
+	m->map = map;
+	m->size = point_init(5, 4);
+	err = map_load_player(m);
+	CU_ASSERT_EQUAL(EXT_DUPLICATE_SETTING, err);
+	m->map = NULL;
 	map_destroy(&m);
 }

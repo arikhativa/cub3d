@@ -12,48 +12,45 @@
 
 #include "map.h"
 
-void	map_get_size(t_map *m)
+static t_error_code	map_load_player_by_line(t_map *m, int y)
 {
-	int	i;
-	int	map_index;
-	int	len_x;
-	int	tmp_len;
+	char		*line;
+	int			x;
+	t_point		pos;
+	t_direction	dir;
 
-	i = 0;
-	len_x = 0;
-	map_index = map_get_map_index(m->file);
-	while (m->file[map_index + i])
+	x = 0;
+	line = m->map[y];
+	while (line[x])
 	{
-		tmp_len = ft_strlen(m->file[map_index + i]);
-		if (len_x < tmp_len)
-			len_x = tmp_len;
-		++i;
-	}
-	m->size = point_init(len_x, i);
-}
-
-static t_error_code	map_init_lines(t_map *m)
-{
-	int	i;
-
-	i = 0;
-	while (i < m->size.y)
-	{
-		m->map[i] = ft_calloc(1, (m->size.x + 1));
-		if (!m->map[i])
-			return (ALLOCATION_ERROR);
-		++i;
+		if (ft_strchr(PLAYER_DIR_STR, line[x]))
+		{
+			if (player_is_loaded(m->p))
+				return (EXT_DUPLICATE_SETTING);
+			pos = point_init(x, y);
+			dir = direction_char_to_dir(line[x]);
+			player_init(m->p, pos, dir);
+		}
+		++x;
 	}
 	return (SUCCESS);
 }
 
-t_error_code	map_alloc_map(t_map *m)
+t_error_code	map_load_player(t_map *m)
 {
 	t_error_code	err;
+	int				y;
 
-	map_get_size(m);
-	err = tab_create(&m->map, m->size.y);
-	if (SUCCESS == err)
-		map_init_lines(m);
+	y = 0;
+	err = SUCCESS;
+	while (y < m->size.y)
+	{
+		err = map_load_player_by_line(m, y);
+		if (err != SUCCESS)
+			return (err);
+		++y;
+	}
+	if (SUCCESS == err && !player_is_loaded(m->p))
+		return (EXT_MISSING_PLAYER);
 	return (err);
 }

@@ -25,6 +25,8 @@
 # include "file_mngr.h"
 # include "tab.h"
 
+# define TMP_CHAR	'X'
+
 typedef struct s_map
 {
 	t_plane_mngr	*pm;
@@ -47,5 +49,12 @@ t_error_code	map_load_plane(t_map *m, char *line, char *prefix);
 void			map_print(t_map *m);
 int				map_get_map_index(char **file);
 void			map_get_size(t_map *m);
+t_error_code	map_load_player(t_map *m);
+t_error_code	map_post_load_validation(t_map *m);
+t_bool			map_is_closed(t_map *m);
+t_bool			map_is_valid_pos(char **m, t_point pos);
+t_bool			map_is_space(char **m, t_point pos);
+t_bool			map_is_old_pos(char **m, t_point pos);
+t_bool			map_is_wall(char **m, t_point pos);
 
 #endif

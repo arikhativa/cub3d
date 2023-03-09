@@ -74,6 +74,12 @@ void	test_map_validate_ext_invalid_line(void);
 void	test_map_validate_ext_bad_color(void);
 void	test_map_get_map_index(void);
 void	test_map_get_size(void);
+void	test_map_load_player(void);
+void	test_map_load_player_err_no_player(void);
+void	test_map_load_player_err_dup_player(void);
+void	test_map_is_closed(void);
+void	test_map_is_closed_err1(void);
+void	test_map_is_closed_err2(void);
 
 // player
 void	test_player_create_destroy(void);

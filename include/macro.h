@@ -13,10 +13,14 @@
 #ifndef MACRO_H
 # define MACRO_H
 
-# define CUB3D_STR		"cub3d"
-# define NEW_LINE_STR	"\n"
-# define EMPTY_STR		""
-# define WALL_CHAR		'1'
+# define CUB3D_STR			"cub3d"
+# define NEW_LINE_STR		"\n"
+# define NEW_LINE_CHAR		'\n'
+# define EMPTY_STR			""
+# define PLAYER_DIR_STR		"NSEW"
+# define WALL_CHAR			'1'
+# define SPACE_CHAR			' '
+# define EMPTY_SPACE_CHAR	'0'
 
 typedef enum e_bool
 {

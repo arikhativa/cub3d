@@ -12,48 +12,22 @@
 
 #include "map.h"
 
-void	map_get_size(t_map *m)
+t_bool	map_is_valid_pos(char **m, t_point pos)
 {
-	int	i;
-	int	map_index;
-	int	len_x;
-	int	tmp_len;
-
-	i = 0;
-	len_x = 0;
-	map_index = map_get_map_index(m->file);
-	while (m->file[map_index + i])
-	{
-		tmp_len = ft_strlen(m->file[map_index + i]);
-		if (len_x < tmp_len)
-			len_x = tmp_len;
-		++i;
-	}
-	m->size = point_init(len_x, i);
+	return (m && m[pos.y] && m[pos.y][pos.x]);
 }
 
-static t_error_code	map_init_lines(t_map *m)
+t_bool	map_is_space(char **m, t_point pos)
 {
-	int	i;
-
-	i = 0;
-	while (i < m->size.y)
-	{
-		m->map[i] = ft_calloc(1, (m->size.x + 1));
-		if (!m->map[i])
-			return (ALLOCATION_ERROR);
-		++i;
-	}
-	return (SUCCESS);
+	return (SPACE_CHAR == m[pos.y][pos.x]);
 }
 
-t_error_code	map_alloc_map(t_map *m)
+t_bool	map_is_old_pos(char **m, t_point pos)
 {
-	t_error_code	err;
+	return (TMP_CHAR == m[pos.y][pos.x]);
+}
 
-	map_get_size(m);
-	err = tab_create(&m->map, m->size.y);
-	if (SUCCESS == err)
-		map_init_lines(m);
-	return (err);
+t_bool	map_is_wall(char **m, t_point pos)
+{
+	return (WALL_CHAR == m[pos.y][pos.x]);
 }
