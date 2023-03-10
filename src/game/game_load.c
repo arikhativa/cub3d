@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.h                                             :+:      :+:    :+:   */
+/*   class.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 11:13:44 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/16 10:53:33 by yrabby           ###   ########.fr       */
+/*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
+/*   Updated: 2023/02/15 13:55:57 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#include "game.h"
 
-# include "error_code.h"
-# include "parser.h"
-# include "sprite.h"
-# include "map.h"
-# include "game.h"
+t_error_code	game_load(t_game *g, char *path_to_map)
+{
+	t_error_code	err;
 
-#endif
+	err = map_read_raw(g->map, path_to_map);
+	if (SUCCESS == err)
+		err = map_validate(g->map->file);
+	if (SUCCESS == err)
+		err = map_load(g->map);
+	if (SUCCESS == err)
+		err = map_post_load_validation(g->map);
+	return (err);
+}
+
+t_error_code	game_start(t_game *g)
+{
+	if (!g)
+		return (0);
+	return (0);
+}
