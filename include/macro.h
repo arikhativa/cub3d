@@ -21,6 +21,9 @@
 # define WALL_CHAR			'1'
 # define SPACE_CHAR			' '
 # define EMPTY_SPACE_CHAR	'0'
+# define SCREEN_SIZE_X		400
+# define SCREEN_SIZE_Y		400
+# define BITS_IN_CHAR		8
 
 typedef enum e_bool
 {

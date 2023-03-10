@@ -10,27 +10,33 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "screen.h"
 
-t_error_code	game_init(t_game *g)
+static void		draw_line(t_screen *screen, int y, int color)
 {
-	g->mlx = mlx_init();
-	if (!g->mlx)
-		return (EXT_MLX_ERROR);
-	map_init(g->map, g->mlx);
-	return (SUCCESS);
+	int	x;
+
+	x = 0;
+	while (x < screen->size.x)
+	{
+		screen_color_pixel(screen, point_init(x, y), color);
+		++x;
+	}
 }
 
-t_error_code	game_load(t_game *g, char *path_to_map)
+void	screen_draw_background(t_screen *screen, int celling, int floor)
 {
-	t_error_code	err;
+	int	y;
 
-	err = map_read_raw(g->map, path_to_map);
-	if (SUCCESS == err)
-		err = map_validate(g->map->file);
-	if (SUCCESS == err)
-		err = map_load(g->map);
-	if (SUCCESS == err)
-		err = map_post_load_validation(g->map);
-	return (err);
+	y = 0;
+	while (y < (screen->size.y / 2))
+	{
+		draw_line(screen, y, celling);
+		++y;
+	}
+	while (y < (screen->size.y))
+	{
+		draw_line(screen, y, floor);
+		++y;
+	}
 }

@@ -58,5 +58,6 @@ t_bool			map_is_valid_pos(char **m, t_point pos);
 t_bool			map_is_space(char **m, t_point pos);
 t_bool			map_is_old_pos(char **m, t_point pos);
 t_bool			map_is_wall(char **m, t_point pos);
-
+int				map_get_floor_color(t_map *m);
+int				map_get_celling_color(t_map *m);
 #endif

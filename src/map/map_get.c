@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utest.t.c                                          :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/06 14:21:17 by yoav              #+#    #+#             */
-/*   Updated: 2023/02/14 12:27:39 by yrabby           ###   ########.fr       */
+/*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
+/*   Updated: 2023/02/15 13:58:46 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
-#include "unit_test.h"
+#include "map.h"
 
-void	test_game_create_destroy(void)
+int	map_get_floor_color(t_map *m)
 {
-	t_error_code	err;
-	t_game		*obj;
+	int	color;
 
-	obj = NULL;
-	err = game_create(&obj);
-	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
-	game_destroy(&obj);
-	CU_ASSERT_PTR_NULL(obj);
+	color = rgb_to_int(&(m->pm->planes[PLANE_TYPE_FLOOR]->color));
+	return (color);
+}
+
+int	map_get_celling_color(t_map *m)
+{
+	int	color;
+
+	color = rgb_to_int(&(m->pm->planes[PLANE_TYPE_CEILING]->color));
+	return (color);
 }

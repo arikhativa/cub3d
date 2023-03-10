@@ -10,27 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "screen.h"
 
-t_error_code	game_init(t_game *g)
+void	screen_put_screen_to_window(t_screen *s)
 {
-	g->mlx = mlx_init();
-	if (!g->mlx)
-		return (EXT_MLX_ERROR);
-	map_init(g->map, g->mlx);
-	return (SUCCESS);
-}
-
-t_error_code	game_load(t_game *g, char *path_to_map)
-{
-	t_error_code	err;
-
-	err = map_read_raw(g->map, path_to_map);
-	if (SUCCESS == err)
-		err = map_validate(g->map->file);
-	if (SUCCESS == err)
-		err = map_load(g->map);
-	if (SUCCESS == err)
-		err = map_post_load_validation(g->map);
-	return (err);
+	mlx_put_image_to_window(s->mlx, s->win, s->ref, 0, 0);
 }

@@ -10,27 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "screen.h"
 
-t_error_code	game_init(t_game *g)
+void	screen_color_pixel(t_screen *s, t_point pos, int color)
 {
-	g->mlx = mlx_init();
-	if (!g->mlx)
-		return (EXT_MLX_ERROR);
-	map_init(g->map, g->mlx);
-	return (SUCCESS);
-}
+	char    *pixel;
 
-t_error_code	game_load(t_game *g, char *path_to_map)
-{
-	t_error_code	err;
-
-	err = map_read_raw(g->map, path_to_map);
-	if (SUCCESS == err)
-		err = map_validate(g->map->file);
-	if (SUCCESS == err)
-		err = map_load(g->map);
-	if (SUCCESS == err)
-		err = map_post_load_validation(g->map);
-	return (err);
+	pixel = pixel_move_y(s->pixel, pos.y, s->line_size);
+	pixel = pixel_move_x(pixel, pos.x, s->bits_per_pixel);
+	*(int *)pixel = color;
 }

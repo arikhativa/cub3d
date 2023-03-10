@@ -10,27 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "pixel.h"
 
-t_error_code	game_init(t_game *g)
+char	*pixel_move_y(char *pixel, int y, int line_size)
 {
-	g->mlx = mlx_init();
-	if (!g->mlx)
-		return (EXT_MLX_ERROR);
-	map_init(g->map, g->mlx);
-	return (SUCCESS);
+	return (pixel + y * line_size);
 }
 
-t_error_code	game_load(t_game *g, char *path_to_map)
+char	*pixel_move_x(char *pixel, int x, int bits_per_pixel)
 {
-	t_error_code	err;
-
-	err = map_read_raw(g->map, path_to_map);
-	if (SUCCESS == err)
-		err = map_validate(g->map->file);
-	if (SUCCESS == err)
-		err = map_load(g->map);
-	if (SUCCESS == err)
-		err = map_post_load_validation(g->map);
-	return (err);
+	return (pixel + x * (bits_per_pixel / BITS_IN_CHAR));
 }
