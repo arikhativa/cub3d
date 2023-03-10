@@ -1,27 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   class.h                                            :+:      :+:    :+:   */
+/*   class.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/14 10:47:54 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/02/15 13:55:57 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RGB_H
-# define RGB_H
+#include "screen.h"
 
-typedef struct s_rgb
+static void		draw_line(t_screen *screen, int y, int color)
 {
-	unsigned char	red;
-	unsigned char	green;
-	unsigned char	blue;
-}	t_rgb;
+	int	x;
 
-void	rgb_init(t_rgb *rgb, unsigned char red, unsigned char green, \
-	unsigned char blue);
-int		rgb_to_int(t_rgb *rgb);
+	x = 0;
+	while (x < screen->size.x)
+	{
+		screen_color_pixel(screen, point_init(x, y), color);
+		++x;
+	}
+}
 
-#endif
+void	screen_draw_background(t_screen *screen, int celling, int floor)
+{
+	int	y;
+
+	y = 0;
+	while (y < (screen->size.y / 2))
+	{
+		draw_line(screen, y, celling);
+		++y;
+	}
+	while (y < (screen->size.y))
+	{
+		draw_line(screen, y, floor);
+		++y;
+	}
+}

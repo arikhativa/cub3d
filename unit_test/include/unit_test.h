@@ -107,7 +107,4 @@ void	test_cub_get_dir(void);
 void	test_cub_get_plane_type(void);
 void	test_cub_get_rgb(void);
 
-// game
-void	test_game_create_destroy(void);
-
 #endif

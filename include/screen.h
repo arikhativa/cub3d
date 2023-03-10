@@ -10,18 +10,35 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RGB_H
-# define RGB_H
+#ifndef SCREEN_H
+# define SCREEN_H
 
-typedef struct s_rgb
+# include <stdlib.h>
+
+# include "libft.h"
+# include "point.h"
+# include "mlx.h"
+# include "error_code.h"
+# include "pixel.h"
+
+typedef struct s_screen
 {
-	unsigned char	red;
-	unsigned char	green;
-	unsigned char	blue;
-}	t_rgb;
+	void		*mlx;
+	void		*win;
+	void		*ref;
+	t_point		size;
+	char		*pixel;
+	int			bits_per_pixel;
+	int			line_size;
+	int			endian;
+}				t_screen;
 
-void	rgb_init(t_rgb *rgb, unsigned char red, unsigned char green, \
-	unsigned char blue);
-int		rgb_to_int(t_rgb *rgb);
+t_error_code	screen_create(t_screen **ret, void *mlx);
+void			screen_destroy(t_screen **obj);
+void			screen_color_pixel(t_screen *s, t_point pos, int color);
+void			screen_draw_background(t_screen *screen, int celling, \
+	int floor);
+void			screen_put_screen_to_window(t_screen *s);
+
 
 #endif
