@@ -1,42 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sprite.h                                           :+:      :+:    :+:   */
+/*   class.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/16 10:48:47 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/02/14 10:47:54 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPRITE_H
-# define SPRITE_H
+#ifndef GAME_H
+# define GAME_H
 
 # include <stdlib.h>
 
-# include "mlx.h"
 # include "libft.h"
 # include "error_code.h"
-# include "macro.h"
-# include "point.h"
+# include "map.h"
+# include "mlx.h"
 
-typedef struct s_sprite
+typedef struct s_game
 {
-	void		*mlx;
-	void		*ref;
-	t_point		size;
-	char		*pixel;
-	int			bits_per_pixel;
-	int			line_size;
-	int			endian;
-}				t_sprite;
+	void	*mlx;
+	t_map	*map;
+}				t_game;
 
-t_error_code	sprite_create(t_sprite **ret);
-void			sprite_init(t_sprite *s, char *mlx);
-t_error_code	sprite_load(t_sprite *s, char *path);
-t_bool			sprite_is_loaded(t_sprite *s);
-void			sprite_unload(t_sprite *s);
-void			sprite_destroy(t_sprite **obj);
+t_error_code	game_create(t_game **ret);
+void			game_destroy(t_game **obj);
+t_error_code	game_init(t_game *g);
+t_error_code	game_load(t_game *g, char *path_to_map);
+t_error_code	game_start(t_game *g);
 
 #endif

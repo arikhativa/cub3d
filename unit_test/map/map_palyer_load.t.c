@@ -25,7 +25,7 @@ void	test_map_load_player(void)
 		NULL,
 	};
 
-	err = map_create(&m, g_mlx);
+	err = map_create(&m);
 	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
 	m->map = map;
 	m->size = point_init(5, 4);
@@ -50,7 +50,7 @@ void	test_map_load_player_err_no_player(void)
 		NULL,
 	};
 
-	err = map_create(&m, g_mlx);
+	err = map_create(&m);
 	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
 	m->map = map;
 	m->size = point_init(5, 4);
@@ -72,7 +72,7 @@ void	test_map_load_player_err_dup_player(void)
 		NULL,
 	};
 
-	err = map_create(&m, g_mlx);
+	err = map_create(&m);
 	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
 	m->map = map;
 	m->size = point_init(5, 4);

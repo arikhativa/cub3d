@@ -1,42 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sprite.h                                           :+:      :+:    :+:   */
+/*   class.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/16 10:48:47 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/02/15 13:55:57 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPRITE_H
-# define SPRITE_H
+#include "game.h"
 
-# include <stdlib.h>
-
-# include "mlx.h"
-# include "libft.h"
-# include "error_code.h"
-# include "macro.h"
-# include "point.h"
-
-typedef struct s_sprite
+t_error_code	game_init(t_game *g)
 {
-	void		*mlx;
-	void		*ref;
-	t_point		size;
-	char		*pixel;
-	int			bits_per_pixel;
-	int			line_size;
-	int			endian;
-}				t_sprite;
+	g->mlx = mlx_init();
+	if (!g->mlx)
+		return (EXT_MLX_ERROR);
+	map_init(g->map, g->mlx);
+	return (SUCCESS);
+}
 
-t_error_code	sprite_create(t_sprite **ret);
-void			sprite_init(t_sprite *s, char *mlx);
-t_error_code	sprite_load(t_sprite *s, char *path);
-t_bool			sprite_is_loaded(t_sprite *s);
-void			sprite_unload(t_sprite *s);
-void			sprite_destroy(t_sprite **obj);
+t_error_code	game_load(t_game *g, char *path_to_map)
+{
+	t_error_code	err;
 
-#endif
+	err = map_read_raw(g->map, path_to_map);
+	if (SUCCESS == err)
+		err = map_validate(g->map->file);
+	if (SUCCESS == err)
+		err = map_load(g->map);
+	if (SUCCESS == err)
+		err = map_post_load_validation(g->map);
+	return (err);
+}
+
+t_error_code	game_start(t_game *g)
+{
+	if (!g)
+		return (0);
+	return (0);
+}
