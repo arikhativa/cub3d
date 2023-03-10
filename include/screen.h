@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sprite.h                                           :+:      :+:    :+:   */
+/*   class.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/16 10:48:47 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/02/14 10:47:54 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPRITE_H
-# define SPRITE_H
+#ifndef SCREEN_H
+# define SCREEN_H
 
 # include <stdlib.h>
 
-# include "mlx.h"
 # include "libft.h"
-# include "error_code.h"
-# include "macro.h"
 # include "point.h"
+# include "mlx.h"
+# include "error_code.h"
 # include "pixel.h"
 
-typedef struct s_sprite
+typedef struct s_screen
 {
 	void		*mlx;
 	void		*ref;
@@ -31,13 +30,9 @@ typedef struct s_sprite
 	int			bits_per_pixel;
 	int			line_size;
 	int			endian;
-}				t_sprite;
+}				t_screen;
 
-t_error_code	sprite_create(t_sprite **ret, void *mlx);
-t_error_code	sprite_load(t_sprite *s, char *path);
-t_bool			sprite_is_loaded(t_sprite *s);
-void			sprite_unload(t_sprite *s);
-void			sprite_destroy(t_sprite **obj);
-int				sprite_get_pixel_color(t_sprite *s, t_point pos);
+t_error_code	screen_create(t_screen **ret, void *mlx);
+void			screen_destroy(t_screen **obj);
 
 #endif

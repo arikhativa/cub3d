@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   macro.h                                            :+:      :+:    :+:   */
+/*   class.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/17 12:35:42 by yoav              #+#    #+#             */
-/*   Updated: 2023/02/15 10:33:20 by yrabby           ###   ########.fr       */
+/*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
+/*   Updated: 2023/02/15 13:55:57 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MACRO_H
-# define MACRO_H
+#include "pixel.h"
 
-# define CUB3D_STR			"cub3d"
-# define NEW_LINE_STR		"\n"
-# define NEW_LINE_CHAR		'\n'
-# define EMPTY_STR			""
-# define PLAYER_DIR_STR		"NSEW"
-# define WALL_CHAR			'1'
-# define SPACE_CHAR			' '
-# define EMPTY_SPACE_CHAR	'0'
-# define SCREEN_SIZE_X		400
-# define SCREEN_SIZE_Y		400
-# define BITS_IN_CHAR		8
-
-typedef enum e_bool
+char	*pixel_move_y(char *pixel, int y, int line_size)
 {
-	FALSE = 0,
-	TRUE = 1,
-}	t_bool;
+	return (pixel + y * line_size);
+}
 
-#endif
+char	*pixel_move_x(char *pixel, int x, int bits_per_pixel)
+{
+	return (pixel + x * (bits_per_pixel / BITS_IN_CHAR));
+}

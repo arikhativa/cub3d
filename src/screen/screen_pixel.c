@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   macro.h                                            :+:      :+:    :+:   */
+/*   class.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/17 12:35:42 by yoav              #+#    #+#             */
-/*   Updated: 2023/02/15 10:33:20 by yrabby           ###   ########.fr       */
+/*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
+/*   Updated: 2023/02/15 13:55:57 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MACRO_H
-# define MACRO_H
+#include "screen.h"
 
-# define CUB3D_STR			"cub3d"
-# define NEW_LINE_STR		"\n"
-# define NEW_LINE_CHAR		'\n'
-# define EMPTY_STR			""
-# define PLAYER_DIR_STR		"NSEW"
-# define WALL_CHAR			'1'
-# define SPACE_CHAR			' '
-# define EMPTY_SPACE_CHAR	'0'
-# define SCREEN_SIZE_X		400
-# define SCREEN_SIZE_Y		400
-# define BITS_IN_CHAR		8
-
-typedef enum e_bool
+void	screen_color_pixel(t_screen *s, t_point pos, int color)
 {
-	FALSE = 0,
-	TRUE = 1,
-}	t_bool;
+	char    *pixel;
 
-#endif
+	pixel = pixel_move_y(s->pixel, pos.y, s->line_size);
+	pixel = pixel_move_x(pixel, pos.x, s->bits_per_pixel);
+	*(int *)pixel = color;
+}
