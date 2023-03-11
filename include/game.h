@@ -20,6 +20,7 @@
 # include "map.h"
 # include "mlx.h"
 # include "screen.h"
+# include "mlx_keys.h"
 
 typedef struct s_game
 {

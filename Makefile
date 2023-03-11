@@ -18,10 +18,12 @@ export ROOT_DIR			= $(CURDIR)
 # MAC vs Linux
 OS := $(shell uname -s)
 ifeq ($(OS),Linux)
+OS_TYPE := -DLINUX_ON=1
 LIBX_FLAGS := -lmlx_Linux -lXext -lX11 -lm -lz
 LIBX_NAME := libmlx_Linux.a
 LIBX_DIR := minilibx_linux
 else
+OS_TYPE := -DMAC_ON=1
 LIBX_NAME := libmlx.a
 LIBX_DIR := minilibx_mac
 LIBX_FLAGS := -lmlx -framework OpenGL -framework AppKit
@@ -78,7 +80,7 @@ TEST_SCRIPT				= $(addprefix $(SCRIPT_DIR)/, test.sh)
 #---------- FLAGS ----------
 CC 						= cc
 HEAD_FLAG				= -I$(HEAD_DIR) -I$(LIBFT_HEAD_DIR) -I$(LIBX_HEAD_DIR) -I$(CUNIT_DIR)
-CFLAGS 					= -c -Wall -Wextra -Werror $(HEAD_FLAG)
+CFLAGS 					= -c -Wall -Wextra -Werror $(HEAD_FLAG) $(OS_TYPE)
 LDFLAGS 				= -L$(LIBFT_DIR) -L$(LIBX_DIR) -L$(LCUNIT_DIR)
 LDLIBS 					= -lft $(LIBX_FLAGS)
 
