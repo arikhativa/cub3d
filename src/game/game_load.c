@@ -25,10 +25,3 @@ t_error_code	game_load(t_game *g, char *path_to_map)
 		err = map_post_load_validation(g->map);
 	return (err);
 }
-
-t_error_code	game_start(t_game *g)
-{
-	if (!g)
-		return (0);
-	return (0);
-}

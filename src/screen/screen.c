@@ -30,6 +30,9 @@ t_error_code	screen_create(t_screen **ret, void *mlx)
 		&(tmp->line_size), &(tmp->endian));
 	if (!tmp->pixel)
 		return (SPRITE_LOAD_GET_DATA_ADDR);
+	tmp->win = mlx_new_window(tmp->mlx, tmp->size.x, tmp->size.y, CUB3D_STR);
+	if (!tmp->win)
+		return (MLX_NEW_WIN);
 	*ret = tmp;
 	return (SUCCESS);
 }
@@ -43,6 +46,8 @@ void	screen_destroy(t_screen **obj)
 	tmp = *obj;
 	if (tmp->ref)
 		mlx_destroy_image(tmp->mlx, tmp->ref);
+	if (tmp->win)
+		mlx_destroy_window(tmp->mlx, tmp->win);
 	ft_bzero(tmp, sizeof(t_screen));
 	free(tmp);
 	*obj = NULL;

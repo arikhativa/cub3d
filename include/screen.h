@@ -24,6 +24,7 @@
 typedef struct s_screen
 {
 	void		*mlx;
+	void		*win;
 	void		*ref;
 	t_point		size;
 	char		*pixel;
@@ -34,5 +35,10 @@ typedef struct s_screen
 
 t_error_code	screen_create(t_screen **ret, void *mlx);
 void			screen_destroy(t_screen **obj);
+void			screen_color_pixel(t_screen *s, t_point pos, int color);
+void			screen_draw_background(t_screen *screen, int celling, \
+	int floor);
+void			screen_put_screen_to_window(t_screen *s);
+
 
 #endif

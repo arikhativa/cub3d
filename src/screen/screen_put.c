@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utest.t.c                                          :+:      :+:    :+:   */
+/*   class.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/06 14:21:17 by yoav              #+#    #+#             */
-/*   Updated: 2023/02/14 12:27:39 by yrabby           ###   ########.fr       */
+/*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
+/*   Updated: 2023/02/15 13:55:57 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
-#include "unit_test.h"
+#include "screen.h"
 
-void	test_game_create_destroy(void)
+void	screen_put_screen_to_window(t_screen *s)
 {
-	t_error_code	err;
-	t_game		*obj;
-
-	obj = NULL;
-	err = game_create(&obj);
-	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
-	game_destroy(&obj);
-	CU_ASSERT_PTR_NULL(obj);
+	mlx_put_image_to_window(s->mlx, s->win, s->ref, 0, 0);
 }

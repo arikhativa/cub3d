@@ -26,6 +26,9 @@ t_error_code	game_create(t_game **ret)
 	if (!tmp->mlx)
 		return (EXT_MLX_ERROR);
 	err = map_create(&tmp->map, tmp->mlx);
+	if (err == SUCCESS)
+		err = screen_create(&tmp->screen, tmp->mlx);
+	
 	if (err != SUCCESS)
 	{
 		game_destroy(&tmp);
@@ -44,6 +47,8 @@ void	game_destroy(t_game **obj)
 	tmp = *obj;
 	if (tmp->map)
 		map_destroy(&(tmp->map));
+	if (tmp->screen)
+		screen_destroy(&(tmp->screen));
 	if (tmp->mlx)
 	{
 		mlx_destroy_display(tmp->mlx);

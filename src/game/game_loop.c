@@ -10,33 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "screen.h"
+#include "game.h"
 
-static void		draw_line(t_screen *screen, int y, int color)
+t_error_code	game_start(t_game *g)
 {
-	int	x;
+	int	floor_color;
+	int	celling_color;
 
-	x = 0;
-	while (x < screen->size.x)
-	{
-		screen_color_pixel(screen, point_init(x, y), color);
-		++x;
-	}
-}
-
-void	screen_draw_background(t_screen *screen, int celling, int floor)
-{
-	int	y;
-
-	y = 0;
-	while (y < (screen->size.y / 2))
-	{
-		draw_line(screen, y, celling);
-		++y;
-	}
-	while (y < (screen->size.y))
-	{
-		draw_line(screen, y, floor);
-		++y;
-	}
+	floor_color = map_get_floor_color(g->map);
+	celling_color = map_get_celling_color(g->map);
+	screen_draw_background(g->screen, celling_color, floor_color);
+	mlx_loop(g->mlx);
+	if (!g)
+		return (0);
+	return (0);
 }

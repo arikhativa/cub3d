@@ -22,5 +22,6 @@ typedef struct s_rgb
 
 void	rgb_init(t_rgb *rgb, unsigned char red, unsigned char blue, \
 	unsigned char green);
+int		rgb_to_int(t_rgb *rgb);
 
 #endif
