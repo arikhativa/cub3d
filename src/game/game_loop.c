@@ -63,8 +63,6 @@ int	key_press(int keycode, t_game *g)
 		xx += (pixels / 2);
 		yy += (pixels / 2);
 	}
-	printf("pixels: %f - {%f, %f}\n", pixels, xx, yy);
-	printf("pixels: %d - {%d, %d}\n\n", (int)pixels, (int)xx, (int)yy);
 	game_draw(g);
 	draw_adjusted_sprite(g, (t_point){xx, yy}, pixels);
 	screen_put_screen_to_window(g->screen);
