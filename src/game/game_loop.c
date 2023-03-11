@@ -14,14 +14,7 @@
 
 t_error_code	game_start(t_game *g)
 {
-	int	floor_color;
-	int	celling_color;
-
-	floor_color = map_get_floor_color(g->map);
-	celling_color = map_get_celling_color(g->map);
-	screen_draw_background(g->screen, celling_color, floor_color);
+	game_draw(g);
 	mlx_loop(g->mlx);
-	if (!g)
-		return (0);
-	return (0);
+	return (SUCCESS);
 }

@@ -12,12 +12,12 @@
 
 #include "rgb.h"
 
-void	rgb_init(t_rgb *rgb, unsigned char red, unsigned char blue, \
-	unsigned char green)
+void	rgb_init(t_rgb *rgb, unsigned char red, unsigned char green, \
+	unsigned char blue)
 {
 	rgb->red = red;
-	rgb->blue = blue;
 	rgb->green = green;
+	rgb->blue = blue;
 }
 
 int		rgb_to_int(t_rgb *rgb)

@@ -3,9 +3,8 @@ SO ./resource/xpm/wall.xpm
 WE ./resource/xpm/wall.xpm
 EA ./resource/xpm/wall.xpm
 
-F 220,100,0
-C 225,30,0
-
+C 160,198,242
+F 86,69,87
 
     1111111111111111111111111
     1000000000110000000000001

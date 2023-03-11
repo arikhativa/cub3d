@@ -1,37 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   class.h                                            :+:      :+:    :+:   */
+/*   class.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/14 10:47:54 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/02/15 13:55:57 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GAME_H
-# define GAME_H
+#include "game.h"
 
-# include <stdlib.h>
-
-# include "libft.h"
-# include "error_code.h"
-# include "map.h"
-# include "mlx.h"
-# include "screen.h"
-
-typedef struct s_game
+void	game_draw(t_game *g)
 {
-	void		*mlx;
-	t_map		*map;
-	t_screen	*screen;
-}				t_game;
+	int	floor_color;
+	int	celling_color;
 
-t_error_code	game_create(t_game **ret);
-void			game_destroy(t_game **obj);
-t_error_code	game_load(t_game *g, char *path_to_map);
-t_error_code	game_start(t_game *g);
-;void			game_draw(t_game *g);
-
-#endif
+	floor_color = map_get_floor_color(g->map);
+	celling_color = map_get_celling_color(g->map);
+	screen_draw_background(g->screen, celling_color, floor_color);
+	screen_put_screen_to_window(g->screen);
+}
