@@ -27,7 +27,7 @@ void	test_map_is_closed(void)
 		"11111"
 	);
 
-	err = map_create(&m, g_mlx);
+	err = map_create(&m);
 	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
 	m->map = map;
 	m->size = point_init(5, 5);
@@ -51,7 +51,7 @@ void	test_map_is_closed_err1(void)
 		"11111"
 	);
 
-	err = map_create(&m, g_mlx);
+	err = map_create(&m);
 	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
 	m->map = map;
 	m->size = point_init(6, 5);
@@ -75,7 +75,7 @@ void	test_map_is_closed_err2(void)
 		"11111"
 	);
 
-	err = map_create(&m, g_mlx);
+	err = map_create(&m);
 	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
 	m->map = map;
 	m->size = point_init(6, 5);

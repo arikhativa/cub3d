@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.h                                             :+:      :+:    :+:   */
+/*   utest.t.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 11:13:44 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/16 10:53:33 by yrabby           ###   ########.fr       */
+/*   Created: 2022/09/06 14:21:17 by yoav              #+#    #+#             */
+/*   Updated: 2023/02/14 12:27:39 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#include "game.h"
+#include "unit_test.h"
 
-# include "error_code.h"
-# include "parser.h"
-# include "sprite.h"
-# include "map.h"
-# include "game.h"
+void	test_game_create_destroy(void)
+{
+	t_error_code	err;
+	t_game		*obj;
 
-#endif
+	obj = NULL;
+	err = game_create(&obj);
+	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
+	game_destroy(&obj);
+	CU_ASSERT_PTR_NULL(obj);
+}

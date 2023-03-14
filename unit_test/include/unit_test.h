@@ -22,6 +22,7 @@
 # define TEST_RES "unit_test_tmp.txt"
 
 extern CU_SuiteInfo	g_suites[];
+extern CU_TestInfo	g_game_tests[];
 extern CU_TestInfo	g_cub_tests[];
 extern CU_TestInfo	g_plane_mngr_tests[];
 extern CU_TestInfo	g_plane_tests[];
@@ -32,8 +33,6 @@ extern CU_TestInfo	g_player_tests[];
 extern CU_TestInfo	g_point_tests[];
 extern CU_TestInfo	g_dll_tests[];
 extern CU_TestInfo	g_parser_tests[];
-
-extern void	*g_mlx;
 
 // main
 int		init_suite(void);
@@ -105,5 +104,8 @@ void	test_cub_get_line_type(void);
 void	test_cub_get_dir(void);
 void	test_cub_get_plane_type(void);
 void	test_cub_get_rgb(void);
+
+// game
+void	test_game_create_destroy(void);
 
 #endif

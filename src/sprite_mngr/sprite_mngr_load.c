@@ -19,3 +19,15 @@ t_error_code	sprite_mngr_load_sprite(t_sprite_mngr *sm, t_direction d, \
 		return (EXT_DUPLICATE_SETTING);
 	return (sprite_load(sm->sprites[d], path));
 }
+
+void	sprite_mngr_init_sprites(t_sprite_mngr *sm, void *mlx)
+{
+	int	i;
+
+	i = 0;
+	while (i < SPRITES_IN_MAP)
+	{
+		sprite_init(sm->sprites[i], mlx);
+		i++;
+	}
+}

@@ -12,7 +12,7 @@
 
 #include "sprite.h"
 
-t_error_code	sprite_create(t_sprite **ret, void *mlx)
+t_error_code	sprite_create(t_sprite **ret)
 {
 	t_sprite		*tmp;
 
@@ -21,9 +21,13 @@ t_error_code	sprite_create(t_sprite **ret, void *mlx)
 	tmp = (t_sprite *)ft_calloc(1, sizeof(t_sprite));
 	if (!tmp)
 		return (ALLOCATION_ERROR);
-	tmp->mlx = mlx;
 	*ret = tmp;
 	return (SUCCESS);
+}
+
+void	sprite_init(t_sprite *s, char *mlx)
+{
+	s->mlx = mlx;
 }
 
 void	sprite_destroy(t_sprite **obj)

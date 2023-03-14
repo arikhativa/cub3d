@@ -12,7 +12,7 @@
 
 #include "map.h"
 
-t_error_code	map_create(t_map **ret, void *mlx)
+t_error_code	map_create(t_map **ret)
 {
 	t_error_code	err;
 	t_map			*tmp;
@@ -24,7 +24,7 @@ t_error_code	map_create(t_map **ret, void *mlx)
 		return (ALLOCATION_ERROR);
 	err = player_create(&(tmp->p));
 	if (SUCCESS == err)
-		err = sprite_mngr_create(&(tmp->sm), mlx);
+		err = sprite_mngr_create(&(tmp->sm));
 	if (SUCCESS == err)
 		err = plane_mngr_create(&(tmp->pm));
 	if (SUCCESS != err)

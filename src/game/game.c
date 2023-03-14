@@ -10,70 +10,43 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sprite_mngr.h"
+#include "game.h"
 
-static t_error_code	sprite_mngr_init(t_sprite_mngr *sm)
+t_error_code	game_create(t_game **ret)
 {
 	t_error_code	err;
-	int				i;
-
-	if (!sm)
-		return (ERROR);
-	i = 0;
-	while (i < SPRITES_IN_MAP)
-	{
-		err = sprite_create(&sm->sprites[i]);
-		if (SUCCESS != err)
-			return (err);
-		i++;
-	}
-	return (SUCCESS);
-}
-
-t_error_code	sprite_mngr_create(t_sprite_mngr **ret)
-{
-	t_error_code	err;
-	t_sprite_mngr	*tmp;
+	t_game			*tmp;
 
 	if (!ret)
 		return (ERROR);
-	tmp = (t_sprite_mngr *)ft_calloc(1, sizeof(t_sprite_mngr));
+	tmp = (t_game *)ft_calloc(1, sizeof(t_game));
 	if (!tmp)
 		return (ALLOCATION_ERROR);
-	err = sprite_mngr_init(tmp);
-	if (SUCCESS != err)
+	err = map_create(&tmp->map);
+	if (err != SUCCESS)
 	{
-		sprite_mngr_destroy(&tmp);
+		game_destroy(&tmp);
 		return (err);
 	}
 	*ret = tmp;
 	return (SUCCESS);
 }
 
-static void	sprite_mngr_clear(t_sprite_mngr *sm)
+void	game_destroy(t_game **obj)
 {
-	int	i;
-
-	if (!sm)
-		return ;
-	i = 0;
-	while (i < SPRITES_IN_MAP)
-	{
-		sprite_destroy(&sm->sprites[i]);
-		i++;
-	}
-}
-
-void	sprite_mngr_destroy(t_sprite_mngr **obj)
-{
-	t_sprite_mngr	*tmp;
+	t_game	*tmp;
 
 	if (!obj || !*obj)
 		return ;
 	tmp = *obj;
-	if (tmp->sprites)
-		sprite_mngr_clear(tmp);
-	ft_bzero(tmp, sizeof(t_sprite_mngr));
+	if (tmp->map)
+		map_destroy(&(tmp->map));
+	if (tmp->mlx)
+	{
+		mlx_destroy_display(tmp->mlx);
+		free(tmp->mlx);
+	}
+	ft_bzero(tmp, sizeof(t_game));
 	free(tmp);
 	*obj = NULL;
 }
