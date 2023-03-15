@@ -12,23 +12,6 @@
 
 #include "game.h"
 
-void	draw_line_y(t_game *g, t_point screen_pos, double sprite_x, double num_of_pixels)
-{
-	double		sprite_y = 0;
-	t_sprite	*sprite = g->map->sm->sprites[0];
-	double inc = sprite->size.y / num_of_pixels;
-	int color = 0;
-	
-	while (num_of_pixels)
-	{
-		color = sprite_get_pixel_color(sprite, (t_point){sprite_x, sprite_y});
-		screen_color_pixel(g->screen, screen_pos, color);
-		sprite_y += inc;
-		screen_pos = point_down(screen_pos);
-		--num_of_pixels;
-	}
-}
-
 void	draw_adjusted_sprite(t_game *g, t_point screen_pos, double num_of_pixels)
 {
 	t_sprite	*sprite = g->map->sm->sprites[0];
@@ -36,9 +19,11 @@ void	draw_adjusted_sprite(t_game *g, t_point screen_pos, double num_of_pixels)
 	double inc = sprite->size.x / num_of_pixels;
 	double og_num_of_pixels = num_of_pixels;
 
+	g->vs->sprite = sprite;
 	while (num_of_pixels)
 	{
-		draw_line_y(g, screen_pos, sprite_x, og_num_of_pixels);
+		vertical_stripe_set_arg(g->vs, screen_pos, sprite_x, og_num_of_pixels);
+		vertical_stripe_draw(g->vs);
 		screen_pos = point_right(screen_pos);
 		sprite_x += inc;
 		--num_of_pixels;

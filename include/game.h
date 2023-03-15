@@ -19,14 +19,16 @@
 # include "error_code.h"
 # include "map.h"
 # include "mlx.h"
+# include "vertical_stripe.h"
 # include "screen.h"
 # include "mlx_keys.h"
 
 typedef struct s_game
 {
-	void		*mlx;
-	t_map		*map;
-	t_screen	*screen;
+	void				*mlx;
+	t_map				*map;
+	t_screen			*screen;
+	t_vertical_stripe	*vs;
 }				t_game;
 
 t_error_code	game_create(t_game **ret);
