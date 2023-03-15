@@ -22,7 +22,7 @@ t_error_code	game_create(t_game **ret)
 	tmp = (t_game *)ft_calloc(1, sizeof(t_game));
 	if (!tmp)
 		return (ALLOCATION_ERROR);
-	err = map_create(&tmp->map, tmp->mlx);
+	err = map_create(&tmp->map);
 	if (err == SUCCESS)
 		err = screen_create(&tmp->screen, tmp->mlx);
 	if (err != SUCCESS)
