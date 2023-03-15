@@ -18,7 +18,7 @@ void	test_map_create_destroy(void)
 	t_error_code	err;
 	t_map			*obj;
 
-	err = map_create(&obj, g_mlx);
+	err = map_create(&obj);
 	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
 	map_destroy(&obj);
 	CU_ASSERT_PTR_NULL(obj);
@@ -65,7 +65,7 @@ void	test_map_get_size(void)
 		NULL,
 	};
 
-	err = map_create(&m, g_mlx);
+	err = map_create(&m);
 	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
 	m->file = file;
 	map_get_size(m);
