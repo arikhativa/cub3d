@@ -59,6 +59,6 @@ void	test_cub_get_rgb(void)
 
 	rgb = cub_get_rgb("C 100,23,0");
 	CU_ASSERT_EQUAL(rgb.red, 100);
-	CU_ASSERT_EQUAL(rgb.blue, 23);
-	CU_ASSERT_EQUAL(rgb.green, 0);
+	CU_ASSERT_EQUAL(rgb.green, 23);
+	CU_ASSERT_EQUAL(rgb.blue, 0);
 }

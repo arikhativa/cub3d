@@ -22,6 +22,7 @@
 # define TEST_RES "unit_test_tmp.txt"
 
 extern CU_SuiteInfo	g_suites[];
+extern CU_TestInfo	g_screen_tests[];
 extern CU_TestInfo	g_game_tests[];
 extern CU_TestInfo	g_cub_tests[];
 extern CU_TestInfo	g_plane_mngr_tests[];
@@ -104,5 +105,8 @@ void	test_cub_get_line_type(void);
 void	test_cub_get_dir(void);
 void	test_cub_get_plane_type(void);
 void	test_cub_get_rgb(void);
+
+// screen
+void	test_screen_create_destroy(void);
 
 #endif

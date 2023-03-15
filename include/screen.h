@@ -33,7 +33,8 @@ typedef struct s_screen
 	int			endian;
 }				t_screen;
 
-t_error_code	screen_create(t_screen **ret, void *mlx);
+t_error_code	screen_create(t_screen **ret);
+t_error_code	screen_init(t_screen *s, void *mlx);
 void			screen_destroy(t_screen **obj);
 void			screen_color_pixel(t_screen *s, t_point pos, int color);
 void			screen_draw_background(t_screen *screen, int celling, \
