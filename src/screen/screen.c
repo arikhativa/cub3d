@@ -12,7 +12,7 @@
 
 #include "screen.h"
 
-t_error_code	screen_create(t_screen **ret, void *mlx)
+t_error_code	screen_create(t_screen **ret)
 {
 	t_screen		*tmp;
 
@@ -21,19 +21,24 @@ t_error_code	screen_create(t_screen **ret, void *mlx)
 	tmp = (t_screen *)ft_calloc(1, sizeof(t_screen));
 	if (!tmp)
 		return (ALLOCATION_ERROR);
-	tmp->mlx = mlx;
-	tmp->size = point_init(SCREEN_SIZE_X, SCREEN_SIZE_Y);
-	tmp->ref = mlx_new_image(tmp->mlx, tmp->size.x, tmp->size.y);
-	if (!tmp->ref)
-		return (MLX_NEW_ING);
-	tmp->pixel = mlx_get_data_addr(tmp->ref, &(tmp->bits_per_pixel), \
-		&(tmp->line_size), &(tmp->endian));
-	if (!tmp->pixel)
-		return (SPRITE_LOAD_GET_DATA_ADDR);
-	tmp->win = mlx_new_window(tmp->mlx, tmp->size.x, tmp->size.y, CUB3D_STR);
-	if (!tmp->win)
-		return (MLX_NEW_WIN);
 	*ret = tmp;
+	return (SUCCESS);
+}
+
+t_error_code	screen_init(t_screen *s, void *mlx)
+{
+	s->mlx = mlx;
+	s->size = point_init(SCREEN_SIZE_X, SCREEN_SIZE_Y);
+	s->ref = mlx_new_image(s->mlx, s->size.x, s->size.y);
+	if (!s->ref)
+		return (MLX_NEW_ING);
+	s->pixel = mlx_get_data_addr(s->ref, &(s->bits_per_pixel), \
+		&(s->line_size), &(s->endian));
+	if (!s->pixel)
+		return (SPRITE_LOAD_GET_DATA_ADDR);
+	s->win = mlx_new_window(s->mlx, s->size.x, s->size.y, CUB3D_STR);
+	if (!s->win)
+		return (MLX_NEW_WIN);
 	return (SUCCESS);
 }
 
@@ -52,4 +57,3 @@ void	screen_destroy(t_screen **obj)
 	free(tmp);
 	*obj = NULL;
 }
-

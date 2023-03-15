@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_utest.t.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 09:50:39 by al7aro            #+#    #+#             */
-/*   Updated: 2023/02/16 11:19:44 by yrabby           ###   ########.fr       */
+/*   Created: 2023/02/14 10:05:13 by yrabby            #+#    #+#             */
+/*   Updated: 2023/02/14 10:09:20 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "unit_test.h"
 
-int	main(int argc, char **argv)
+CU_TestInfo	g_screen_tests[] = {
 {
-	t_game			*game;
-	t_error_code	err;
-
-	err = parser_arg_check(argc, argv);
-	if (SUCCESS == err)
-	{
-		err = game_create(&game);
-		if (SUCCESS == err)
-		{
-			err = game_init(game);
-			if (SUCCESS == err)
-				err = game_load(game, argv[1]);
-			game_destroy(&game);
-		}
-	}
-	return (error_code_print_on_exit(err));
-}
+	"test_screen_create_destroy",
+	test_screen_create_destroy,
+},
+	CU_TEST_INFO_NULL,
+};

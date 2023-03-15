@@ -12,7 +12,7 @@
 
 #include "screen.h"
 
-static void		draw_line(t_screen *screen, int y, int color)
+static void	draw_line(t_screen *screen, int y, int color)
 {
 	int	x;
 

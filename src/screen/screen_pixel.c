@@ -14,7 +14,7 @@
 
 void	screen_color_pixel(t_screen *s, t_point pos, int color)
 {
-	char    *pixel;
+	char	*pixel;
 
 	pixel = pixel_move_y(s->pixel, pos.y, s->line_size);
 	pixel = pixel_move_x(pixel, pos.x, s->bits_per_pixel);

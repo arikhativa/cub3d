@@ -14,11 +14,14 @@
 
 t_error_code	game_init(t_game *g)
 {
+	t_error_code	err;
+
 	g->mlx = mlx_init();
 	if (!g->mlx)
 		return (EXT_MLX_ERROR);
 	map_init(g->map, g->mlx);
-	return (SUCCESS);
+	err = screen_init(g->screen, g->mlx);
+	return (err);
 }
 
 t_error_code	game_load(t_game *g, char *path_to_map)

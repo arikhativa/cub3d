@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utest.t.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 09:50:39 by al7aro            #+#    #+#             */
-/*   Updated: 2023/02/16 11:19:44 by yrabby           ###   ########.fr       */
+/*   Created: 2022/09/06 14:21:17 by yoav              #+#    #+#             */
+/*   Updated: 2023/02/14 12:27:39 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "screen.h"
+#include "unit_test.h"
 
-int	main(int argc, char **argv)
+void	test_screen_create_destroy(void)
 {
-	t_game			*game;
 	t_error_code	err;
+	t_screen		*obj;
 
-	err = parser_arg_check(argc, argv);
-	if (SUCCESS == err)
-	{
-		err = game_create(&game);
-		if (SUCCESS == err)
-		{
-			err = game_init(game);
-			if (SUCCESS == err)
-				err = game_load(game, argv[1]);
-			game_destroy(&game);
-		}
-	}
-	return (error_code_print_on_exit(err));
+	obj = NULL;
+	err = screen_create(&obj);
+	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
+	screen_destroy(&obj);
+	CU_ASSERT_PTR_NULL(obj);
 }

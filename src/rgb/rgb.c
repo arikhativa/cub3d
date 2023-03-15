@@ -20,7 +20,7 @@ void	rgb_init(t_rgb *rgb, unsigned char red, unsigned char green, \
 	rgb->blue = blue;
 }
 
-int		rgb_to_int(t_rgb *rgb)
+int	rgb_to_int(t_rgb *rgb)
 {
 	return (rgb->red << 16 | rgb->green << 8 | rgb->blue);
 }
