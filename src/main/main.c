@@ -26,8 +26,6 @@ int	main(int argc, char **argv)
 			err = game_init(game);
 			if (SUCCESS == err)
 				err = game_load(game, argv[1]);
-			if (SUCCESS == err)
-				err = game_start(game);
 			game_destroy(&game);
 		}
 	}

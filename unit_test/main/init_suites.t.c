@@ -94,12 +94,12 @@ CU_SuiteInfo	g_suites[] = {
 	g_cub_tests,
 },
 {
-	"game",
+	"screen",
 	init_suite,
 	clean_suite,
 	NULL,
 	NULL,
-	g_game_tests,
+	g_screen_tests,
 },
 	CU_SUITE_INFO_NULL,
 };

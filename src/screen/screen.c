@@ -10,47 +10,50 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "screen.h"
 
-t_error_code	game_create(t_game **ret)
+t_error_code	screen_create(t_screen **ret)
 {
-	t_error_code	err;
-	t_game			*tmp;
+	t_screen		*tmp;
 
 	if (!ret)
 		return (ERROR);
-	tmp = (t_game *)ft_calloc(1, sizeof(t_game));
+	tmp = (t_screen *)ft_calloc(1, sizeof(t_screen));
 	if (!tmp)
 		return (ALLOCATION_ERROR);
-	err = map_create(&tmp->map);
-	if (err == SUCCESS)
-		err = screen_create(&tmp->screen);
-	if (err != SUCCESS)
-	{
-		game_destroy(&tmp);
-		return (err);
-	}
 	*ret = tmp;
 	return (SUCCESS);
 }
 
-void	game_destroy(t_game **obj)
+t_error_code	screen_init(t_screen *s, void *mlx)
 {
-	t_game	*tmp;
+	s->mlx = mlx;
+	s->size = point_init(SCREEN_SIZE_X, SCREEN_SIZE_Y);
+	s->ref = mlx_new_image(s->mlx, s->size.x, s->size.y);
+	if (!s->ref)
+		return (MLX_NEW_ING);
+	s->pixel = mlx_get_data_addr(s->ref, &(s->bits_per_pixel), \
+		&(s->line_size), &(s->endian));
+	if (!s->pixel)
+		return (SPRITE_LOAD_GET_DATA_ADDR);
+	s->win = mlx_new_window(s->mlx, s->size.x, s->size.y, CUB3D_STR);
+	if (!s->win)
+		return (MLX_NEW_WIN);
+	return (SUCCESS);
+}
+
+void	screen_destroy(t_screen **obj)
+{
+	t_screen	*tmp;
 
 	if (!obj || !*obj)
 		return ;
 	tmp = *obj;
-	if (tmp->map)
-		map_destroy(&(tmp->map));
-	if (tmp->screen)
-		screen_destroy(&(tmp->screen));
-	if (tmp->mlx)
-	{
-		mlx_destroy_display(tmp->mlx);
-		free(tmp->mlx);
-	}
-	ft_bzero(tmp, sizeof(t_game));
+	if (tmp->ref)
+		mlx_destroy_image(tmp->mlx, tmp->ref);
+	if (tmp->win)
+		mlx_destroy_window(tmp->mlx, tmp->win);
+	ft_bzero(tmp, sizeof(t_screen));
 	free(tmp);
 	*obj = NULL;
 }

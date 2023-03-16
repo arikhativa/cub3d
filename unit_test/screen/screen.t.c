@@ -10,17 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "screen.h"
 #include "unit_test.h"
 
-void	test_game_create_destroy(void)
+void	test_screen_create_destroy(void)
 {
 	t_error_code	err;
-	t_game		*obj;
+	t_screen		*obj;
 
 	obj = NULL;
-	err = game_create(&obj);
+	err = screen_create(&obj);
 	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
-	game_destroy(&obj);
+	screen_destroy(&obj);
 	CU_ASSERT_PTR_NULL(obj);
 }
