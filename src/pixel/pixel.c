@@ -12,12 +12,12 @@
 
 #include "pixel.h"
 
-char	*pixel_move_y(char *pixel, int y, int line_size)
+char	*pixel_increment_y(char *pixel, int y, int line_size)
 {
 	return (pixel + y * line_size);
 }
 
-char	*pixel_move_x(char *pixel, int x, int bits_per_pixel)
+char	*pixel_increment_x(char *pixel, int x, int bits_per_pixel)
 {
 	return (pixel + x * (bits_per_pixel / BITS_IN_CHAR));
 }

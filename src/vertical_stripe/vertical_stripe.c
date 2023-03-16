@@ -10,32 +10,42 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "vertical_stripe.h"
 
-t_error_code	game_init(t_game *g)
+t_error_code	vertical_stripe_create(t_vertical_stripe **ret)
 {
-	t_error_code	err;
+	t_vertical_stripe		*tmp;
 
-	g->mlx = mlx_init();
-	if (!g->mlx)
-		return (EXT_MLX_ERROR);
-	map_init(g->map, g->mlx);
-	err = screen_init(g->screen, g->mlx);
-	if (err == SUCCESS)
-		vertical_stripe_init(g->vs, g->screen);
-	return (err);
+	if (!ret)
+		return (ERROR);
+	tmp = (t_vertical_stripe *)ft_calloc(1, sizeof(t_vertical_stripe));
+	if (!tmp)
+		return (ALLOCATION_ERROR);
+	*ret = tmp;
+	return (SUCCESS);
 }
 
-t_error_code	game_load(t_game *g, char *path_to_map)
+void	vertical_stripe_destroy(t_vertical_stripe **obj)
 {
-	t_error_code	err;
+	t_vertical_stripe	*tmp;
 
-	err = map_read_raw(g->map, path_to_map);
-	if (SUCCESS == err)
-		err = map_validate(g->map->file);
-	if (SUCCESS == err)
-		err = map_load(g->map);
-	if (SUCCESS == err)
-		err = map_post_load_validation(g->map);
-	return (err);
+	if (!obj || !*obj)
+		return ;
+	tmp = *obj;
+	ft_bzero(tmp, sizeof(t_vertical_stripe));
+	free(tmp);
+	*obj = NULL;
+}
+
+void	vertical_stripe_init(t_vertical_stripe *vs, t_screen *s)
+{
+	vs->screen = s;
+}
+
+void	vertical_stripe_set_arg(t_vertical_stripe *vs, t_point screen_pos, \
+	double sprite_x, int num_of_pixels)
+{
+	vs->screen_pos = screen_pos;
+	vs->sprite_x_pos = sprite_x;
+	vs->num_of_pixels = num_of_pixels;
 }

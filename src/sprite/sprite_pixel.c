@@ -16,7 +16,7 @@ int	sprite_get_pixel_color(t_sprite *s, t_point pos)
 {
 	char	*pixel;
 
-	pixel = pixel_move_y(s->pixel, pos.y, s->line_size);
-	pixel = pixel_move_x(pixel, pos.x, s->bits_per_pixel);
+	pixel = pixel_increment_y(s->pixel, pos.y, s->line_size);
+	pixel = pixel_increment_x(pixel, pos.x, s->bits_per_pixel);
 	return (*(int *)pixel);
 }
