@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   class.h                                            :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/14 10:47:54 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/02/15 13:58:46 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RGB_H
-# define RGB_H
+#include "map.h"
 
-typedef struct s_rgb
+void	map_init(t_map *m, void *mlx)
 {
-	unsigned char	red;
-	unsigned char	green;
-	unsigned char	blue;
-}	t_rgb;
-
-void	rgb_init(t_rgb *rgb, unsigned char red, unsigned char green, \
-	unsigned char blue);
-int		rgb_to_int(t_rgb *rgb);
-
-#endif
+	m->mlx = mlx;
+	sprite_mngr_init_sprites(m->sm, mlx);
+}

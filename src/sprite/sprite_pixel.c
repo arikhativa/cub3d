@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   class.h                                            :+:      :+:    :+:   */
+/*   sprite_load.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/14 10:47:54 by yrabby           ###   ########.fr       */
+/*   Created: 2023/02/16 10:36:01 by yrabby            #+#    #+#             */
+/*   Updated: 2023/02/16 10:59:46 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RGB_H
-# define RGB_H
+#include "sprite.h"
 
-typedef struct s_rgb
+int	sprite_get_pixel_color(t_sprite *s, t_point pos)
 {
-	unsigned char	red;
-	unsigned char	green;
-	unsigned char	blue;
-}	t_rgb;
+	char	*pixel;
 
-void	rgb_init(t_rgb *rgb, unsigned char red, unsigned char green, \
-	unsigned char blue);
-int		rgb_to_int(t_rgb *rgb);
-
-#endif
+	pixel = pixel_increment_y(s->pixel, pos.y, s->line_size);
+	pixel = pixel_increment_x(pixel, pos.x, s->bits_per_pixel);
+	return (*(int *)pixel);
+}

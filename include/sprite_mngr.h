@@ -27,8 +27,9 @@ typedef struct s_sprite_mngr
 	t_sprite	*sprites[SPRITES_IN_MAP];
 }				t_sprite_mngr;
 
-t_error_code	sprite_mngr_create(t_sprite_mngr **ret, void *mlx);
+t_error_code	sprite_mngr_create(t_sprite_mngr **ret);
 void			sprite_mngr_destroy(t_sprite_mngr **obj);
+void			sprite_mngr_init_sprites(t_sprite_mngr *sm, void *mlx);
 t_error_code	sprite_mngr_load_sprite(t_sprite_mngr *sm, t_direction d, \
 	char *path);
 

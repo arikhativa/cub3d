@@ -10,70 +10,50 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sprite_mngr.h"
+#include "screen.h"
 
-static t_error_code	sprite_mngr_init(t_sprite_mngr *sm)
+t_error_code	screen_create(t_screen **ret)
 {
-	t_error_code	err;
-	int				i;
-
-	if (!sm)
-		return (ERROR);
-	i = 0;
-	while (i < SPRITES_IN_MAP)
-	{
-		err = sprite_create(&sm->sprites[i]);
-		if (SUCCESS != err)
-			return (err);
-		i++;
-	}
-	return (SUCCESS);
-}
-
-t_error_code	sprite_mngr_create(t_sprite_mngr **ret)
-{
-	t_error_code	err;
-	t_sprite_mngr	*tmp;
+	t_screen		*tmp;
 
 	if (!ret)
 		return (ERROR);
-	tmp = (t_sprite_mngr *)ft_calloc(1, sizeof(t_sprite_mngr));
+	tmp = (t_screen *)ft_calloc(1, sizeof(t_screen));
 	if (!tmp)
 		return (ALLOCATION_ERROR);
-	err = sprite_mngr_init(tmp);
-	if (SUCCESS != err)
-	{
-		sprite_mngr_destroy(&tmp);
-		return (err);
-	}
 	*ret = tmp;
 	return (SUCCESS);
 }
 
-static void	sprite_mngr_clear(t_sprite_mngr *sm)
+t_error_code	screen_init(t_screen *s, void *mlx)
 {
-	int	i;
-
-	if (!sm)
-		return ;
-	i = 0;
-	while (i < SPRITES_IN_MAP)
-	{
-		sprite_destroy(&sm->sprites[i]);
-		i++;
-	}
+	s->mlx = mlx;
+	s->size = point_init(SCREEN_SIZE_X, SCREEN_SIZE_Y);
+	s->ref = mlx_new_image(s->mlx, s->size.x, s->size.y);
+	if (!s->ref)
+		return (MLX_NEW_ING);
+	s->pixel = mlx_get_data_addr(s->ref, &(s->bits_per_pixel), \
+		&(s->line_size), &(s->endian));
+	if (!s->pixel)
+		return (SPRITE_LOAD_GET_DATA_ADDR);
+	s->win = mlx_new_window(s->mlx, s->size.x, s->size.y, CUB3D_STR);
+	if (!s->win)
+		return (MLX_NEW_WIN);
+	return (SUCCESS);
 }
 
-void	sprite_mngr_destroy(t_sprite_mngr **obj)
+void	screen_destroy(t_screen **obj)
 {
-	t_sprite_mngr	*tmp;
+	t_screen	*tmp;
 
 	if (!obj || !*obj)
 		return ;
 	tmp = *obj;
-	if (tmp->sprites)
-		sprite_mngr_clear(tmp);
-	ft_bzero(tmp, sizeof(t_sprite_mngr));
+	if (tmp->ref)
+		mlx_destroy_image(tmp->mlx, tmp->ref);
+	if (tmp->win)
+		mlx_destroy_window(tmp->mlx, tmp->win);
+	ft_bzero(tmp, sizeof(t_screen));
 	free(tmp);
 	*obj = NULL;
 }

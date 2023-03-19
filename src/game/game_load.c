@@ -1,45 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sprite.c                                           :+:      :+:    :+:   */
+/*   class.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/16 11:14:53 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/02/15 13:55:57 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sprite.h"
+#include "game.h"
 
-t_error_code	sprite_create(t_sprite **ret)
+t_error_code	game_init(t_game *g)
 {
-	t_sprite		*tmp;
+	t_error_code	err;
 
-	if (!ret)
-		return (ERROR);
-	tmp = (t_sprite *)ft_calloc(1, sizeof(t_sprite));
-	if (!tmp)
-		return (ALLOCATION_ERROR);
-	*ret = tmp;
-	return (SUCCESS);
+	g->mlx = mlx_init();
+	if (!g->mlx)
+		return (EXT_MLX_ERROR);
+	map_init(g->map, g->mlx);
+	err = screen_init(g->screen, g->mlx);
+	if (err == SUCCESS)
+		vertical_stripe_init(g->vs, g->screen);
+	return (err);
 }
 
-void	sprite_init(t_sprite *s, char *mlx)
+t_error_code	game_load(t_game *g, char *path_to_map)
 {
-	s->mlx = mlx;
-}
+	t_error_code	err;
 
-void	sprite_destroy(t_sprite **obj)
-{
-	t_sprite	*tmp;
-
-	if (!obj || !*obj)
-		return ;
-	tmp = *obj;
-	if (sprite_is_loaded(tmp))
-		sprite_unload(tmp);
-	ft_bzero(tmp, sizeof(t_sprite));
-	free(tmp);
-	*obj = NULL;
+	err = map_read_raw(g->map, path_to_map);
+	if (SUCCESS == err)
+		err = map_validate(g->map->file);
+	if (SUCCESS == err)
+		err = map_load(g->map);
+	if (SUCCESS == err)
+		err = map_post_load_validation(g->map);
+	return (err);
 }

@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   class.h                                            :+:      :+:    :+:   */
+/*   class.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/14 10:47:54 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/02/15 13:55:57 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RGB_H
-# define RGB_H
+#include "screen.h"
 
-typedef struct s_rgb
+void	screen_color_pixel(t_screen *s, t_point pos, int color)
 {
-	unsigned char	red;
-	unsigned char	green;
-	unsigned char	blue;
-}	t_rgb;
+	char	*pixel;
 
-void	rgb_init(t_rgb *rgb, unsigned char red, unsigned char green, \
-	unsigned char blue);
-int		rgb_to_int(t_rgb *rgb);
-
-#endif
+	pixel = pixel_increment_y(s->pixel, pos.y, s->line_size);
+	pixel = pixel_increment_x(pixel, pos.x, s->bits_per_pixel);
+	*(int *)pixel = color;
+}

@@ -10,18 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RGB_H
-# define RGB_H
+#ifndef VERTICAL_STRIPE_H
+# define VERTICAL_STRIPE_H
 
-typedef struct s_rgb
+# include <stdlib.h>
+
+# include "screen.h"
+# include "sprite.h"
+# include "point.h"
+# include "error_code.h"
+
+typedef struct s_vertical_stripe
 {
-	unsigned char	red;
-	unsigned char	green;
-	unsigned char	blue;
-}	t_rgb;
+	t_screen	*screen;
+	t_sprite	*sprite;
+	t_point		screen_pos;
+	double		sprite_x_pos;
+	double		num_of_pixels;
+}				t_vertical_stripe;
 
-void	rgb_init(t_rgb *rgb, unsigned char red, unsigned char green, \
-	unsigned char blue);
-int		rgb_to_int(t_rgb *rgb);
+t_error_code	vertical_stripe_create(t_vertical_stripe **ret);
+void			vertical_stripe_init(t_vertical_stripe *vs, t_screen *s);
+void			vertical_stripe_draw(t_vertical_stripe *vs);
+void			vertical_stripe_destroy(t_vertical_stripe **obj);
+void			vertical_stripe_set_arg(t_vertical_stripe *vs, \
+	t_point screen_pos,	double sprite_x, int num_of_pixels);
 
 #endif

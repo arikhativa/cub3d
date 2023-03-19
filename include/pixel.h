@@ -10,18 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RGB_H
-# define RGB_H
+#ifndef PIXEL_H
+# define PIXEL_H
 
-typedef struct s_rgb
-{
-	unsigned char	red;
-	unsigned char	green;
-	unsigned char	blue;
-}	t_rgb;
+# include "macro.h"
 
-void	rgb_init(t_rgb *rgb, unsigned char red, unsigned char green, \
-	unsigned char blue);
-int		rgb_to_int(t_rgb *rgb);
+char	*pixel_increment_y(char *pixel, int y, int line_size);
+char	*pixel_increment_x(char *pixel, int x, int bits_per_pixel);
 
 #endif

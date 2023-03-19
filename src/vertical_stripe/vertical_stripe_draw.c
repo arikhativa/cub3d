@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   class.h                                            :+:      :+:    :+:   */
+/*   class.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/14 10:47:54 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/02/15 13:55:57 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RGB_H
-# define RGB_H
+#include "vertical_stripe.h"
 
-typedef struct s_rgb
+void	vertical_stripe_draw(t_vertical_stripe *vs)
 {
-	unsigned char	red;
-	unsigned char	green;
-	unsigned char	blue;
-}	t_rgb;
+	t_point	sprite_pos;
+	double	sprite_y;
+	double	inc;
+	int		color;
 
-void	rgb_init(t_rgb *rgb, unsigned char red, unsigned char green, \
-	unsigned char blue);
-int		rgb_to_int(t_rgb *rgb);
-
-#endif
+	inc = vs->sprite->size.y / vs->num_of_pixels;
+	sprite_y = 0;
+	while (vs->num_of_pixels)
+	{
+		sprite_pos = point_init(vs->sprite_x_pos, sprite_y);
+		color = sprite_get_pixel_color(vs->sprite, sprite_pos);
+		screen_color_pixel(vs->screen, vs->screen_pos, color);
+		sprite_y += inc;
+		vs->screen_pos = point_down(vs->screen_pos);
+		--vs->num_of_pixels;
+	}
+}

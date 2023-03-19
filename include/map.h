@@ -29,6 +29,7 @@
 
 typedef struct s_map
 {
+	void			*mlx;
 	t_plane_mngr	*pm;
 	t_sprite_mngr	*sm;
 	t_player		*p;
@@ -37,11 +38,12 @@ typedef struct s_map
 	char			**file;
 }	t_map;
 
-t_error_code	map_create(t_map **ret, void *mlx);
+t_error_code	map_create(t_map **ret);
 t_error_code	map_read_raw(t_map *m, char *path);
 t_error_code	map_validate(char **file);
 t_error_code	map_alloc_map(t_map *m);
 void			map_destroy(t_map **obj);
+void			map_init(t_map *m, void *mlx);
 t_error_code	map_load(t_map *m);
 t_error_code	map_load_map(t_map *m);
 t_error_code	map_load_sprite(t_map *m, char *line, char *prefix);
@@ -56,5 +58,6 @@ t_bool			map_is_valid_pos(char **m, t_point pos);
 t_bool			map_is_space(char **m, t_point pos);
 t_bool			map_is_old_pos(char **m, t_point pos);
 t_bool			map_is_wall(char **m, t_point pos);
-
+int				map_get_floor_color(t_map *m);
+int				map_get_celling_color(t_map *m);
 #endif

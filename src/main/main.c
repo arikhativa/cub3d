@@ -11,75 +11,25 @@
 /* ************************************************************************** */
 
 #include "main.h"
-#include "mlx.h"
-
-static t_error_code	main2(void *mlx, char **argv)
-{
-	t_map			*m;
-	t_error_code	err;
-
-	err = map_create(&m, mlx);
-	if (SUCCESS == err)
-	{
-		err = map_read_raw(m, argv[1]);
-		if (SUCCESS == err)
-			err = map_validate(m->file);
-		if (SUCCESS == err)
-			err = map_load(m);
-		if (SUCCESS == err)
-			map_print(m);
-		if (SUCCESS == err)
-			err = map_post_load_validation(m);
-		map_destroy(&m);
-	}
-	return (err);
-}
 
 int	main(int argc, char **argv)
 {
-	void			*mlx;
-	void			*win;
+	t_game			*game;
 	t_error_code	err;
 
 	err = parser_arg_check(argc, argv);
 	if (SUCCESS == err)
 	{
-		mlx = mlx_init();
-		win = mlx_new_window(mlx, 400, 400, "hey");
-		err = main2(mlx, argv);
-		mlx_destroy_window(mlx, win);
-		mlx_destroy_display(mlx);
-		free(mlx);
+		err = game_create(&game);
+		if (SUCCESS == err)
+		{
+			err = game_init(game);
+			if (SUCCESS == err)
+				err = game_load(game, argv[1]);
+			if (SUCCESS == err)
+				err = game_start(game);
+			game_destroy(&game);
+		}
 	}
 	return (error_code_print_on_exit(err));
 }
-
-// TODO remove this test main
-// int	main(int argc, char **argv)
-// {
-// 	t_error_code	err;
-// 	void			*mlx;
-// 	void			*win;
-// 	t_sprite		*s;
-
-// 	err = parser_arg_check(argc, argv);
-// 	if (SUCCESS == err)
-// 	{
-// 		mlx = mlx_init();
-// 		win = mlx_new_window(mlx, 400, 400, "hey");
-// 		err = sprite_create(&s, mlx);
-// 		if (SUCCESS == err)
-// 		{
-// 			err = sprite_load(s, "./resource/xpm/wall.xpm");
-// 			if (SUCCESS == err)
-// 			{
-// 				mlx_put_image_to_window(mlx, win, s->ref, s->size.x, s->size.y);
-// 				sprite_destroy(&s);
-// 			}
-// 		}
-// 		mlx_destroy_window(mlx, win);
-// 		mlx_destroy_display(mlx);
-// 		free(mlx);
-// 	}
-// 	return (error_code_print_on_exit(err));
-// }
