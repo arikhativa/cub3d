@@ -1,0 +1,22 @@
+
+name: ttt
+
+on:
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  ttt:
+    name: ttt
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          title: "Automated sitemap update"
+      # token: ${{ secrets.ADD_TO_PROJECT_PAT }}
+      # commit-message: Update report
+      # committer: GitHub <noreply@github.com>
+      # author: yoav
+      # branch: AutoSitemap
