@@ -40,3 +40,21 @@ void	test_sprite_is_loaded(void)
 	CU_ASSERT_EQUAL(ret, FALSE);
 	sprite_destroy(&obj);
 }
+
+void	test_sprite_get_stripe(void)
+{
+	t_sprite		*obj;
+	t_error_code	err;
+	int				ret;
+
+	err = sprite_create(&obj);
+	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
+	obj->size.x = 64;
+	ret = sprite_get_stripe(obj, 30.5);
+	CU_ASSERT_EQUAL(ret, 32);
+	ret = sprite_get_stripe(obj, 30.25);
+	CU_ASSERT_EQUAL(ret, 16);
+	ret = sprite_get_stripe(obj, 30.1);
+	CU_ASSERT_EQUAL(ret, 6);
+	sprite_destroy(&obj);
+}

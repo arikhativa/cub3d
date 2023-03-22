@@ -6,7 +6,7 @@
 /*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 09:50:39 by al7aro            #+#    #+#             */
-/*   Updated: 2023/03/22 12:09:07 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/03/22 12:19:41 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ int	main(int argc, char **argv)
 			err = game_init(game);
 			if (SUCCESS == err)
 				err = game_load(game, argv[1]);
-			if (SUCCESS == err)
-				err = game_start(game);
+			// if (SUCCESS == err)
+			// 	err = game_start(game);
+			ray_caster_cast(game->rc);
 			game_destroy(&game);
 		}
 	}

@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_sprite.t.c                                    :+:      :+:    :+:   */
+/*   fpoint.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 10:05:13 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/16 10:48:02 by yrabby           ###   ########.fr       */
+/*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
+/*   Updated: 2023/03/22 09:29:54 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "unit_test.h"
+#ifndef FPOINT_H
+# define FPOINT_H
 
-CU_TestInfo	g_sprite_tests[] = {
+# include "point.h"
+
+typedef struct s_fpoint
 {
-	"test_sprite_get_stripe",
-	test_sprite_get_stripe,
-},
-{
-	"test_sprite_create_destroy",
-	test_sprite_create_destroy,
-},
-{
-	"test_sprite_is_loaded",
-	test_sprite_is_loaded,
-},
-	CU_TEST_INFO_NULL,
-};
+	double	x;
+	double	y;
+}				t_fpoint;
+
+t_fpoint	fpoint_init(double x, double y);
+t_fpoint	fpoint_copy(t_fpoint src);
+t_point		fpoint_to_point(t_fpoint p);
+t_fpoint	point_to_fpoint(t_point p);
+void		fpoint_print(t_fpoint p);
+
+#endif

@@ -22,6 +22,7 @@
 # define TEST_RES "unit_test_tmp.txt"
 
 extern CU_SuiteInfo	g_suites[];
+extern CU_TestInfo	g_fpoint_tests[];
 extern CU_TestInfo	g_screen_tests[];
 extern CU_TestInfo	g_game_tests[];
 extern CU_TestInfo	g_cub_tests[];
@@ -58,6 +59,7 @@ void	test_suffix(void);
 
 // point
 void	test_point(void);
+void	test_point_init(void);
 
 // player
 void	test_player_create_destroy(void);
@@ -85,12 +87,10 @@ void	test_map_is_closed_err2(void);
 // player
 void	test_player_create_destroy(void);
 
-// point
-void	test_point_init(void);
-
 // sprite
 void	test_sprite_create_destroy(void);
 void	test_sprite_is_loaded(void);
+void	test_sprite_get_stripe(void);
 
 // sprite_mngr
 void	test_sprite_mngr_create_destroy(void);
@@ -112,5 +112,11 @@ void	test_check_collision(void);
 
 // screen
 void	test_screen_create_destroy(void);
+
+// fpoint
+void	test_fpoint(void);
+void	test_fpoint_init(void);
+void	test_fpoint_to_point(void);
+void	test_point_to_fpoint(void);
 
 #endif
