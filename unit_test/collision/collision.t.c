@@ -6,7 +6,7 @@
 /*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 13:59:44 by ycarro            #+#    #+#             */
-/*   Updated: 2023/03/22 12:10:57 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/03/22 12:13:17 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void    test_check_collision(void)
     ex_ray.x_pos = point_init(0, 0);
     ex_ray.y_pos = point_init(2, 2);
     collision = is_collides(&ex_ray, ex_map, &collider);
+    printf("Gives: %d\n", collision);
     CU_ASSERT_EQUAL(NO_COLLISION, collision);
     ex_ray.x_pos = point_init(1, 1);
     ex_ray.y_pos = point_init(0, 0);
