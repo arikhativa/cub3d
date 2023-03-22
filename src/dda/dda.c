@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:10:14 by anonymous         #+#    #+#             */
-/*   Updated: 2023/03/22 09:45:23 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/03/22 12:28:04 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	dda(char **map, t_player *p, t_ray *ray_data, t_fpoint *collision)
 {
 	dda_set_incrementor(ray_data, ray_data->to_cast.radians);
 	dda_set_ray_data(ray_data, ray_data->to_cast.radians, p);
-	while (!is_collides(ray_data, map, collision))
+	while (is_collides(ray_data, map, collision) != -1)
 		ray_increment(ray_data);
 }
 
