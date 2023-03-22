@@ -39,5 +39,6 @@ void			plane_mngr_init(t_plane_mngr *pm, t_plane_type type, \
 void			plane_mngr_destroy(t_plane_mngr **obj);
 t_plane			*plane_mngr_get_plane(t_plane_mngr *pm, t_plane_type type);
 void			plane_mngr_print(t_plane_mngr *pm);
+t_bool			plane_mngr_is_loaded(t_plane_mngr *pm, t_plane_type t);
 
 #endif

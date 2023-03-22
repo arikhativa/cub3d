@@ -21,3 +21,8 @@ t_point	point_copy(t_point src)
 {
 	return ((t_point){src.x, src.y});
 }
+
+void	point_print(t_point p)
+{
+	printf("{x: %d, y: %d}", p.x, p.y);
+}

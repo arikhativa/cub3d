@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   class.c                                            :+:      :+:    :+:   */
+/*   sprite_mngr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/15 13:55:57 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/03/21 18:16:32 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sprite_mngr.h"
 
-static t_error_code	sprite_mngr_init(t_sprite_mngr *sm, void *mlx)
+static t_error_code	sprite_mngr_init(t_sprite_mngr *sm)
 {
 	t_error_code	err;
 	int				i;
@@ -22,7 +22,7 @@ static t_error_code	sprite_mngr_init(t_sprite_mngr *sm, void *mlx)
 	i = 0;
 	while (i < SPRITES_IN_MAP)
 	{
-		err = sprite_create(&sm->sprites[i], mlx);
+		err = sprite_create(&sm->sprites[i]);
 		if (SUCCESS != err)
 			return (err);
 		i++;
@@ -30,7 +30,7 @@ static t_error_code	sprite_mngr_init(t_sprite_mngr *sm, void *mlx)
 	return (SUCCESS);
 }
 
-t_error_code	sprite_mngr_create(t_sprite_mngr **ret, void *mlx)
+t_error_code	sprite_mngr_create(t_sprite_mngr **ret)
 {
 	t_error_code	err;
 	t_sprite_mngr	*tmp;
@@ -40,7 +40,7 @@ t_error_code	sprite_mngr_create(t_sprite_mngr **ret, void *mlx)
 	tmp = (t_sprite_mngr *)ft_calloc(1, sizeof(t_sprite_mngr));
 	if (!tmp)
 		return (ALLOCATION_ERROR);
-	err = sprite_mngr_init(tmp, mlx);
+	err = sprite_mngr_init(tmp);
 	if (SUCCESS != err)
 	{
 		sprite_mngr_destroy(&tmp);
@@ -71,7 +71,7 @@ void	sprite_mngr_destroy(t_sprite_mngr **obj)
 	if (!obj || !*obj)
 		return ;
 	tmp = *obj;
-	if (tmp->sprites)
+	if (tmp->sprites[0])
 		sprite_mngr_clear(tmp);
 	ft_bzero(tmp, sizeof(t_sprite_mngr));
 	free(tmp);

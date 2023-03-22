@@ -16,11 +16,12 @@
 typedef struct s_rgb
 {
 	unsigned char	red;
-	unsigned char	blue;
 	unsigned char	green;
+	unsigned char	blue;
 }	t_rgb;
 
-void	rgb_init(t_rgb *rgb, unsigned char red, unsigned char blue, \
-	unsigned char green);
+void	rgb_init(t_rgb *rgb, unsigned char red, unsigned char green, \
+	unsigned char blue);
+int		rgb_to_int(t_rgb *rgb);
 
 #endif

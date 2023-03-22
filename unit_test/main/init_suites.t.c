@@ -6,7 +6,7 @@
 /*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:22:13 by yoav              #+#    #+#             */
-/*   Updated: 2023/03/07 15:12:39 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/03/22 12:10:28 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,14 @@ CU_SuiteInfo	g_suites[] = {
 	NULL,
 	NULL,
 	g_collision_tests,
+},
+{
+	"screen",
+	init_suite,
+	clean_suite,
+	NULL,
+	NULL,
+	g_screen_tests,
 },
 	CU_SUITE_INFO_NULL,
 };

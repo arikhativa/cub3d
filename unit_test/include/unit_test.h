@@ -6,7 +6,7 @@
 /*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 13:56:02 by yoav              #+#    #+#             */
-/*   Updated: 2023/03/07 15:10:26 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/03/22 12:09:28 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # define TEST_RES "unit_test_tmp.txt"
 
 extern CU_SuiteInfo	g_suites[];
+extern CU_TestInfo	g_screen_tests[];
+extern CU_TestInfo	g_game_tests[];
 extern CU_TestInfo	g_cub_tests[];
 extern CU_TestInfo	g_plane_mngr_tests[];
 extern CU_TestInfo	g_plane_tests[];
@@ -33,8 +35,6 @@ extern CU_TestInfo	g_point_tests[];
 extern CU_TestInfo	g_dll_tests[];
 extern CU_TestInfo	g_parser_tests[];
 extern CU_TestInfo	g_collision_tests[];
-
-extern void	*g_mlx;
 
 // main
 int		init_suite(void);
@@ -75,6 +75,12 @@ void	test_map_validate_ext_invalid_line(void);
 void	test_map_validate_ext_bad_color(void);
 void	test_map_get_map_index(void);
 void	test_map_get_size(void);
+void	test_map_load_player(void);
+void	test_map_load_player_err_no_player(void);
+void	test_map_load_player_err_dup_player(void);
+void	test_map_is_closed(void);
+void	test_map_is_closed_err1(void);
+void	test_map_is_closed_err2(void);
 
 // player
 void	test_player_create_destroy(void);
@@ -103,5 +109,8 @@ void	test_cub_get_rgb(void);
 
 //collison
 void	test_check_collision(void);
+
+// screen
+void	test_screen_create_destroy(void);
 
 #endif

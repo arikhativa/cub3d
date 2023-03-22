@@ -29,5 +29,7 @@ typedef struct s_player
 t_error_code	player_create(t_player **ret);
 void			player_init(t_player *obj, t_point pos, t_direction dir);
 void			player_destroy(t_player **obj);
+t_bool			player_is_loaded(t_player *p);
+void			player_print(t_player *p);
 
 #endif

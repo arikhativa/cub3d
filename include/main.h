@@ -17,5 +17,6 @@
 # include "parser.h"
 # include "sprite.h"
 # include "map.h"
+# include "game.h"
 
 #endif

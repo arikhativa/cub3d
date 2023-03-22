@@ -22,3 +22,10 @@ t_error_code	map_validate(char **file)
 	err = cub_validate_map_at_bottom(file);
 	return (err);
 }
+
+t_error_code	map_post_load_validation(t_map *m)
+{
+	if (!map_is_closed(m))
+		return (EXT_MAP_OPEN);
+	return (SUCCESS);
+}

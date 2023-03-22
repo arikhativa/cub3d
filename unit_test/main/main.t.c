@@ -13,7 +13,6 @@
 #include "unit_test.h"
 
 static FILE	*g_temp_file = NULL;
-void	*g_mlx = NULL;
 
 int	init_suite(void)
 {
