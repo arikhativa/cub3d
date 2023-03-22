@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   class.c                                            :+:      :+:    :+:   */
+/*   sprite_mngr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/15 13:55:57 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/03/21 18:16:32 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	sprite_mngr_destroy(t_sprite_mngr **obj)
 	if (!obj || !*obj)
 		return ;
 	tmp = *obj;
-	if (tmp->sprites)
+	if (tmp->sprites[0])
 		sprite_mngr_clear(tmp);
 	ft_bzero(tmp, sizeof(t_sprite_mngr));
 	free(tmp);
