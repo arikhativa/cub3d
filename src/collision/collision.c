@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   collision.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 14:59:18 by ycarro            #+#    #+#             */
-/*   Updated: 2023/03/19 13:03:54 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/03/22 09:45:17 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "collision.h"
 
-t_bool	is_collides(t_ray *ray_data, char **map, t_point *collision)
+t_bool	is_collides(t_ray *ray_data, char **map, t_fpoint *collision)
 {
 	int	ray_num;
 

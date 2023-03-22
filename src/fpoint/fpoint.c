@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   class.c                                            :+:      :+:    :+:   */
+/*   fpoint.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/15 13:55:57 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/03/22 09:30:21 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,9 @@ t_point	fpoint_to_point(t_fpoint p)
 t_fpoint	point_to_fpoint(t_point p)
 {
 	return ((t_fpoint){(double)p.x, (double)p.y});
+}
+
+void		fpoint_print(t_fpoint p)
+{
+	printf("{x: %f, y: %f}", p.x, p.y);
 }

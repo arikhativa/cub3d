@@ -14,6 +14,7 @@
 # define RAY_H
 
 # include "point.h"
+# include "fpoint.h"
 # include "angle.h"
 
 # define POSITIVE	1
@@ -21,12 +22,12 @@
 
 typedef struct s_ray
 {
-	t_point	x_pos;
-	t_point	y_pos;
-	double	slope;
-	double	intercept;
-	t_point	incrementor;
-	t_angle	to_cast;
+	t_fpoint	x_pos;
+	t_fpoint	y_pos;
+	double		slope;
+	double		intercept;
+	t_point		incrementor;
+	t_angle		to_cast;
 }				t_ray;
 
 void	ray_increment(t_ray	*ray_data);
