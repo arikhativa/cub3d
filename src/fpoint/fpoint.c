@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fpoint.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/03/22 09:30:21 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/03/22 23:20:16 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_fpoint	point_to_fpoint(t_point p)
 	return ((t_fpoint){(double)p.x, (double)p.y});
 }
 
-void		fpoint_print(t_fpoint p)
+void	fpoint_print(t_fpoint p)
 {
 	printf("{x: %f, y: %f}", p.x, p.y);
 }
