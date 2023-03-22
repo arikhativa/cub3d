@@ -101,5 +101,13 @@ CU_SuiteInfo	g_suites[] = {
 	NULL,
 	g_screen_tests,
 },
+{
+	"fpoint",
+	init_suite,
+	clean_suite,
+	NULL,
+	NULL,
+	g_fpoint_tests,
+},
 	CU_SUITE_INFO_NULL,
 };
