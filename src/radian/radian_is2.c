@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_caster.h                                       :+:      :+:    :+:   */
+/*   radian_is2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/03/23 11:11:11 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/03/23 12:05:01 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RAY_CASTER_H
-# define RAY_CASTER_H
+#include "radian.h"
 
-# include <stdlib.h>
-
-# include "radian.h"
-# include "dda.h"
-# include "libft.h"
-# include "map.h"
-# include "error_code.h"
-
-typedef struct s_ray_caster
+t_bool	radian_is_east(double radian)
 {
-	int			num_of_rays;
-	t_player	*p;
-	t_map		*map;
-}				t_ray_caster;
+	radian = radian_set_boundaries(radian);
+	return (radian == 0);
+}
 
-t_error_code	ray_caster_create(t_ray_caster **ret);
-void			ray_caster_init(t_ray_caster *rc, int num_of_rays, t_player *p, t_map *map);
-void			ray_caster_destroy(t_ray_caster **obj);
-t_error_code	ray_caster_cast(t_ray_caster *rc);
+t_bool	radian_is_north(double radian)
+{
+	radian = radian_set_boundaries(radian);
+	return (radian == M_PI / 2);
+}
 
-#endif
+t_bool	radian_is_west(double radian)
+{
+	radian = radian_set_boundaries(radian);
+	return (radian == M_PI);
+}
+
+t_bool	radian_is_south(double radian)
+{
+	radian = radian_set_boundaries(radian);
+	return (radian == (3 * M_PI) / 2);
+}

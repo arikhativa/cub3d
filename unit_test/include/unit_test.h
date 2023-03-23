@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unit_test.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 13:56:02 by yoav              #+#    #+#             */
-/*   Updated: 2023/03/22 12:09:28 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/03/23 11:13:43 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define TEST_RES "unit_test_tmp.txt"
 
 extern CU_SuiteInfo	g_suites[];
+extern CU_TestInfo	g_dda_tests[];
 extern CU_TestInfo	g_fpoint_tests[];
 extern CU_TestInfo	g_screen_tests[];
 extern CU_TestInfo	g_game_tests[];
@@ -118,5 +119,8 @@ void	test_fpoint(void);
 void	test_fpoint_init(void);
 void	test_fpoint_to_point(void);
 void	test_point_to_fpoint(void);
+
+// dda
+void	test_dda_dda_set_incrementor(void);
 
 #endif

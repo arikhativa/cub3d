@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:10:14 by anonymous         #+#    #+#             */
-/*   Updated: 2023/03/22 09:33:51 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/03/23 11:22:34 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <math.h>
 
+# include "radian.h"
 # include "libft.h"
 # include "angle.h"
 # include "fpoint.h"

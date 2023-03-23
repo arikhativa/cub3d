@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   collision.t.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 13:59:44 by ycarro            #+#    #+#             */
-/*   Updated: 2023/03/22 12:40:13 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/03/23 11:20:29 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void    test_check_collision(void)
     ex_ray.x_pos = fpoint_init(0, 0);
     ex_ray.y_pos = fpoint_init(2, 2);
     collision = is_collides(&ex_ray, ex_map, &collider);
-    printf("Gives: %d\n", collision);
     CU_ASSERT_EQUAL(NO_COLLISION, collision);
     ex_ray.x_pos = fpoint_init(1, 1);
     ex_ray.y_pos = fpoint_init(0, 0);

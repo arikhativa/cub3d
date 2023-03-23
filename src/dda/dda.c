@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:10:14 by anonymous         #+#    #+#             */
-/*   Updated: 2023/03/23 06:47:13 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/03/23 12:08:27 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,25 @@ void	dda(char **map, t_player *p, t_ray *ray_data, t_fpoint *collision)
 
 void	dda_set_incrementor(t_ray *ray_data, double alpha)
 {
-	while (alpha > (2.0 * M_PI))
-		alpha -= (2.0 * M_PI);
-	if (alpha >= ((3.0 / 2.0) * M_PI))
+	t_direction	dir;
+
+	alpha = radian_set_boundaries(alpha);
+	dir = radian_get_direction(alpha);
+	if (NORTH == dir)
+		ray_data->incrementor = point_init(0, -1);
+	else if (SOUTH == dir)
+		ray_data->incrementor = point_init(0, 1);
+	else if (EAST == dir)
+		ray_data->incrementor = point_init(1, 0);
+	else if (WEST == dir)
+		ray_data->incrementor = point_init(-1, 0);
+	else if (NE == dir)
 		ray_data->incrementor = point_init(1, -1);
-	else if (alpha >= M_PI)
+	else if (NW == dir)
 		ray_data->incrementor = point_init(-1, -1);
-	else if (alpha >= ((1.0 / 2.0) * M_PI))
+	else if (SW == dir)
 		ray_data->incrementor = point_init(-1, 1);
-	else
+	else if (SE == dir)
 		ray_data->incrementor = point_init(1, 1);
 }
 

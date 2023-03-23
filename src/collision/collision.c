@@ -38,16 +38,10 @@ t_collision	check_in_range(t_ray *ray_data, char **map)
 
 	collider.x = ray_data->x_pos.x;
 	collider.y = ray_data->x_pos.y;
-	printf("collider X\n");
-	point_print(collider);
-	printf("\n");
 	if (map[collider.y][collider.x] == WALL_CHAR)
 		return (X_COLLISION);
 	collider.x = ray_data->y_pos.x;
 	collider.y = ray_data->y_pos.y;
-	printf("collider Y\n");
-	point_print(collider);
-	printf("\n");
 	if (map[collider.y][collider.x] == WALL_CHAR)
 		return (Y_COLLISION);
 	return (NO_COLLISION);

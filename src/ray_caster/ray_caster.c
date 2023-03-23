@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_caster.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/03/22 23:21:52 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/03/23 11:20:07 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_error_code	ray_caster_cast(t_ray_caster *rc)
 	t_ray		ray_data;
 	t_fpoint	collision;
 
-	angle_starting(&ray_data.to_cast, rc->p);
+	ray_data.to_cast.radians = radian(90);
 	dda(rc->map->map, rc->p, &ray_data, &collision);
 	printf("coll point:\n");
 	fpoint_print(collision);

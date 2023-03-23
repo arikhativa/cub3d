@@ -19,13 +19,6 @@ void	ray_increment(t_ray	*ray_data)
 		ray_data->x_pos.x += ray_data->incrementor.x;
 		ray_data->x_pos.y = (ray_data->slope * ray_data->x_pos.x \
 			+ ray_data->intercept);
-		printf("B\n");
-		printf("slope %f\n", ray_data->slope);
-		printf("intercept %f\n", ray_data->intercept);
-		printf("point : ");
-		fpoint_print(ray_data->x_pos);
-		printf("\n");
-
 	}
 	else
 	{
