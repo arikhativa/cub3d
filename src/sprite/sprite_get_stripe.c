@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_sprite.t.c                                    :+:      :+:    :+:   */
+/*   sprite.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 10:05:13 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/16 10:48:02 by yrabby           ###   ########.fr       */
+/*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
+/*   Updated: 2023/02/16 11:14:53 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "unit_test.h"
+#include "sprite.h"
 
-CU_TestInfo	g_sprite_tests[] = {
+int	sprite_get_stripe(t_sprite *s, double collision)
 {
-	"test_sprite_get_stripe",
-	test_sprite_get_stripe,
-},
-{
-	"test_sprite_create_destroy",
-	test_sprite_create_destroy,
-},
-{
-	"test_sprite_is_loaded",
-	test_sprite_is_loaded,
-},
-	CU_TEST_INFO_NULL,
-};
+	double	x;
+
+	x = remainder(collision, 1.0);
+	x = x * s->size.x;
+	return ((int)x);
+}

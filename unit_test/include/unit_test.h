@@ -89,6 +89,7 @@ void	test_player_create_destroy(void);
 // sprite
 void	test_sprite_create_destroy(void);
 void	test_sprite_is_loaded(void);
+void	test_sprite_get_stripe(void);
 
 // sprite_mngr
 void	test_sprite_mngr_create_destroy(void);
