@@ -13,12 +13,14 @@
 #ifndef SPRITE_H
 # define SPRITE_H
 
+# include <math.h>
 # include <stdlib.h>
 
 # include "mlx.h"
 # include "libft.h"
 # include "error_code.h"
 # include "macro.h"
+# include "fpoint.h"
 # include "point.h"
 # include "pixel.h"
 
@@ -40,5 +42,6 @@ t_bool			sprite_is_loaded(t_sprite *s);
 void			sprite_unload(t_sprite *s);
 void			sprite_destroy(t_sprite **obj);
 int				sprite_get_pixel_color(t_sprite *s, t_point pos);
+int				sprite_get_stripe(t_sprite *s, double collision);
 
 #endif
