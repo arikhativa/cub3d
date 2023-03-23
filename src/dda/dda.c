@@ -44,10 +44,29 @@ void	dda_set_incrementor(t_ray *ray_data, double alpha)
 		ray_data->incrementor = point_init(1, 1);
 }
 
+static void	init_slope(t_ray *ray_data, double alpha)
+{
+	t_direction	dir;
+
+	ray_data->slope.type = VALUE;
+	ray_data->slope.value = tan(alpha) * -1;
+	dir = radian_get_direction(alpha);
+	if (NORTH == dir)
+		ray_data->slope.type = NEG_INFI;
+	else if (SOUTH == dir)
+		ray_data->slope.type = INFI;
+	else if (EAST == dir)
+		ray_data->slope.type = ZERO;
+	else if (WEST == dir)
+		ray_data->slope.type = NEG_ZERO;
+}
+
+// TODO I added the -1 since our matrix if flipped (y axis is inverted)
 void	dda_set_ray_data(t_ray *ray_data, double alpha, t_player *player)
 {
-	ray_data->slope = tan(alpha);
-	ray_data->intercept = player->pos.y - (player->pos.x * ray_data->slope);
-	ray_data->x_pos = player->pos;
-	ray_data->y_pos = player->pos;
+	init_slope(ray_data, alpha);
+	ray_data->intercept = player->pos.y - \
+		(player->pos.x * ray_data->slope.value);
+	ray_data->x_pos = point_to_fpoint(player->pos);
+	ray_data->y_pos = point_to_fpoint(player->pos);
 }
