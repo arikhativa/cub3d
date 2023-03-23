@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   map_is_close.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/15 13:58:46 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/03/23 06:48:15 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,14 @@ t_bool	rec_is_bad_map(char **map, t_point pos)
 
 t_bool	map_is_closed(t_map *m)
 {
+	t_point	pos;
 	t_bool	ret;
 	char	ch;
 
-	ch = m->map[m->p->pos.y][m->p->pos.x];
-	m->map[m->p->pos.y][m->p->pos.x] = EMPTY_SPACE_CHAR;
-	ret = rec_is_bad_map(m->map, m->p->pos);
-	m->map[m->p->pos.y][m->p->pos.x] = ch;
+	pos = fpoint_to_point(m->p->pos);
+	ch = m->map[pos.y][pos.x];
+	m->map[pos.y][pos.x] = EMPTY_SPACE_CHAR;
+	ret = rec_is_bad_map(m->map, pos);
+	m->map[pos.y][pos.x] = ch;
 	return (!ret);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   collision.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 14:59:18 by ycarro            #+#    #+#             */
-/*   Updated: 2023/03/22 23:13:50 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/03/23 07:02:59 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,16 @@ t_collision	check_in_range(t_ray *ray_data, char **map)
 
 	collider.x = ray_data->x_pos.x;
 	collider.y = ray_data->x_pos.y;
+	printf("collider X\n");
+	point_print(collider);
+	printf("\n");
 	if (map[collider.y][collider.x] == WALL_CHAR)
 		return (X_COLLISION);
 	collider.x = ray_data->y_pos.x;
 	collider.y = ray_data->y_pos.y;
+	printf("collider Y\n");
+	point_print(collider);
+	printf("\n");
 	if (map[collider.y][collider.x] == WALL_CHAR)
 		return (Y_COLLISION);
 	return (NO_COLLISION);

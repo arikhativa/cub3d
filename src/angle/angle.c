@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   angle.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:11:45 by ycarro            #+#    #+#             */
-/*   Updated: 2023/02/28 12:23:58 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/03/23 07:12:40 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void	angle_starting(t_angle *angle, t_player *player)
 {
 	if (player->dir == NORTH)
-		angle->radians = ((3.0 / 2.0) * M_PI);
+		angle->radians = M_PI / 2);
 	if (player->dir == SOUTH)
-		angle->radians = (2.0 * M_PI);
+		angle->radians = (1.5 * M_PI);
 	if (player->dir == EAST)
-		angle->radians = ((1.0 / 2.0) * M_PI);
+		angle->radians = 0;
 	if (player->dir == WEST)
 		angle->radians = M_PI;
 }

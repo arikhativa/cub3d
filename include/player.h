@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/15 13:46:21 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/03/23 06:46:33 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@
 # include "libft.h"
 # include "error_code.h"
 # include "direction.h"
+# include "fpoint.h"
 # include "point.h"
 
 typedef struct s_player
 {
-	t_point		pos;
+	t_fpoint	pos;
 	t_direction	dir;
 }				t_player;
 

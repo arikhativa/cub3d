@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:10:14 by anonymous         #+#    #+#             */
-/*   Updated: 2023/03/22 23:17:02 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/03/23 06:47:13 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ void	dda_set_ray_data(t_ray *ray_data, double alpha, t_player *player)
 {
 	ray_data->slope = tan(alpha);
 	ray_data->intercept = player->pos.y - (player->pos.x * ray_data->slope);
-	ray_data->x_pos = point_to_fpoint(player->pos);
-	ray_data->y_pos = point_to_fpoint(player->pos);
+	ray_data->x_pos = player->pos;
+	ray_data->y_pos = player->pos;
 }
