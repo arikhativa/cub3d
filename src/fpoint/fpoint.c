@@ -31,3 +31,8 @@ t_fpoint	point_to_fpoint(t_point p)
 {
 	return ((t_fpoint){(double)p.x, (double)p.y});
 }
+
+void	fpoint_print(t_fpoint p)
+{
+	printf("{x: %f, y: %f}", p.x, p.y);
+}

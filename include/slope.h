@@ -10,21 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FPOINT_H
-# define FPOINT_H
+#ifndef SLOPE_H
+# define SLOPE_H
 
-# include "point.h"
-
-typedef struct s_fpoint
+typedef enum e_slope_type
 {
-	double	x;
-	double	y;
-}				t_fpoint;
+	ZERO,
+	INFI,
+	NEG_ZERO,
+	NEG_INFI,
+	VALUE,
+}	t_slope_type;
 
-t_fpoint	fpoint_init(double x, double y);
-t_fpoint	fpoint_copy(t_fpoint src);
-t_point		fpoint_to_point(t_fpoint p);
-t_fpoint	point_to_fpoint(t_point p);
-void		fpoint_print(t_fpoint p);
+typedef struct s_slope
+{
+	t_slope_type	type;
+	double			value;
+}	t_slope;
 
 #endif

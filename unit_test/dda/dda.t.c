@@ -13,7 +13,7 @@
 #include "dda.h"
 #include "unit_test.h"
 
-void	test_dda_dda_set_incrementor(void)
+void	test_dda_set_incrementor(void)
 {
 	t_ray	r = {0};
 	double	rad = radian(0);
