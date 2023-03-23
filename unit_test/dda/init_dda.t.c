@@ -1,37 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   direction.h                                        :+:      :+:    :+:   */
+/*   init_dda.t.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 13:32:07 by yrabby            #+#    #+#             */
-/*   Updated: 2023/03/23 11:25:25 by yrabby           ###   ########.fr       */
+/*   Created: 2023/02/14 10:05:13 by yrabby            #+#    #+#             */
+/*   Updated: 2023/03/23 11:13:43 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DIRECTION_H
-# define DIRECTION_H
+#include "unit_test.h"
 
-# define NORTH_CHAR	'N'
-# define SOUTH_CHAR	'S'
-# define WEST_CHAR	'W'
-# define EAST_CHAR	'E'
-
-typedef enum e_direction
+CU_TestInfo	g_dda_tests[] = {
 {
-	NORTH = 0,
-	SOUTH = 1,
-	EAST = 2,
-	WEST = 3,
-	NE,
-	NW,
-	SE,
-	SW,
-	DIR_INVALID,
-}	t_direction;
-
-t_direction		direction_char_to_dir(char c);
-char			direction_dir_to_char(t_direction dir);
-
-#endif
+	"test_dda_dda_set_incrementor",
+	test_dda_dda_set_incrementor,
+},
+	CU_TEST_INFO_NULL,
+};
