@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_suites.t.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:22:13 by yoav              #+#    #+#             */
-/*   Updated: 2023/02/15 14:01:51 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/03/22 12:10:28 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,14 @@ CU_SuiteInfo	g_suites[] = {
 	NULL,
 	NULL,
 	g_screen_tests,
+},
+{
+	"dda",
+	init_suite,
+	clean_suite,
+	NULL,
+	NULL,
+	g_dda_tests,
 },
 	CU_SUITE_INFO_NULL,
 };
