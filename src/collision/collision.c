@@ -6,13 +6,13 @@
 /*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 14:59:18 by ycarro            #+#    #+#             */
-/*   Updated: 2023/03/24 17:06:27 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/03/24 17:18:39 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "collision.h"
 
-int	is_collides(t_ray *ray_data, char **map, t_point *collision)
+int	is_collides(t_ray *ray_data, char **map, t_fpoint *collision)
 {
 	int	ray_num;
 
