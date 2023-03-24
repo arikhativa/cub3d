@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:10:14 by anonymous         #+#    #+#             */
-/*   Updated: 2023/02/28 13:58:10 by anonymous        ###   ########.fr       */
+/*   Updated: 2023/03/24 17:01:53 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@
 # include "radian.h"
 # include "libft.h"
 # include "angle.h"
-# include "point.h"
+# include "fpoint.h"
 # include "ray.h"
 # include "collision.h"
 
-void	dda(char **map, t_player *p, t_ray	*ray_data, t_point *collision);
+void	dda(char **map, t_player *p, t_ray	*ray_data, t_fpoint *collision);
 void	dda_set_incrementor(t_ray *ray_data, double alpha);
 void	dda_set_ray_data(t_ray *ray_data, double alpha, t_player *player);
 

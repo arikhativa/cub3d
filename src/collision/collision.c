@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   collision.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 14:59:18 by ycarro            #+#    #+#             */
-/*   Updated: 2023/03/19 13:03:54 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/03/24 17:18:39 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "collision.h"
 
-t_bool	is_collides(t_ray *ray_data, char **map, t_point *collision)
+int	is_collides(t_ray *ray_data, char **map, t_fpoint *collision)
 {
 	int	ray_num;
 
@@ -21,15 +21,15 @@ t_bool	is_collides(t_ray *ray_data, char **map, t_point *collision)
 	{
 		collision->x = ray_data->x_pos.x;
 		collision->y = ray_data->x_pos.y;
-		return (TRUE);
+		return (X_COLLISION);
 	}
 	if (ray_num == 1)
 	{
 		collision->x = ray_data->y_pos.x;
 		collision->y = ray_data->y_pos.y;
-		return (TRUE);
+		return (Y_COLLISION);
 	}
-	return (FALSE);
+	return (NO_COLLISION);
 }
 
 t_collision	check_in_range(t_ray *ray_data, char **map)
@@ -38,11 +38,11 @@ t_collision	check_in_range(t_ray *ray_data, char **map)
 
 	collider.x = ray_data->x_pos.x;
 	collider.y = ray_data->x_pos.y;
-	if (map[collider.x][collider.y] == WALL_CHAR)
+	if (map[collider.y][collider.x] == WALL_CHAR)
 		return (X_COLLISION);
 	collider.x = ray_data->y_pos.x;
 	collider.y = ray_data->y_pos.y;
-	if (map[collider.x][collider.y] == WALL_CHAR)
+	if (map[collider.y][collider.x] == WALL_CHAR)
 		return (Y_COLLISION);
 	return (NO_COLLISION);
 }
