@@ -6,10 +6,9 @@
 /*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/03/24 17:03:28 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/03/24 17:24:08 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef FPOINT_H
 # define FPOINT_H
