@@ -24,6 +24,7 @@ t_fpoint	fpoint_copy(t_fpoint src)
 
 t_point	fpoint_to_point(t_fpoint p)
 {
+	// return ((t_point){(int)round(p.x), (int)round(p.y)});
 	return ((t_point){(int)p.x, (int)p.y});
 }
 
@@ -34,5 +35,5 @@ t_fpoint	point_to_fpoint(t_point p)
 
 void	fpoint_print(t_fpoint p)
 {
-	printf("{x: %f, y: %f}", p.x, p.y);
+	printf("{x: %lf, y: %lf}", p.x, p.y);
 }

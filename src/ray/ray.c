@@ -27,11 +27,13 @@ void	ray_increment(t_ray	*ray_data)
 			ray_data->y_pos.y += ray_data->incrementor.y;
 			return ;
 		}
-		ray_data->y_pos.x += ray_data->incrementor.y;
-		ray_data->y_pos.y = (ray_data->slope.value * ray_data->y_pos.x \
-			+ ray_data->intercept);
+		// ray_data->y_pos.x += ray_data->incrementor.y;
+		// ray_data->y_pos.y = (ray_data->slope.value * ray_data->y_pos.x + ray_data->intercept);
+		ray_data->y_pos.y += ray_data->incrementor.y;
+		ray_data->y_pos.x = (ray_data->slope.value * ray_data->y_pos.y 	+ ray_data->intercept);
 	}
 }
+
 
 t_bool	should_inc_x(t_ray *ray_data)
 {

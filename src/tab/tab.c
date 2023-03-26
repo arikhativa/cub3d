@@ -12,6 +12,23 @@
 
 #include "tab.h"
 
+void	tab_print_nl_flip(char **tab)
+{
+	int	i;
+
+	i = 0;
+	if (tab)
+	{
+		while (*(tab + i))
+			i++;
+		while (i > 0)
+		{
+			printf("%s\n", *(tab + i - 1));
+			--i;
+		}
+	}
+}
+
 void	tab_print_nl(char **input_table)
 {
 	int	i;

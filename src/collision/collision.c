@@ -17,7 +17,7 @@ int	is_collides(t_ray *ray_data, char **map, t_fpoint *collision)
 	int	ray_num;
 
 	ray_num = check_in_range(ray_data, map);
-	printf("ray_num: %d\n", ray_num);
+	// printf("ray_num: %d\n", ray_num);
 	if (ray_num == 0)
 	{
 		collision->x = ray_data->x_pos.x;
@@ -33,22 +33,24 @@ int	is_collides(t_ray *ray_data, char **map, t_fpoint *collision)
 	return (NO_COLLISION);
 }
 
+#include "tab.h"
+
 t_collision	check_in_range(t_ray *ray_data, char **map)
 {
 	t_point	collider;
 
+	collider = fpoint_to_point(ray_data->x_pos);
+	// printf(" ---- \n");
 	// printf("ray pos x: ");
-	// fpoint_print(ray_data->x_pos);
+	// point_print(collider);
 	// printf("\n");
-	printf("ray pos y: ");
-	fpoint_print(ray_data->y_pos);
-	printf("\n");
-	collider.x = ray_data->x_pos.x;
-	collider.y = ray_data->x_pos.y;
 	if (map[collider.y][collider.x] == WALL_CHAR)
 		return (X_COLLISION);
-	collider.x = ray_data->y_pos.x;
-	collider.y = ray_data->y_pos.y;
+	collider = fpoint_to_point(ray_data->y_pos);
+	// printf("ray pos y: ");
+	// point_print(collider);
+	// printf("\n");
+	// printf(" ---- \n");
 	if (map[collider.y][collider.x] == WALL_CHAR)
 		return (Y_COLLISION);
 	return (NO_COLLISION);

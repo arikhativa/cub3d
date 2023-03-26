@@ -27,5 +27,6 @@ void			tab_deep_destroy(char ***t);
 void			tab_shallow_destroy(char ***t);
 t_error_code	tab_add(char ***tab, char *s);
 size_t			tab_count(char **t);
+void			tab_print_nl_flip(char **tab);
 
 #endif

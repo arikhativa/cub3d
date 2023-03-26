@@ -53,3 +53,24 @@ t_direction	radian_get_direction(double radian)
 		return (SW);
 	return (DIR_INVALID);
 }
+
+t_direction	radian_get_perfect_direction(double radian)
+{
+	if (radian_is_north(radian))
+		return (NORTH);
+	else if (radian_is_east(radian))
+		return (EAST);
+	else if (radian_is_south(radian))
+		return (SOUTH);
+	else if (radian_is_west(radian))
+		return (WEST);
+	else if (radian_is_perfect_north_east(radian))
+		return (PERFECT_NE);
+	else if (radian_is_perfect_north_west(radian))
+		return (PERFECT_NW);
+	else if (radian_is_perfect_south_east(radian))
+		return (PERFECT_SE);
+	else if (radian_is_perfect_south_west(radian))
+		return (PERFECT_SW);
+	return (DIR_INVALID);
+}

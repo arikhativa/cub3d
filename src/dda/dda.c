@@ -16,6 +16,7 @@ void	dda(char **map, t_player *p, t_ray *ray_data, t_fpoint *collision)
 {
 	dda_set_incrementor(ray_data, ray_data->to_cast.radians);
 	dda_set_ray_data(ray_data, ray_data->to_cast.radians, p);
+	// ray_print(ray_data);
 	while (is_collides(ray_data, map, collision) == NO_COLLISION)
 		ray_increment(ray_data);
 }
@@ -50,7 +51,7 @@ static void	init_slope(t_ray *ray_data, double alpha)
 
 	ray_data->slope.type = VALUE;
 	ray_data->slope.value = tan(alpha);
-	dir = radian_get_direction(alpha);
+	dir = radian_get_perfect_direction(alpha);
 	if (NORTH == dir)
 		ray_data->slope.type = INFI;
 	else if (SOUTH == dir)
@@ -59,6 +60,14 @@ static void	init_slope(t_ray *ray_data, double alpha)
 		ray_data->slope.type = ZERO;
 	else if (WEST == dir)
 		ray_data->slope.type = NEG_ZERO;
+	else if (PERFECT_NE == dir)
+		ray_data->slope.value = 1;
+	else if (PERFECT_NW == dir)
+		ray_data->slope.value = -1;
+	else if (PERFECT_SW == dir)
+		ray_data->slope.value = 1;
+	else if (PERFECT_SE == dir)
+		ray_data->slope.value = -1;
 }
 
 void	dda_set_ray_data(t_ray *ray_data, double alpha, t_player *player)

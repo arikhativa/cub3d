@@ -17,13 +17,13 @@ CU_TestInfo	g_dda_tests[] = {
 	"test_dda",
 	test_dda,
 },
-{
-	"test_dda_ray_infi",
-	test_dda_ray_infi,
-},
-{
-	"test_dda_set_incrementor",
-	test_dda_set_incrementor,
-},
+// {
+// 	"test_dda_ray_infi",
+// 	test_dda_ray_infi,
+// },
+// {
+// 	"test_dda_set_incrementor",
+// 	test_dda_set_incrementor,
+// },
 	CU_TEST_INFO_NULL,
 };

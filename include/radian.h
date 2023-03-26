@@ -18,6 +18,7 @@
 # include "direction.h"
 
 double		radian(double degree);
+t_direction	radian_get_perfect_direction(double radian);
 t_direction	radian_get_direction(double radian);
 double		radian_set_boundaries(double radian);
 t_direction	radian_get_dir(double radian);
@@ -29,5 +30,9 @@ t_bool		radian_is_north_east(double radian);
 t_bool		radian_is_north_west(double radian);
 t_bool		radian_is_south_east(double radian);
 t_bool		radian_is_south_west(double radian);
+t_bool		radian_is_perfect_north_east(double radian);
+t_bool		radian_is_perfect_north_west(double radian);
+t_bool		radian_is_perfect_south_west(double radian);
+t_bool		radian_is_perfect_south_east(double radian);
 
 #endif
