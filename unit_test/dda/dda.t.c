@@ -25,17 +25,17 @@ void	test_dda_set_incrementor(void)
 	rad = radian(45);
 	dda_set_incrementor(&r, rad);
 	CU_ASSERT_EQUAL(r.incrementor.x, 1);
-	CU_ASSERT_EQUAL(r.incrementor.y, -1);
+	CU_ASSERT_EQUAL(r.incrementor.y, 1);
 
 	rad = radian(90);
 	dda_set_incrementor(&r, rad);
 	CU_ASSERT_EQUAL(r.incrementor.x, 0);
-	CU_ASSERT_EQUAL(r.incrementor.y, -1);
+	CU_ASSERT_EQUAL(r.incrementor.y, 1);
 
 	rad = radian(135);
 	dda_set_incrementor(&r, rad);
 	CU_ASSERT_EQUAL(r.incrementor.x, -1);
-	CU_ASSERT_EQUAL(r.incrementor.y, -1);
+	CU_ASSERT_EQUAL(r.incrementor.y, 1);
 
 	rad = radian(180);
 	dda_set_incrementor(&r, rad);
@@ -45,17 +45,17 @@ void	test_dda_set_incrementor(void)
 	rad = radian(180 + 45);
 	dda_set_incrementor(&r, rad);
 	CU_ASSERT_EQUAL(r.incrementor.x, -1);
-	CU_ASSERT_EQUAL(r.incrementor.y, 1);
+	CU_ASSERT_EQUAL(r.incrementor.y, -1);
 
 	rad = radian(270);
 	dda_set_incrementor(&r, rad);
 	CU_ASSERT_EQUAL(r.incrementor.x, 0);
-	CU_ASSERT_EQUAL(r.incrementor.y, 1);
+	CU_ASSERT_EQUAL(r.incrementor.y, -1);
 
 	rad = radian(270 + 45);
 	dda_set_incrementor(&r, rad);
 	CU_ASSERT_EQUAL(r.incrementor.x, 1);
-	CU_ASSERT_EQUAL(r.incrementor.y, 1);
+	CU_ASSERT_EQUAL(r.incrementor.y, -1);
 
 	rad = radian(360);
 	dda_set_incrementor(&r, rad);
@@ -65,10 +65,10 @@ void	test_dda_set_incrementor(void)
 	rad = radian(360 + 1);
 	dda_set_incrementor(&r, rad);
 	CU_ASSERT_EQUAL(r.incrementor.x, 1);
-	CU_ASSERT_EQUAL(r.incrementor.y, -1);
+	CU_ASSERT_EQUAL(r.incrementor.y, 1);
 
 	rad = radian(-1);
 	dda_set_incrementor(&r, rad);
 	CU_ASSERT_EQUAL(r.incrementor.x, 1);
-	CU_ASSERT_EQUAL(r.incrementor.y, 1);
+	CU_ASSERT_EQUAL(r.incrementor.y, -1);
 }

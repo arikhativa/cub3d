@@ -35,7 +35,7 @@ void	test_dda_ray_infi(void)
 	ray_increment(&r);
 	ray_increment(&r);
 	CU_ASSERT_EQUAL(r.y_pos.x, 4);
-	CU_ASSERT_EQUAL(r.y_pos.y, 1);
+	CU_ASSERT_EQUAL(r.y_pos.y, 7);
 	
 	p.pos = point_init(11, 11);
 	r.to_cast.radians = radian(180);
@@ -55,5 +55,5 @@ void	test_dda_ray_infi(void)
 	ray_increment(&r);
 	ray_increment(&r);
 	CU_ASSERT_EQUAL(r.y_pos.x, 5);
-	CU_ASSERT_EQUAL(r.y_pos.y, 63);
+	CU_ASSERT_EQUAL(r.y_pos.y, 57);
 }
