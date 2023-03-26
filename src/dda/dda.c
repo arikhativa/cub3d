@@ -16,7 +16,6 @@ void	dda(char **map, t_player *p, t_ray *ray_data, t_fpoint *collision)
 {
 	dda_set_incrementor(ray_data, ray_data->to_cast.radians);
 	dda_set_ray_data(ray_data, ray_data->to_cast.radians, p);
-	// ray_print(ray_data);
 	while (is_collides(ray_data, map, collision) == NO_COLLISION)
 		ray_increment(ray_data);
 }
