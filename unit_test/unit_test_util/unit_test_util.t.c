@@ -42,6 +42,27 @@ char	**util_create_tab(int size, ...)
 	return (tab);
 }
 
+char	**util_create_rev_map(int size, ...)
+{
+	va_list			list;
+	char			**tab;
+	char			*s;
+	int				i;
+
+	va_start(list, size);
+	if (SUCCESS != tab_create(&tab, size))
+		CU_ASSERT_FATAL(CU_FALSE);
+	i = 0;
+	while (i < size)
+	{
+		s = va_arg(list, char *);
+		tab[size - i - 1] = copy_str(s);
+		++i;
+	}
+	va_end(list);
+	return (tab);
+}
+
 void	util_check_file_and_remove(char *filename)
 {
 	if (SUCCESS == access(filename, F_OK))

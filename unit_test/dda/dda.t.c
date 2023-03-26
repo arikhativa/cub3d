@@ -12,6 +12,7 @@
 
 #include "dda.h"
 #include "unit_test.h"
+#include "unit_test_util.h"
 
 void	test_dda_set_incrementor(void)
 {
@@ -71,4 +72,50 @@ void	test_dda_set_incrementor(void)
 	dda_set_incrementor(&r, rad);
 	CU_ASSERT_EQUAL(r.incrementor.x, 1);
 	CU_ASSERT_EQUAL(r.incrementor.y, -1);
+}
+
+
+void	test_dda1(void)
+{
+	t_player	p = {0};
+	t_ray	r = {0};
+	t_fpoint	collision = {0};
+	char **map = util_create_rev_map(2,
+		"1",
+		"N"
+	);
+
+	p.pos = point_init(0, 0);
+	r.to_cast.radians = radian(90);
+	dda(map, &p, &r, &collision);
+	CU_ASSERT_EQUAL(collision.x, 0);
+	CU_ASSERT_EQUAL(collision.y, 1);
+	tab_deep_destroy(&map);
+}
+
+void	test_dda2(void)
+{
+	t_player	p = {0};
+	t_ray	r = {0};
+	t_fpoint	collision = {0};
+	char **map = util_create_rev_map(2,
+		"1",
+		"0",
+		"N"
+	);
+
+	p.pos = point_init(0, 0);
+	r.to_cast.radians = radian(90);
+	collision = fpoint_init(0, 0);
+	dda(map, &p, &r, &collision);
+	CU_ASSERT_EQUAL(collision.x, 0);
+	CU_ASSERT_EQUAL(collision.y, 2);
+	fpoint_print(collision);
+	tab_deep_destroy(&map);
+}
+
+void	test_dda(void)
+{
+	// test_dda1();
+	test_dda2();
 }

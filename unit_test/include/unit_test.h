@@ -117,6 +117,7 @@ void	test_fpoint_to_point(void);
 void	test_point_to_fpoint(void);
 
 // dda
+void	test_dda(void);
 void	test_dda_ray_infi(void);
 void	test_dda_set_incrementor(void);
 
