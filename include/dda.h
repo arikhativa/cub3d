@@ -25,7 +25,5 @@
 # include "collision.h"
 
 void	dda(char **map, t_player *p, t_ray	*ray_data, t_fpoint *collision);
-void	dda_set_incrementor(t_ray *ray_data, double alpha);
-void	dda_set_ray_data(t_ray *ray_data, double alpha, t_player *player);
 
 #endif

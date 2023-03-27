@@ -117,5 +117,13 @@ CU_SuiteInfo	g_suites[] = {
 	NULL,
 	g_fpoint_tests,
 },
+{
+	"ray",
+	init_suite,
+	clean_suite,
+	NULL,
+	NULL,
+	g_ray_tests,
+},
 	CU_SUITE_INFO_NULL,
 };

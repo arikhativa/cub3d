@@ -200,7 +200,7 @@ void	test_dda_perfect_sw(void)
 	tab_deep_destroy(&map);
 }
 
-void	test_dda_degree_10(void)
+void	test_dda_degree_63(void)
 {
 	t_player	p = {0};
 	t_ray	r = {0};
@@ -209,11 +209,11 @@ void	test_dda_degree_10(void)
 	char **map = util_create_rev_map(
 		7,
 		"11111111",
-		"10010001",
-		"10000001",
-		"10000011",
-		"01001111",
-		"00111111",
+		"11010001",
+		"11010001",
+		"10100011",
+		"10101111",
+		"11011111",
 		"N1111111"
 	);
 
@@ -221,11 +221,11 @@ void	test_dda_degree_10(void)
 	r.to_cast.radians = radian(63.434948822922);
 	dda(map, &p, &r, &collision);
 	test = fpoint_to_point(collision);
-	// CU_ASSERT_EQUAL(test.x, 0);
-	// CU_ASSERT_EQUAL(test.y, 0);
-	fpoint_print(collision);
-	printf("\t");
+	printf("ret:");
 	point_print(test);
+	printf("\n");
+	CU_ASSERT_EQUAL(test.x, 3);
+	CU_ASSERT_EQUAL(test.y, 6);
 	tab_deep_destroy(&map);
 }
 
@@ -239,5 +239,5 @@ void	test_dda(void)
 	// test_dda_perfect_nw();
 	// test_dda_perfect_se();
 	// test_dda_perfect_sw();
-	test_dda_degree_10();
+	// test_dda_degree_63();
 }

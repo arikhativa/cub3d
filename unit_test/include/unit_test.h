@@ -22,6 +22,7 @@
 # define TEST_RES "unit_test_tmp.txt"
 
 extern CU_SuiteInfo	g_suites[];
+extern CU_TestInfo	g_ray_tests[];
 extern CU_TestInfo	g_fpoint_tests[];
 extern CU_TestInfo	g_dda_tests[];
 extern CU_TestInfo	g_screen_tests[];
@@ -119,6 +120,9 @@ void	test_point_to_fpoint(void);
 // dda
 void	test_dda(void);
 void	test_dda_ray_infi(void);
-void	test_dda_set_incrementor(void);
+void	test_ray_set_incrementor(void);
+
+// ray
+void	test_ray_inc(void);
 
 #endif

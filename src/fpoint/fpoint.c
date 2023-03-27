@@ -32,19 +32,14 @@ t_point	fpoint_to_point(t_fpoint p)
 	result.x = (int)p.x;
 	result.y = (int)p.y;
 
+	aa = round(p.x);
+	remainder = aa - p.x;
+	if (remainder < 0.01)
+		result.x = (int)round(p.x);
 	aa = round(p.y);
 	remainder = aa - p.y;
 	if (remainder < 0.01)
-	{
-		printf("aa: %d\n", aa);
-		printf("px: %lf\n", p.y);
-		printf("remainder: %lf\n", remainder);
 		result.y = (int)round(p.y);
-	}
-
-	// remainder = p.y - (int)p.y;
-	// if (remainder < 0.01)
-	// 	result.y = (int)round(p.y);
 	return (result);
 }
 

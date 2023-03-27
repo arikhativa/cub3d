@@ -19,8 +19,8 @@ void	test_dda_ray_infi(void)
 	t_player p = {0};
 
 	r.to_cast.radians = radian(0);
-	dda_set_incrementor(&r, r.to_cast.radians);
-	dda_set_ray_data(&r, r.to_cast.radians, &p);
+	ray_set_incrementor(&r, r.to_cast.radians);
+	rey_init(&r, r.to_cast.radians, p.pos);
 	ray_increment(&r);
 	ray_increment(&r);
 	ray_increment(&r);
@@ -29,8 +29,8 @@ void	test_dda_ray_infi(void)
 	
 	p.pos = point_init(4, 4);
 	r.to_cast.radians = radian(90);
-	dda_set_incrementor(&r, r.to_cast.radians);
-	dda_set_ray_data(&r, r.to_cast.radians, &p);
+	ray_set_incrementor(&r, r.to_cast.radians);
+	rey_init(&r, r.to_cast.radians, p.pos);
 	ray_increment(&r);
 	ray_increment(&r);
 	ray_increment(&r);
@@ -39,8 +39,8 @@ void	test_dda_ray_infi(void)
 	
 	p.pos = point_init(11, 11);
 	r.to_cast.radians = radian(180);
-	dda_set_incrementor(&r, r.to_cast.radians);
-	dda_set_ray_data(&r, r.to_cast.radians, &p);
+	ray_set_incrementor(&r, r.to_cast.radians);
+	rey_init(&r, r.to_cast.radians, p.pos);
 	ray_increment(&r);
 	ray_increment(&r);
 	ray_increment(&r);
@@ -49,8 +49,8 @@ void	test_dda_ray_infi(void)
 
 	p.pos = point_init(5, 60);
 	r.to_cast.radians = radian(270);
-	dda_set_incrementor(&r, r.to_cast.radians);
-	dda_set_ray_data(&r, r.to_cast.radians, &p);
+	ray_set_incrementor(&r, r.to_cast.radians);
+	rey_init(&r, r.to_cast.radians, p.pos);
 	ray_increment(&r);
 	ray_increment(&r);
 	ray_increment(&r);
