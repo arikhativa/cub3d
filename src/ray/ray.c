@@ -126,12 +126,12 @@ static void	init_slope(t_ray *ray_data, double alpha)
 		ray_data->slope.value = -1;
 }
 
-void	rey_init(t_ray *ray_data, double alpha, t_point player_pos)
+void	rey_init(t_ray *ray_data, double alpha, t_fpoint player_pos)
 {
 	init_slope(ray_data, alpha);
 	ray_data->intercept = player_pos.y - \
 		(player_pos.x * ray_data->slope.value);
-	ray_data->x_pos = point_to_fpoint(player_pos);
-	ray_data->y_pos = point_to_fpoint(player_pos);
+	ray_data->x_pos = fpoint_copy(player_pos);
+	ray_data->y_pos = fpoint_copy(player_pos);
 }
 

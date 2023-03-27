@@ -38,7 +38,7 @@ t_bool		should_inc_x(t_ray *ray_data);
 void		ray_print(t_ray *r);
 t_fpoint	increment_x(t_ray *ray_data);
 t_fpoint	increment_y(t_ray *ray_data);
-void		rey_init(t_ray *ray_data, double alpha, t_point player_pos);
+void		rey_init(t_ray *ray_data, double alpha, t_fpoint player_pos);
 
 
 #endif

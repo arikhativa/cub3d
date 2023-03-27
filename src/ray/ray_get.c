@@ -17,7 +17,7 @@ t_fpoint	increment_y(t_ray *ray_data)
 	t_fpoint	ret;
 
 	ret = fpoint_copy(ray_data->y_pos);
-	ret.y += ray_data->incrementor.y;
+	ret.y += (double)ray_data->incrementor.y;
 	if (INFI != ray_data->slope.type && NEG_INFI != ray_data->slope.type)
 		ret.x += (ray_data->incrementor.y / ray_data->slope.value);
 	return (ret);

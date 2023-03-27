@@ -123,6 +123,7 @@ void	test_dda_ray_infi(void);
 void	test_ray_set_incrementor(void);
 
 // ray
-void	test_ray_inc(void);
+void	test_ray_inc_y(void);
+void	test_ray_inc_x(void);
 
 #endif

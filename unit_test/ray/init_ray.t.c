@@ -14,8 +14,12 @@
 
 CU_TestInfo	g_ray_tests[] = {
 {
-	"test_ray_inc",
-	test_ray_inc,
+	"test_ray_inc_x",
+	test_ray_inc_x,
+},
+{
+	"test_ray_inc_y",
+	test_ray_inc_y,
 },
 	CU_TEST_INFO_NULL,
 };
