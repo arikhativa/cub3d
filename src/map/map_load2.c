@@ -47,16 +47,18 @@ static void	fill_line(char *map, char *file, int size)
 
 t_error_code	map_load_map(t_map *m)
 {
-	int		file_index;
-	int		i;
+	int	file_index;
+	int	i;
+	int	map_i;
 
 	file_index = map_get_map_index(m->file);
 	if (ERROR == file_index)
 		return (ERROR);
 	i = 0;
+	map_i = m->size.y - 1;
 	while (m->file[file_index + i])
 	{
-		fill_line(m->map[i], m->file[file_index + i], m->size.x);
+		fill_line(m->map[map_i - i], m->file[file_index + i], m->size.x);
 		++i;
 	}
 	return (SUCCESS);
