@@ -13,6 +13,7 @@
 #ifndef RAY_H
 # define RAY_H
 
+# include "radian.h"
 # include "fpoint.h"
 # include "point.h"
 # include "angle.h"
@@ -31,8 +32,12 @@ typedef struct s_ray
 	t_angle		to_cast;
 }				t_ray;
 
-void	ray_increment(t_ray	*ray_data);
-t_bool	should_inc_x(t_ray *ray_data);
-void	ray_print(t_ray *r);
+void		ray_increment(t_ray	*ray_data);
+t_bool		should_inc_x(t_ray *ray_data);
+void		ray_print(t_ray *r);
+void		ray_set_incrementor(t_ray *ray_data, double alpha);
+t_fpoint	ray_get_next_x(t_ray *ray_data);
+t_fpoint	ray_get_next_y(t_ray *ray_data);
+void		rey_init(t_ray *ray_data, double alpha, t_fpoint player_pos);
 
 #endif

@@ -14,58 +14,8 @@
 
 void	dda(char **map, t_player *p, t_ray *ray_data, t_fpoint *collision)
 {
-	dda_set_incrementor(ray_data, ray_data->to_cast.radians);
-	dda_set_ray_data(ray_data, ray_data->to_cast.radians, p);
+	ray_set_incrementor(ray_data, ray_data->to_cast.radians);
+	rey_init(ray_data, ray_data->to_cast.radians, point_to_fpoint(p->pos));
 	while (is_collides(ray_data, map, collision) == NO_COLLISION)
 		ray_increment(ray_data);
-}
-
-void	dda_set_incrementor(t_ray *ray_data, double alpha)
-{
-	t_direction	dir;
-
-	alpha = radian_set_boundaries(alpha);
-	dir = radian_get_direction(alpha);
-	if (NORTH == dir)
-		ray_data->incrementor = point_init(0, 1);
-	else if (SOUTH == dir)
-		ray_data->incrementor = point_init(0, -1);
-	else if (EAST == dir)
-		ray_data->incrementor = point_init(1, 0);
-	else if (WEST == dir)
-		ray_data->incrementor = point_init(-1, 0);
-	else if (NE == dir)
-		ray_data->incrementor = point_init(1, 1);
-	else if (NW == dir)
-		ray_data->incrementor = point_init(-1, 1);
-	else if (SW == dir)
-		ray_data->incrementor = point_init(-1, -1);
-	else if (SE == dir)
-		ray_data->incrementor = point_init(1, -1);
-}
-
-static void	init_slope(t_ray *ray_data, double alpha)
-{
-	t_direction	dir;
-
-	ray_data->slope.type = VALUE;
-	ray_data->slope.value = tan(alpha);
-	dir = radian_get_direction(alpha);
-	if (NORTH == dir)
-		ray_data->slope.type = INFI;
-	else if (SOUTH == dir)
-		ray_data->slope.type = NEG_INFI;
-	else if (EAST == dir)
-		ray_data->slope.type = ZERO;
-	else if (WEST == dir)
-		ray_data->slope.type = NEG_ZERO;
-}
-
-void	dda_set_ray_data(t_ray *ray_data, double alpha, t_player *player)
-{
-	init_slope(ray_data, alpha);
-	ray_data->intercept = player->pos.y - \
-		(player->pos.x * ray_data->slope.value);
-	ray_data->x_pos = point_to_fpoint(player->pos);
-	ray_data->y_pos = point_to_fpoint(player->pos);
 }
