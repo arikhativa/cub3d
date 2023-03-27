@@ -37,13 +37,13 @@ void	test_fpoint_init(void)
 
 void	test_fpoint_to_point(void)
 {
-	t_fpoint		p;
-	t_point			p2;
+	t_fpoint		fp;
+	t_point			p;
 
-	p = fpoint_init(5.5, 6.5);
-	p2 = fpoint_to_point(p);
-	CU_ASSERT_EQUAL(5, p2.x);
-	CU_ASSERT_EQUAL(6, p2.y);	
+	fp = fpoint_init(5.8, 6.99);
+	p = fpoint_to_point(fp);
+	CU_ASSERT_EQUAL(5, p.x);
+	CU_ASSERT_EQUAL(6, p.y);	
 }
 
 void	test_point_to_fpoint(void)
@@ -55,4 +55,14 @@ void	test_point_to_fpoint(void)
 	p = point_to_fpoint(p2);
 	CU_ASSERT_EQUAL(5.0, p.x);
 	CU_ASSERT_EQUAL(6.0, p.y);	
+}
+
+void	test_small_round_up(void)
+{
+	t_fpoint	fp;
+	t_point		p;
+	fp = fpoint_init(0, 2.999);
+	p = fpoint_to_point(fp);
+	CU_ASSERT_EQUAL(p.x, 0);
+	CU_ASSERT_EQUAL(p.y, 3);
 }

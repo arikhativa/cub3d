@@ -26,6 +26,10 @@ CU_TestInfo	g_fpoint_tests[] = {
 	test_fpoint_init,
 },
 {
+	"test_small_round_up",
+	test_small_round_up,
+},
+{
 	"test_fpoint",
 	test_fpoint,
 },
