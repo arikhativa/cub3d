@@ -1,35 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player.h                                           :+:      :+:    :+:   */
+/*   ray_caster.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/15 13:46:21 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/03/23 11:11:11 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLAYER_H
-# define PLAYER_H
+#ifndef RAY_CASTER_H
+# define RAY_CASTER_H
 
 # include <stdlib.h>
 
+# include "radian.h"
+# include "vertical_stripe.h"
+# include "dda.h"
 # include "libft.h"
+# include "map.h"
 # include "error_code.h"
-# include "direction.h"
-# include "fpoint.h"
 
-typedef struct s_player
+typedef struct s_ray_caster
 {
-	t_fpoint	pos;
-	t_direction	dir;
-}				t_player;
+	t_ray				ray;
+	int					num_of_rays;
+	double				direction;
+	t_fpoint			start;
+	t_map				*map;
+	t_vertical_stripe	*vs;
+}				t_ray_caster;
 
-t_error_code	player_create(t_player **ret);
-void			player_init(t_player *obj, t_fpoint pos, t_direction dir);
-void			player_destroy(t_player **obj);
-t_bool			player_is_loaded(t_player *p);
-void			player_print(t_player *p);
+t_error_code	ray_caster_create(t_ray_caster **ret);
+void			ray_caster_init(t_ray_caster *rc, int num_of_rays, \
+	t_map *map, t_vertical_stripe *vs);
+void			ray_caster_set(t_ray_caster *rc, t_fpoint start, \
+	double direction);
+void			ray_caster_destroy(t_ray_caster **obj);
+void			ray_caster_cast(t_ray_caster *rc);
 
 #endif

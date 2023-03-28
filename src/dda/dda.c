@@ -12,10 +12,10 @@
 
 #include "dda.h"
 
-void	dda(char **map, t_player *p, t_ray *ray_data, t_fpoint *collision)
+void	dda(char **map, t_fpoint start, t_ray *ray_data, t_fpoint *collision)
 {
 	ray_set_incrementor(ray_data, ray_data->to_cast.radians);
-	rey_init(ray_data, ray_data->to_cast.radians, point_to_fpoint(p->pos));
+	rey_init(ray_data, ray_data->to_cast.radians, start);
 	while (is_collides(ray_data, map, collision) == NO_COLLISION)
 		ray_increment(ray_data);
 }

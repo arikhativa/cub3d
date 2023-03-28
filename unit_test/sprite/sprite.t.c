@@ -46,15 +46,19 @@ void	test_sprite_get_stripe(void)
 	t_sprite		*obj;
 	t_error_code	err;
 	int				ret;
+	t_fpoint		pos;
 
 	err = sprite_create(&obj);
 	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
 	obj->size.x = 64;
-	ret = sprite_get_stripe(obj, 30.5);
+	pos = fpoint_init(30.5, 0);
+	ret = sprite_get_stripe(obj, pos);
 	CU_ASSERT_EQUAL(ret, 32);
-	ret = sprite_get_stripe(obj, 30.25);
+	pos = fpoint_init(30.25, 0);
+	ret = sprite_get_stripe(obj, pos);
 	CU_ASSERT_EQUAL(ret, 16);
-	ret = sprite_get_stripe(obj, 30.1);
+	pos = fpoint_init(30.1, 0);
+	ret = sprite_get_stripe(obj, pos);
 	CU_ASSERT_EQUAL(ret, 6);
 	sprite_destroy(&obj);
 }

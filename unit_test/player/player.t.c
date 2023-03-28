@@ -33,9 +33,9 @@ void	test_player_init(void)
 	obj = NULL;
 	err = player_create(&obj);
 	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
-	player_init(obj, (t_point){1, 2}, NORTH);
-	CU_ASSERT_EQUAL(obj->pos.x, 1);
-	CU_ASSERT_EQUAL(obj->pos.y, 2);
+	player_init(obj, (t_fpoint){1.0, 2.0}, NORTH);
+	CU_ASSERT_DOUBLE_EQUAL(obj->pos.x, 1.5, 0.00001);
+	CU_ASSERT_DOUBLE_EQUAL(obj->pos.y, 2.5, 0.00001);
 	CU_ASSERT_EQUAL(obj->dir, NORTH);
 	player_destroy(&obj);
 	CU_ASSERT_PTR_NULL(obj);

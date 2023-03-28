@@ -57,12 +57,12 @@ int	key_press(int keycode, t_game *g)
 	return (0);
 }
 
+// TODO mlx_key_hook(g->screen->win, key_press, g);
 t_error_code	game_start(t_game *g)
 {
-	game_draw(g);
-	draw_adjusted_sprite(g, (t_point){168, 168}, 64);
+	ray_caster_set(g->rc, g->map->p->pos, radian(90));
+	ray_caster_cast(g->rc);
 	screen_put_screen_to_window(g->screen);
-	mlx_key_hook(g->screen->win, key_press, g);
 	mlx_loop(g->mlx);
 	return (SUCCESS);
 }

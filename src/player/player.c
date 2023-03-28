@@ -45,7 +45,7 @@ t_bool	player_is_loaded(t_player *p)
 	return (TRUE);
 }
 
-void	player_init(t_player *obj, t_point pos, t_direction dir)
+void	player_init(t_player *obj, t_fpoint pos, t_direction dir)
 {
 	if (obj)
 	{
@@ -60,7 +60,7 @@ void	player_print(t_player *p)
 	if (p)
 	{
 		printf("player: {dir: %c, pos: ", direction_dir_to_char(p->dir));
-		point_print(p->pos);
+		fpoint_print(p->pos);
 		printf("}\n");
 	}
 }

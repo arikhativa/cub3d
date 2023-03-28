@@ -21,6 +21,11 @@ double	radian(double degree)
 	return (degree * (M_PI / 180));
 }
 
+double	radian_to_degree(double radian)
+{
+	return (radian * (180 / M_PI));
+}
+
 double	radian_set_boundaries(double radian)
 {
 	double	max;

@@ -22,12 +22,14 @@
 # include "vertical_stripe.h"
 # include "screen.h"
 # include "mlx_keys.h"
+# include "ray_caster.h"
 
 typedef struct s_game
 {
 	void				*mlx;
 	t_map				*map;
 	t_screen			*screen;
+	t_ray_caster		*rc;
 	t_vertical_stripe	*vs;
 }				t_game;
 

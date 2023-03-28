@@ -29,5 +29,6 @@ t_bool		radian_is_north_east(double radian);
 t_bool		radian_is_north_west(double radian);
 t_bool		radian_is_south_east(double radian);
 t_bool		radian_is_south_west(double radian);
+double		radian_to_degree(double radian);
 
 #endif

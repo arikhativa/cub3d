@@ -12,24 +12,41 @@
 
 #include "ray.h"
 
+// TODO make sure this func is correct and crea unit test for it
+static double	get_first_inc(double pos, double inc)
+{
+	double	rem;
+
+	rem = fmod(pos, 1);
+	if (rem < 0)
+		rem *= -1;
+	return (inc * ((double)1 - rem));
+}
+
 t_fpoint	ray_get_next_y(t_ray *ray_data)
 {
+	double		inc;
 	t_fpoint	ret;
 
 	ret = fpoint_copy(ray_data->y_pos);
-	ret.y += (double)ray_data->incrementor.y;
+	inc = ray_data->incrementor.y;
+	inc = get_first_inc(ret.y, inc);
+	ret.y += inc;
 	if (INFI != ray_data->slope.type && NEG_INFI != ray_data->slope.type)
-		ret.x += (ray_data->incrementor.y / ray_data->slope.value);
+		ret.x += (inc / ray_data->slope.value);
 	return (ret);
 }
 
 t_fpoint	ray_get_next_x(t_ray *ray_data)
 {
+	double		inc;
 	t_fpoint	ret;
 
 	ret = fpoint_copy(ray_data->x_pos);
-	ret.x += ray_data->incrementor.x;
+	inc = ray_data->incrementor.x;
+	inc = get_first_inc(ret.x, inc);
+	ret.x += inc;
 	if (ZERO != ray_data->slope.type && NEG_ZERO != ray_data->slope.type)
-		ret.y += (ray_data->incrementor.x * ray_data->slope.value);
+		ret.y += (inc * ray_data->slope.value);
 	return (ret);
 }
