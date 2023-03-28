@@ -33,5 +33,9 @@ CU_TestInfo	g_fpoint_tests[] = {
 	"test_fpoint",
 	test_fpoint,
 },
+{
+	"test_fpoint_get_distance",
+	test_fpoint_get_distance,
+},
 	CU_TEST_INFO_NULL,
 };
