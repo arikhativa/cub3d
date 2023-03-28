@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   class.c                                            :+:      :+:    :+:   */
+/*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/15 13:55:57 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/03/28 15:28:12 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	draw_adjusted_sprite(t_game *g, t_point screen_pos, \
 
 int	key_press(int keycode, t_game *g)
 {
-	static double	xx = 168;
+	/*static double	xx = 168;
 	static double	yy = 168;
 	static double	pixels = 64;
 
@@ -53,7 +53,8 @@ int	key_press(int keycode, t_game *g)
 	}
 	game_draw(g);
 	draw_adjusted_sprite(g, (t_point){xx, yy}, pixels);
-	screen_put_screen_to_window(g->screen);
+	screen_put_screen_to_window(g->screen);*/
+	printf(keycode);
 	return (0);
 }
 

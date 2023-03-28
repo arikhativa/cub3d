@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:46:30 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/15 13:46:41 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/03/27 16:11:15 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	player_init(t_player *obj, t_point pos, t_direction dir)
 	if (obj)
 	{
 		obj->pos = pos;
+		//cam_get_pos(obj);
 		obj->dir = dir;
 	}
 }

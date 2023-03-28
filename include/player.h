@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/15 13:46:21 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/03/27 16:11:30 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@
 # include "libft.h"
 # include "error_code.h"
 # include "direction.h"
-# include "point.h"
+# include "fpoint.h"
 
 typedef struct s_player
 {
-	t_point		pos;
-	t_direction	dir;
+	t_fpoint		pos;
+	t_fpoint		cam;
+	t_direction		dir;
 }				t_player;
 
 t_error_code	player_create(t_player **ret);
