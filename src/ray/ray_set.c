@@ -55,6 +55,7 @@ static void	init_slope(t_ray *ray_data, double alpha)
 
 void	rey_init(t_ray *ray_data, double alpha, t_fpoint player_pos)
 {
+	ray_data->start = fpoint_copy(player_pos);
 	init_slope(ray_data, alpha);
 	ray_data->intercept = player_pos.y - \
 		(player_pos.x * ray_data->slope.value);
