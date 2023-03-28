@@ -66,3 +66,35 @@ void	test_small_round_up(void)
 	CU_ASSERT_EQUAL(p.x, 0);
 	CU_ASSERT_EQUAL(p.y, 3);
 }
+
+void test_fpoint_get_distance()
+{
+	t_fpoint	p1;
+	t_fpoint	p2;
+	double		distance;
+
+	p1 = fpoint_init(0, 0);
+	p2 = fpoint_init(3, 4);
+	distance = fpoint_get_distance(p1, p2);
+	CU_ASSERT_EQUAL(distance, 5);
+
+	p1 = fpoint_init(0, 0);
+	p2 = fpoint_init(0, 1);
+	distance = fpoint_get_distance(p1, p2);
+	CU_ASSERT_EQUAL(distance, 1);
+
+	p1 = fpoint_init(-1, 0);
+	p2 = fpoint_init(0, 0);
+	distance = fpoint_get_distance(p1, p2);
+	CU_ASSERT_EQUAL(distance, 1);
+
+	p1 = fpoint_init(3, 2);
+	p2 = fpoint_init(9, 7);
+	distance = fpoint_get_distance(p1, p2);
+	CU_ASSERT_DOUBLE_EQUAL(distance, 7.810250, 0.000001);
+
+	p1 = fpoint_init(-5.5, 20.3);
+	p2 = fpoint_init(93.4, 1.7);
+	distance = fpoint_get_distance(p1, p2);
+	CU_ASSERT_DOUBLE_EQUAL(distance, 100.6338412265, 0.000001);
+}
