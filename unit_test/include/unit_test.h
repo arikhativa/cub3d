@@ -120,11 +120,12 @@ void	test_small_round_up(void);
 void	test_point_to_fpoint(void);
 
 // dda
+void	test_dda(void);
 void	test_dda_ray_infi(void);
-void	test_ray_set_incrementor(void);
 
 // ray
 void	test_ray_inc_x(void);
 void	test_ray_inc_y(void);
+void	test_ray_set_incrementor(void);
 
 #endif

@@ -27,5 +27,6 @@
 char	**util_create_tab(int size, ...);
 void	util_check_file_and_remove(char *filename);
 void	util_read_msg_from_read(char *file, char *msg);
+char	**util_create_rev_map(int size, ...);
 
 #endif

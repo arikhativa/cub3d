@@ -18,6 +18,10 @@ CU_TestInfo	g_ray_tests[] = {
 	test_ray_inc_x,
 },
 {
+	"test_ray_set_incrementor",
+	test_ray_set_incrementor,
+},
+{
 	"test_ray_inc_y",
 	test_ray_inc_y,
 },
