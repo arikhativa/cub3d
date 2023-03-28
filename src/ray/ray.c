@@ -14,39 +14,37 @@
 
 void	ray_increment(t_ray	*ray_data)
 {
+	t_fpoint	next;
+
 	if (should_inc_x(ray_data))
 	{
-		ray_data->x_pos.x += ray_data->incrementor.x;
-		ray_data->x_pos.y = (ray_data->slope.value * ray_data->x_pos.x \
-			+ ray_data->intercept);
+		next = ray_get_next_x(ray_data);
+		ray_data->x_pos = fpoint_copy(next);
 	}
 	else
 	{
-		if (INFI == ray_data->slope.type || NEG_INFI == ray_data->slope.type)
-		{
-			ray_data->y_pos.y += ray_data->incrementor.y;
-			return ;
-		}
-		ray_data->y_pos.x += ray_data->incrementor.y;
-		ray_data->y_pos.y = (ray_data->slope.value * ray_data->y_pos.x \
-			+ ray_data->intercept);
+		next = ray_get_next_y(ray_data);
+		ray_data->y_pos = fpoint_copy(next);
 	}
 }
 
 t_bool	should_inc_x(t_ray *ray_data)
 {
+	t_fpoint	next_x;
+	t_fpoint	next_y;
+	double		distance_x;
+	double		distance_y;
+
 	if (ZERO == ray_data->slope.type || NEG_ZERO == ray_data->slope.type)
 		return (TRUE);
-	if (ray_data->incrementor.x == POSITIVE)
-	{
-		if ((int)ray_data->x_pos.x <= (int)ray_data->y_pos.x)
-			return (TRUE);
-	}
-	if (ray_data->incrementor.x == NEGATIVE)
-	{
-		if ((int)ray_data->x_pos.x >= (int)ray_data->y_pos.x)
-			return (TRUE);
-	}
+	if (INFI == ray_data->slope.type || NEG_INFI == ray_data->slope.type)
+		return (FALSE);
+	next_x = ray_get_next_x(ray_data);
+	next_y = ray_get_next_y(ray_data);
+	distance_x = fpoint_get_distance(ray_data->start, next_x);
+	distance_y = fpoint_get_distance(ray_data->start, next_y);
+	if (distance_x < distance_y)
+		return (TRUE);
 	return (FALSE);
 }
 

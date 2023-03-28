@@ -24,6 +24,7 @@
 
 typedef struct s_ray
 {
+	t_fpoint	start;
 	t_fpoint	x_pos;
 	t_fpoint	y_pos;
 	t_slope		slope;

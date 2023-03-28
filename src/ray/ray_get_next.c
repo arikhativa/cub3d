@@ -27,7 +27,7 @@ t_fpoint	ray_get_next_x(t_ray *ray_data)
 {
 	t_fpoint	ret;
 
-	ret = fpoint_copy(ray_data->y_pos);
+	ret = fpoint_copy(ray_data->x_pos);
 	ret.x += ray_data->incrementor.x;
 	if (ZERO != ray_data->slope.type && NEG_ZERO != ray_data->slope.type)
 		ret.y += (ray_data->incrementor.x * ray_data->slope.value);
