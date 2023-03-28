@@ -13,6 +13,8 @@
 #ifndef FPOINT_H
 # define FPOINT_H
 
+# include <math.h>
+
 # include "point.h"
 
 typedef struct s_fpoint

@@ -12,17 +12,32 @@
 
 #include "fpoint.h"
 
-t_fpoint	fpoint_init(double x, double y)
+// TODO in a case of a very small reminder we should round to the nearest int
+// e.g.
+// 0.999
+// should be rounded to 1
+static int	round_if_needed(double d)
 {
-	return ((t_fpoint){x, y});
+	double	remainder;
+	int		i;
+
+	i = (int)d;
+	remainder = fmod(d, 1);
+	if ((1 - remainder) < 0.001)
+		return (i + 1);
+	return (i);
 }
 
-t_fpoint	fpoint_copy(t_fpoint src)
+t_point	fpoint_to_point(t_fpoint p)
 {
-	return ((t_fpoint){src.x, src.y});
+	t_point		result;
+
+	result.x = round_if_needed(p.x);
+	result.y = round_if_needed(p.y);
+	return (result);
 }
 
-void	fpoint_print(t_fpoint p)
+t_fpoint	point_to_fpoint(t_point p)
 {
-	printf("{x: %lf, y: %lf}", p.x, p.y);
+	return ((t_fpoint){(double)p.x, (double)p.y});
 }

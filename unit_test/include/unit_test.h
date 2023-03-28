@@ -114,6 +114,7 @@ void	test_screen_create_destroy(void);
 void	test_fpoint(void);
 void	test_fpoint_init(void);
 void	test_fpoint_to_point(void);
+void	test_small_round_up(void);
 void	test_point_to_fpoint(void);
 
 // dda
