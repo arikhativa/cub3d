@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   angle.h                                            :+:      :+:    :+:   */
+/*   mlx_keys.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:57:17 by ycarro            #+#    #+#             */
-/*   Updated: 2023/02/22 14:05:01 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/03/29 15:38:48 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,13 @@
 #  define KEY_ESC	65307
 # endif
 
-// TODO fill these
 # ifdef MAC_ON
-#  define KEY_W		
-#  define KEY_A		
-#  define KEY_D		
-#  define KEY_S		
-#  define KEY_LEFT	
-#  define KEY_RIGHT	
-#  define KEY_ESC	
+#  define KEY_W		13	
+#  define KEY_A		0
+#  define KEY_D		2
+#  define KEY_S		1
+#  define KEY_LEFT	123
+#  define KEY_RIGHT	124
+#  define KEY_ESC	18
 # endif
 #endif
