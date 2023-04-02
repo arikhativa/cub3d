@@ -35,12 +35,17 @@ void	set_sprite_index(t_ray_caster *rc, t_fpoint collision)
 	rc->vs->sprite = rc->map->sm->sprites[sprite_index];
 }
 
-int	get_pixels_by_distance(t_fpoint start, t_fpoint collision)
+int	get_pixels_by_distance(t_ray_caster *rc, t_fpoint collision)
 {
+	double	hypotenuse;
+	double	alpha;
 	double	distance;
 
-	distance = fpoint_get_distance(start, collision) + MIN_DISTANCE_CONST;
-	return (SCREEN_SIZE_Y / distance);
+	alpha = rc->direction + radian(90) - rc->ray.to_cast.radians;
+	hypotenuse = fpoint_get_distance(rc->start, collision);
+	distance = sin(alpha) * hypotenuse;
+	distance += MIN_DISTANCE_CONST;
+	return (rc->vs->screen->size.y / distance);
 }
 
 void	ray_caster_cast(t_ray_caster *rc)
@@ -51,15 +56,15 @@ void	ray_caster_cast(t_ray_caster *rc)
 	t_point		screen_pos;
 
 	screen_pos = point_init(0, 0);
-	rc->num_of_rays = SCREEN_SIZE_X;
+	rc->num_of_rays = rc->vs->screen->size.x;
 	rc->ray.to_cast.radians = rc->direction + radian(FOV_IN_DEGREE / 2);
 	while (screen_pos.x < rc->num_of_rays)
 	{
 		dda(rc->map->map, rc->start, &rc->ray, &collision);
 		set_sprite_index(rc, collision);
 		stripe_index = sprite_get_stripe(rc->vs->sprite, collision);
-		pixels = get_pixels_by_distance(rc->start, collision);
-		screen_pos.y = (SCREEN_SIZE_Y / 2) - (pixels / 2);
+		pixels = get_pixels_by_distance(rc, collision);
+		screen_pos.y = (rc->vs->screen->size.y / 2) - (pixels / 2);
 		vertical_stripe_set_arg(rc->vs, screen_pos, stripe_index, pixels);
 		vertical_stripe_draw(rc->vs);
 		++screen_pos.x;
