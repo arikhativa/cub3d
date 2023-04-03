@@ -45,7 +45,7 @@ int	get_pixels_by_distance(t_fpoint start, t_fpoint collision)
 
 void	ray_caster_cast(t_ray_caster *rc)
 {
-	t_fpoint	collision;
+	t_collinfo	collinfo;
 	int			stripe_index;
 	int			pixels;
 	t_point		screen_pos;
@@ -55,10 +55,10 @@ void	ray_caster_cast(t_ray_caster *rc)
 	rc->ray.to_cast.radians = rc->direction + radian(FOV_IN_DEGREE / 2);
 	while (screen_pos.x < rc->num_of_rays)
 	{
-		dda(rc->map->map, rc->start, &rc->ray, &collision);
-		set_sprite_index(rc, collision);
-		stripe_index = sprite_get_stripe(rc->vs->sprite, collision);
-		pixels = get_pixels_by_distance(rc->start, collision);
+		dda(rc->map->map, rc->start, &rc->ray, &collinfo);
+		set_sprite_index(rc, collinfo.collision);
+		stripe_index = sprite_get_stripe(rc->vs->sprite, collinfo.collision);
+		pixels = get_pixels_by_distance(rc->start, collinfo.collision);
 		screen_pos.y = (SCREEN_SIZE_Y / 2) - (pixels / 2);
 		vertical_stripe_set_arg(rc->vs, screen_pos, stripe_index, pixels);
 		vertical_stripe_draw(rc->vs);
