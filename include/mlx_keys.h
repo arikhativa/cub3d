@@ -13,6 +13,8 @@
 #ifndef MLX_KEYS_H
 # define MLX_KEYS_H
 
+# include "macro.h"
+
 # ifdef LINUX_ON
 #  define KEY_W		119
 #  define KEY_A		97
@@ -32,4 +34,9 @@
 #  define KEY_RIGHT	124
 #  define KEY_ESC	18
 # endif
+
+t_bool	mlx_keys_is_vision(int keycode);
+t_bool	mlx_keys_is_movement(int keycode);
+t_bool	mlx_keys_is_exit(int keycode);
+
 #endif

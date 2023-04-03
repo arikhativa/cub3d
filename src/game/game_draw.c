@@ -20,5 +20,7 @@ void	game_draw(t_game *g)
 	floor_color = map_get_floor_color(g->map);
 	celling_color = map_get_celling_color(g->map);
 	screen_draw_background(g->screen, celling_color, floor_color);
+	ray_caster_set(g->rc, g->map->p->pos, g->map->p->dir);
+	ray_caster_cast(g->rc);
 	screen_put_screen_to_window(g->screen);
 }

@@ -41,7 +41,7 @@ int	get_pixels_by_distance(t_ray_caster *rc, t_fpoint collision)
 	double	alpha;
 	double	distance;
 
-	alpha = rc->direction + radian(90) - rc->ray.to_cast.radians;
+	alpha = rc->direction + radian(90) - rc->ray.to_cast;
 	hypotenuse = fpoint_get_distance(rc->start, collision);
 	distance = sin(alpha) * hypotenuse;
 	distance += MIN_DISTANCE_CONST;
@@ -57,7 +57,7 @@ void	ray_caster_cast(t_ray_caster *rc)
 
 	screen_pos = point_init(0, 0);
 	rc->num_of_rays = rc->vs->screen->size.x;
-	rc->ray.to_cast.radians = rc->direction + radian(FOV_IN_DEGREE / 2);
+	rc->ray.to_cast = rc->direction + radian(FOV_IN_DEGREE / 2);
 	while (screen_pos.x < rc->num_of_rays)
 	{
 		dda(rc->map->map, rc->start, &rc->ray, &collinfo);
@@ -68,7 +68,7 @@ void	ray_caster_cast(t_ray_caster *rc)
 		vertical_stripe_set_arg(rc->vs, screen_pos, stripe_index, pixels);
 		vertical_stripe_draw(rc->vs);
 		++screen_pos.x;
-		rc->ray.to_cast.radians -= radian(FOV_IN_DEGREE) / \
+		rc->ray.to_cast -= radian(FOV_IN_DEGREE) / \
 			(double)rc->num_of_rays;
 	}
 }
