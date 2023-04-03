@@ -37,5 +37,7 @@ t_error_code	game_load(t_game *g, char *path_to_map)
 		err = map_load(g->map);
 	if (SUCCESS == err)
 		err = map_post_load_validation(g->map);
+	if (err == SUCCESS)
+		ray_caster_init(g->rc, g->screen->size.x, g->map, g->vs);
 	return (err);
 }

@@ -16,7 +16,7 @@ static t_error_code	map_load_player_by_line(t_map *m, int y)
 {
 	char		*line;
 	int			x;
-	t_point		pos;
+	t_fpoint	pos;
 	t_direction	dir;
 
 	x = 0;
@@ -27,7 +27,7 @@ static t_error_code	map_load_player_by_line(t_map *m, int y)
 		{
 			if (player_is_loaded(m->p))
 				return (EXT_DUPLICATE_SETTING);
-			pos = point_init(x, y);
+			pos = fpoint_init(x, y);
 			dir = direction_char_to_dir(line[x]);
 			player_init(m->p, pos, dir);
 		}

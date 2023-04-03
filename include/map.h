@@ -20,6 +20,7 @@
 # include "error_code.h"
 # include "sprite_mngr.h"
 # include "plane_mngr.h"
+# include "fpoint.h"
 # include "point.h"
 # include "cub.h"
 # include "file_mngr.h"

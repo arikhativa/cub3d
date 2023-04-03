@@ -42,6 +42,6 @@ t_bool			sprite_is_loaded(t_sprite *s);
 void			sprite_unload(t_sprite *s);
 void			sprite_destroy(t_sprite **obj);
 int				sprite_get_pixel_color(t_sprite *s, t_point pos);
-int				sprite_get_stripe(t_sprite *s, double collision);
+int				sprite_get_stripe(t_sprite *s, t_fpoint collision_point);
 
 #endif

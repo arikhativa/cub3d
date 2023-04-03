@@ -27,7 +27,7 @@ void	vertical_stripe_draw(t_vertical_stripe *vs)
 		color = sprite_get_pixel_color(vs->sprite, sprite_pos);
 		screen_color_pixel(vs->screen, vs->screen_pos, color);
 		sprite_y += inc;
-		vs->screen_pos = point_down(vs->screen_pos);
+		++vs->screen_pos.y;
 		--vs->num_of_pixels;
 	}
 }

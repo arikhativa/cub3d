@@ -18,12 +18,12 @@
 // should be rounded to 1
 static int	round_if_needed(double d)
 {
-	double	remainder;
+	double	rem;
 	int		i;
 
 	i = (int)d;
-	remainder = fmod(d, 1);
-	if ((1 - remainder) < 0.001)
+	rem = fmod(d, 1.0);
+	if ((1 - rem) < 0.001)
 		return (i + 1);
 	return (i);
 }

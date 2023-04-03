@@ -26,19 +26,16 @@ void	test_inc_y_63(void)
 	rey_init(&r, r.to_cast.radians, p);
 
 	ret = ray_get_next_y(&r);
-	CU_ASSERT_DOUBLE_EQUAL(ret.x, 11, 0.0000000001);
-	CU_ASSERT_DOUBLE_EQUAL(ret.y, 3.5, 0.0000000001);
-	// printf("ret: ");
-	// fpoint_print(ret);
-	// printf("\n");
+	CU_ASSERT_DOUBLE_EQUAL(ret.x, 10.75, 0.0000000001);
+	CU_ASSERT_DOUBLE_EQUAL(ret.y, 3, 0.0000000001);
 	r.y_pos = ret;
 	ret = ray_get_next_y(&r);
-	CU_ASSERT_DOUBLE_EQUAL(ret.x, 11.5, 0.0000000001);
-	CU_ASSERT_DOUBLE_EQUAL(ret.y, 4.5, 0.0000000001);
+	CU_ASSERT_DOUBLE_EQUAL(ret.x, 11.25, 0.0000000001);
+	CU_ASSERT_DOUBLE_EQUAL(ret.y, 4, 0.0000000001);
 	r.y_pos = ret;
 	ret = ray_get_next_y(&r);
-	CU_ASSERT_DOUBLE_EQUAL(ret.x, 12, 0.0000000001);
-	CU_ASSERT_DOUBLE_EQUAL(ret.y, 5.5, 0.0000000001);
+	CU_ASSERT_DOUBLE_EQUAL(ret.x, 11.75, 0.0000000001);
+	CU_ASSERT_DOUBLE_EQUAL(ret.y, 5, 0.0000000001);
 }
 
 void	test_inc_y_165(void)

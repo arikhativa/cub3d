@@ -32,8 +32,8 @@ void	test_map_load_player(void)
 	err = map_load_player(m);
 	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
 	CU_ASSERT_EQUAL(m->p->dir, NORTH);
-	CU_ASSERT_EQUAL(m->p->pos.x, 2);
-	CU_ASSERT_EQUAL(m->p->pos.y, 1);
+	CU_ASSERT_DOUBLE_EQUAL(m->p->pos.x, 2.5, 0.00001);
+	CU_ASSERT_DOUBLE_EQUAL(m->p->pos.y, 1.5, 0.00001);
 	m->map = NULL;
 	map_destroy(&m);
 }

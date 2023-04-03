@@ -24,6 +24,6 @@
 # include "ray.h"
 # include "collision.h"
 
-void	dda(char **map, t_player *p, t_ray *ray_data, t_collinfo *collinfo);
+void	dda(char **map, t_fpoint start, t_ray *ray_data, t_collinfo *collinfo);
 
 #endif
