@@ -14,6 +14,7 @@
 # define PLAYER_H
 
 # define ROTATION_SPEED	10
+# define MOVEMENT_SPEED	1
 
 # include <stdlib.h>
 
@@ -37,5 +38,10 @@ t_bool			player_is_loaded(t_player *p);
 void			player_print(t_player *p);
 void			player_rotate_right(t_player *p);
 void			player_rotate_left(t_player *p);
+void			player_move_forward(t_player *p, char **map);
+void			player_move_backward(t_player *p, char **map);
+void			player_move_left(t_player *p, char **map);
+void			player_move_right(t_player *p, char **map);
+void			player_move(t_player *p, char **map, double sloop);
 
 #endif
