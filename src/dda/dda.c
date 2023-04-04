@@ -14,8 +14,8 @@
 
 void	dda(char **map, t_fpoint start, t_ray *ray_data, t_collinfo *collinfo)
 {
-	ray_set_incrementor(ray_data, ray_data->to_cast.radians);
-	rey_init(ray_data, ray_data->to_cast.radians, start);
+	ray_set_incrementor(ray_data, ray_data->to_cast);
+	rey_init(ray_data, ray_data->to_cast, start);
 	while (is_collides(ray_data, map, collinfo) == NO_COLLISION)
 		ray_increment(ray_data);
 }

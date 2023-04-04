@@ -13,17 +13,21 @@
 #ifndef PLAYER_H
 # define PLAYER_H
 
+# define ROTATION_SPEED	10
+
 # include <stdlib.h>
 
 # include "libft.h"
 # include "error_code.h"
 # include "direction.h"
 # include "fpoint.h"
+# include "radian.h"
 
 typedef struct s_player
 {
 	t_fpoint	pos;
-	t_direction	dir;
+	t_direction	start_dir;
+	double		dir;
 }				t_player;
 
 t_error_code	player_create(t_player **ret);
@@ -31,5 +35,7 @@ void			player_init(t_player *obj, t_fpoint pos, t_direction dir);
 void			player_destroy(t_player **obj);
 t_bool			player_is_loaded(t_player *p);
 void			player_print(t_player *p);
+void			player_rotate_right(t_player *p);
+void			player_rotate_left(t_player *p);
 
 #endif

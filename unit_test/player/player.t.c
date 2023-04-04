@@ -36,7 +36,7 @@ void	test_player_init(void)
 	player_init(obj, (t_fpoint){1.0, 2.0}, NORTH);
 	CU_ASSERT_DOUBLE_EQUAL(obj->pos.x, 1.5, 0.00001);
 	CU_ASSERT_DOUBLE_EQUAL(obj->pos.y, 2.5, 0.00001);
-	CU_ASSERT_EQUAL(obj->dir, NORTH);
+	CU_ASSERT_EQUAL(obj->dir, radian(90));
 	player_destroy(&obj);
 	CU_ASSERT_PTR_NULL(obj);
 }

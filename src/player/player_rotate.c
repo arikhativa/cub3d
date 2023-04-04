@@ -12,45 +12,12 @@
 
 #include "player.h"
 
-t_error_code	player_create(t_player **ret)
+void	player_rotate_right(t_player *p)
 {
-	if (ret)
-	{
-		*ret = (t_player *)ft_calloc(1, sizeof(t_player));
-		if (!*ret)
-			return (ERROR);
-		(*ret)->start_dir = DIR_INVALID;
-		return (SUCCESS);
-	}
-	return (ERROR);
+	p->dir -= radian(ROTATION_SPEED);
 }
 
-void	player_destroy(t_player **obj)
+void	player_rotate_left(t_player *p)
 {
-	t_player	*tmp;
-
-	if (obj && *obj)
-	{
-		tmp = *obj;
-		ft_bzero(tmp, sizeof(t_player));
-		free(tmp);
-		*obj = NULL;
-	}
-}
-
-t_bool	player_is_loaded(t_player *p)
-{
-	if (!p || DIR_INVALID == p->start_dir)
-		return (FALSE);
-	return (TRUE);
-}
-
-void	player_print(t_player *p)
-{
-	if (p)
-	{
-		printf("player: {dir: %c, pos: ", direction_dir_to_char(p->start_dir));
-		fpoint_print(p->pos);
-		printf("}\n");
-	}
+	p->dir += radian(ROTATION_SPEED);
 }

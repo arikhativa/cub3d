@@ -25,7 +25,7 @@ void	test_dda1(void)
 	);
 
 	start_pos = fpoint_init(0, 0);
-	r.to_cast.radians = radian(90);
+	r.to_cast = radian(90);
 	dda(map, start_pos, &r, &collinfo);
 	CU_ASSERT_EQUAL(collinfo.collision.x, 0);
 	CU_ASSERT_EQUAL(collinfo.collision.y, 1);
@@ -45,7 +45,7 @@ void	test_dda2(void)
 	);
 
 	start_pos = fpoint_init(0, 0);
-	r.to_cast.radians = radian(90);
+	r.to_cast = radian(90);
 	dda(map, start_pos, &r, &collinfo);
 	CU_ASSERT_EQUAL(collinfo.collision.x, 0);
 	CU_ASSERT_EQUAL(collinfo.collision.y, 2);
@@ -63,7 +63,7 @@ void	test_dda3(void)
 	);
 
 	start_pos = fpoint_init(0, 0);
-	r.to_cast.radians = radian(0);
+	r.to_cast = radian(0);
 	dda(map, start_pos, &r, &collinfo);
 	CU_ASSERT_EQUAL(collinfo.collision.x, 3);
 	CU_ASSERT_EQUAL(collinfo.collision.y, 0);
@@ -88,7 +88,7 @@ void	test_dda4(void)
 	);
 
 	start_pos = fpoint_init(0, 7);
-	r.to_cast.radians = radian(-90);
+	r.to_cast = radian(-90);
 	dda(map, start_pos, &r, &collinfo);
 	CU_ASSERT_EQUAL(collinfo.collision.x, 0);
 	CU_ASSERT_EQUAL(collinfo.collision.y, 1);
@@ -110,7 +110,7 @@ void	test_dda_perfect_ne(void)
 	);
 
 	start_pos = fpoint_init(1, 1);
-	r.to_cast.radians = radian(45);
+	r.to_cast = radian(45);
 	dda(map, start_pos, &r, &collinfo);
 	CU_ASSERT_EQUAL(collinfo.collision.x, 3);
 	CU_ASSERT_EQUAL(collinfo.collision.y, 3);
@@ -134,7 +134,7 @@ void	test_dda_perfect_nw(void)
 	);
 
 	start_pos = fpoint_init(4, 1);
-	r.to_cast.radians = radian(90 + 45);
+	r.to_cast = radian(90 + 45);
 	dda(map, start_pos, &r, &collinfo);
 	test = fpoint_to_point(collinfo.collision);
 	CU_ASSERT_EQUAL(test.x, 1);
@@ -160,7 +160,7 @@ void	test_dda_perfect_se(void)
 	);
 
 	start_pos = fpoint_init(0, 6);
-	r.to_cast.radians = radian(-45);
+	r.to_cast = radian(-45);
 	dda(map, start_pos, &r, &collinfo);
 	test = fpoint_to_point(collinfo.collision);
 	CU_ASSERT_EQUAL(test.x, 6);
@@ -192,7 +192,7 @@ void	test_dda_perfect_sw(void)
 	);
 
 	start_pos = fpoint_init(12, 12);
-	r.to_cast.radians = radian(180 + 45);
+	r.to_cast = radian(180 + 45);
 	dda(map, start_pos, &r, &collinfo);
 	test = fpoint_to_point(collinfo.collision);
 	CU_ASSERT_EQUAL(test.x, 0);
@@ -218,7 +218,7 @@ void	test_dda_degree_63(void)
 	);
 
 	start_pos = fpoint_init(0, 0);
-	r.to_cast.radians = radian(63.434948822922);
+	r.to_cast = radian(63.434948822922);
 	dda(map, start_pos, &r, &collinfo);
 	test = fpoint_to_point(collinfo.collision);
 	CU_ASSERT_EQUAL(test.x, 3);
@@ -242,7 +242,7 @@ void	test_dda_degree_104(void)
 	);
 
 	start_pos = fpoint_init(2.5, 0.5);
-	r.to_cast.radians = radian(104.03624346793);
+	r.to_cast = radian(104.03624346793);
 	dda(map, start_pos, &r, &collinfo);
 	// fpoint_print(collinfo); printf("\n");
 	// CU_ASSERT_DOUBLE_EQUAL(collinfo.x, 3, 0.000001);

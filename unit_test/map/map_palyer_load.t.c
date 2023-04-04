@@ -19,7 +19,7 @@ void	test_map_load_player(void)
 	t_map			*m;
 	char *map[] = {
 		" 1111",
-		"10N1",
+		"10S1",
 		"1001",
 		"1111",
 		NULL,
@@ -31,7 +31,7 @@ void	test_map_load_player(void)
 	m->size = point_init(5, 4);
 	err = map_load_player(m);
 	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
-	CU_ASSERT_EQUAL(m->p->dir, NORTH);
+	CU_ASSERT_EQUAL(m->p->dir, radian(-90));
 	CU_ASSERT_DOUBLE_EQUAL(m->p->pos.x, 2.5, 0.00001);
 	CU_ASSERT_DOUBLE_EQUAL(m->p->pos.y, 1.5, 0.00001);
 	m->map = NULL;
