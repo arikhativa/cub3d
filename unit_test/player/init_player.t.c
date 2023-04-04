@@ -21,5 +21,9 @@ CU_TestInfo	g_player_tests[] = {
 	"test_player_init",
 	test_player_init,
 },
+{
+	"test_player_move",
+	test_player_move,
+},
 	CU_TEST_INFO_NULL,
 };

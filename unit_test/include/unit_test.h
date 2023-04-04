@@ -87,6 +87,7 @@ void	test_map_is_closed_err2(void);
 
 // player
 void	test_player_create_destroy(void);
+void	test_player_move(void);
 
 // sprite
 void	test_sprite_create_destroy(void);

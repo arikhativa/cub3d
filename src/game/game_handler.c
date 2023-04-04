@@ -25,8 +25,17 @@ void	game_handler_vision(t_game *g, int key)
 
 void	game_handler_movement(t_game *g, int key)
 {
-	(void)g;
-	(void)key;
+	t_player	*p;
+
+	p = g->map->p;
+	if (key == KEY_W)
+		player_move_forward(p, g->map->map);
+	if (key == KEY_S)
+		player_move_backward(p, g->map->map);
+	if (key == KEY_A)
+		player_move_left(p, g->map->map);
+	if (key == KEY_D)
+		player_move_right(p, g->map->map);
 }
 
 void	game_handler_exit(t_game *g, int key)
