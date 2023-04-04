@@ -37,6 +37,10 @@ t_collision	check_in_range(t_ray *ray_data, char **map)
 	t_point	collider;
 
 	collider = fpoint_to_point(ray_data->x_pos);
+	if (ray_data->incrementor.x == -1)
+		collider.x--;
+	if (ray_data->incrementor.y == -1)
+		collider.y--;
 	if (map[collider.y][collider.x] == WALL_CHAR)
 		return (X_COLLISION);
 	collider = fpoint_to_point(ray_data->y_pos);
