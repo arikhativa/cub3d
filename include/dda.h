@@ -19,7 +19,6 @@
 
 # include "radian.h"
 # include "libft.h"
-# include "angle.h"
 # include "fpoint.h"
 # include "ray.h"
 # include "collision.h"

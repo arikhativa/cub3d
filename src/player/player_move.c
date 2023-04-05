@@ -12,45 +12,31 @@
 
 #include "player.h"
 
-t_error_code	player_create(t_player **ret)
+void	player_move_forward(t_player *p, char **map)
 {
-	if (ret)
-	{
-		*ret = (t_player *)ft_calloc(1, sizeof(t_player));
-		if (!*ret)
-			return (ERROR);
-		(*ret)->start_dir = DIR_INVALID;
-		return (SUCCESS);
-	}
-	return (ERROR);
+	player_move(p, map, p->dir);
 }
 
-void	player_destroy(t_player **obj)
+void	player_move_backward(t_player *p, char **map)
 {
-	t_player	*tmp;
+	double		sloop;
 
-	if (obj && *obj)
-	{
-		tmp = *obj;
-		ft_bzero(tmp, sizeof(t_player));
-		free(tmp);
-		*obj = NULL;
-	}
+	sloop = p->dir + radian(180);
+	player_move(p, map, sloop);
 }
 
-t_bool	player_is_loaded(t_player *p)
+void	player_move_left(t_player *p, char **map)
 {
-	if (!p || DIR_INVALID == p->start_dir)
-		return (FALSE);
-	return (TRUE);
+	double		sloop;
+
+	sloop = p->dir + radian(90);
+	player_move(p, map, sloop);
 }
 
-void	player_print(t_player *p)
+void	player_move_right(t_player *p, char **map)
 {
-	if (p)
-	{
-		printf("player: {dir: %c, pos: ", direction_dir_to_char(p->start_dir));
-		fpoint_print(p->pos);
-		printf("}\n");
-	}
+	double		sloop;
+
+	sloop = p->dir - radian(90);
+	player_move(p, map, sloop);
 }

@@ -12,45 +12,29 @@
 
 #include "player.h"
 
-t_error_code	player_create(t_player **ret)
+static t_fpoint	get_next_fpoint(t_fpoint p, double sloop)
 {
-	if (ret)
-	{
-		*ret = (t_player *)ft_calloc(1, sizeof(t_player));
-		if (!*ret)
-			return (ERROR);
-		(*ret)->start_dir = DIR_INVALID;
-		return (SUCCESS);
-	}
-	return (ERROR);
+	p.y += sin(sloop) * MOVEMENT_SPEED;
+	p.x += cos(sloop) * MOVEMENT_SPEED;
+	return (p);
 }
 
-void	player_destroy(t_player **obj)
+// TODO bad func! does not work
+static t_bool	is_wall(t_fpoint p, char **map)
 {
-	t_player	*tmp;
+	int		x;
+	int		y;
 
-	if (obj && *obj)
-	{
-		tmp = *obj;
-		ft_bzero(tmp, sizeof(t_player));
-		free(tmp);
-		*obj = NULL;
-	}
+	x = (int)p.x;
+	y = (int)p.y;
+	return (map[y][x] == WALL_CHAR);
 }
 
-t_bool	player_is_loaded(t_player *p)
+void	player_move(t_player *p, char **map, double sloop)
 {
-	if (!p || DIR_INVALID == p->start_dir)
-		return (FALSE);
-	return (TRUE);
-}
+	t_fpoint	next_p;
 
-void	player_print(t_player *p)
-{
-	if (p)
-	{
-		printf("player: {dir: %c, pos: ", direction_dir_to_char(p->start_dir));
-		fpoint_print(p->pos);
-		printf("}\n");
-	}
+	next_p = get_next_fpoint(p->pos, sloop);
+	if (!is_wall(next_p, map))
+		p->pos = next_p;
 }

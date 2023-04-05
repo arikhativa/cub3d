@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_player.t.c                                    :+:      :+:    :+:   */
+/*   mlx_keys                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 13:47:42 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/15 13:47:46 by yrabby           ###   ########.fr       */
+/*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
+/*   Updated: 2023/02/15 13:58:46 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "unit_test.h"
+#include "mlx_keys.h"
 
-CU_TestInfo	g_player_tests[] = {
+t_bool	mlx_keys_is_vision(int keycode)
 {
-	"test_player_create_destroy",
-	test_player_create_destroy,
-},
+	return (keycode == KEY_LEFT || keycode == KEY_RIGHT);
+}
+
+t_bool	mlx_keys_is_movement(int keycode)
 {
-	"test_player_init",
-	test_player_init,
-},
+	return (keycode == KEY_W || keycode == KEY_A || keycode == KEY_S \
+		|| keycode == KEY_D);
+}
+
+t_bool	mlx_keys_is_exit(int keycode)
 {
-	"test_player_move",
-	test_player_move,
-},
-	CU_TEST_INFO_NULL,
-};
+	return (keycode == KEY_ESC);
+}

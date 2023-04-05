@@ -16,7 +16,6 @@
 # include "radian.h"
 # include "fpoint.h"
 # include "point.h"
-# include "angle.h"
 # include "slope.h"
 
 # define POSITIVE	1
@@ -30,7 +29,7 @@ typedef struct s_ray
 	t_slope		slope;
 	double		intercept;
 	t_point		incrementor;
-	t_angle		to_cast;
+	double		to_cast;
 }				t_ray;
 
 void		ray_increment(t_ray	*ray_data);

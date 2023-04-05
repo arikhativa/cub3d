@@ -12,22 +12,34 @@
 
 #include "game.h"
 
-int	key_press(int keycode, t_game *g)
+void	game_handler_vision(t_game *g, int key)
 {
-	if (mlx_keys_is_vision(keycode))
-		game_handler_vision(g, keycode);
-	if (mlx_keys_is_movement(keycode))
-		game_handler_movement(g, keycode);
-	if (mlx_keys_is_exit(keycode))
-		game_handler_exit(g, keycode);
-	game_draw(g);
-	return (0);
+	t_player	*p;
+
+	p = g->map->p;
+	if (key == KEY_LEFT)
+		player_rotate_left(p);
+	if (key == KEY_RIGHT)
+		player_rotate_right(p);
 }
 
-t_error_code	game_start(t_game *g)
+void	game_handler_movement(t_game *g, int key)
 {
-	game_draw(g);
-	mlx_key_hook(g->screen->win, key_press, g);
-	mlx_loop(g->mlx);
-	return (SUCCESS);
+	t_player	*p;
+
+	p = g->map->p;
+	if (key == KEY_W)
+		player_move_forward(p, g->map->map);
+	if (key == KEY_S)
+		player_move_backward(p, g->map->map);
+	if (key == KEY_A)
+		player_move_left(p, g->map->map);
+	if (key == KEY_D)
+		player_move_right(p, g->map->map);
+}
+
+void	game_handler_exit(t_game *g, int key)
+{
+	(void)g;
+	(void)key;
 }

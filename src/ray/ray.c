@@ -51,7 +51,7 @@ t_bool	should_inc_x(t_ray *ray_data)
 void	ray_print(t_ray *r)
 {
 	printf("ray: \nslope: %f, intercept: %f, to_cast: %f\n", \
-		r->slope.value, r->intercept, r->to_cast.radians);
+		r->slope.value, r->intercept, r->to_cast);
 	printf("incrementor: ");
 	point_print(r->incrementor);
 	printf("\n");
