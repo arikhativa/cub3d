@@ -6,7 +6,7 @@
 /*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:12:10 by anonymous         #+#    #+#             */
-/*   Updated: 2023/03/02 15:34:55 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/04/08 16:05:21 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_ray
 	t_fpoint	y_pos;
 	t_slope		slope;
 	double		intercept;
+	t_direction	dir;
 	t_point		incrementor;
 	double		to_cast;
 }				t_ray;

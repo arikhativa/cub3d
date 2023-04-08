@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_caster.c                                       :+:      :+:    :+:   */
+/*   ray_caster_cast.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/03/23 11:20:07 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/04/08 16:50:48 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ray_caster.h"
 
-// TODO this func is a just placement. plz replace with the correct logic
-int	get_sprite_index(t_fpoint collision)
+int	get_sprite_index(t_collinfo *collinfo)
 {
-	int	x;
-	int	y;
-
-	x = fmod(collision.x, 4);
-	y = fmod(collision.y + 1, 4);
-	if (x == 0)
-		return (y);
-	if (y == 0)
-		return (x);
-	return (x);
+	if (collinfo->axis == X_COLLISION)
+	{
+		if (collinfo->collision.x > collinfo->collider.x )
+			return(EAST);
+		return(WEST);
+	}
+	else
+	{
+		if (collinfo->collision.y > collinfo->collider.y )
+			return(NORTH);
+		return(SOUTH);
+	}
 }
 
-void	set_sprite_index(t_ray_caster *rc, t_fpoint collision)
+void	set_sprite_index(t_ray_caster *rc, t_collinfo *collinfo)
 {
 	t_direction	sprite_index;
 
-	sprite_index = get_sprite_index(collision);
+	sprite_index = get_sprite_index(collinfo);
 	rc->vs->sprite = rc->map->sm->sprites[sprite_index];
 }
 
@@ -61,7 +62,7 @@ void	ray_caster_cast(t_ray_caster *rc)
 	while (screen_pos.x < rc->num_of_rays)
 	{
 		dda(rc->map->map, rc->start, &rc->ray, &collinfo);
-		set_sprite_index(rc, collinfo.collision);
+		set_sprite_index(rc, &collinfo);
 		stripe_index = sprite_get_stripe(rc->vs->sprite, collinfo.collision);
 		pixels = get_pixels_by_distance(rc, collinfo.collision);
 		screen_pos.y = (SCREEN_SIZE_Y / 2) - (pixels / 2);
