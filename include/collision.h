@@ -6,7 +6,7 @@
 /*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 14:57:33 by ycarro            #+#    #+#             */
-/*   Updated: 2023/04/08 16:29:59 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/04/08 16:55:25 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_collinfo
 }				t_collinfo;
 
 int				is_collides(t_ray *ray_data, char **map, t_collinfo *collinfo);
-t_collision		check_in_range(t_ray *ray_data, char **map, t_collinfo *collinfo);
+t_collision		check_in_range(t_ray *ray_data, char **map, \
+				t_collinfo *collinfo);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/04/08 16:50:48 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/04/08 16:54:50 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@ int	get_sprite_index(t_collinfo *collinfo)
 {
 	if (collinfo->axis == X_COLLISION)
 	{
-		if (collinfo->collision.x > collinfo->collider.x )
-			return(EAST);
-		return(WEST);
+		if (collinfo->collision.x > collinfo->collider.x)
+			return (EAST);
+		return (WEST);
 	}
 	else
 	{
-		if (collinfo->collision.y > collinfo->collider.y )
-			return(NORTH);
-		return(SOUTH);
+		if (collinfo->collision.y > collinfo->collider.y)
+			return (NORTH);
+		return (SOUTH);
 	}
 }
 
