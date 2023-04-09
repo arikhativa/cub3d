@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray.c                                              :+:      :+:    :+:   */
+/*   ray_set.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:50:12 by anonymous         #+#    #+#             */
-/*   Updated: 2023/03/19 13:04:18 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/04/08 16:06:47 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,23 @@
 
 void	ray_set_incrementor(t_ray *ray_data, double alpha)
 {
-	t_direction	dir;
-
 	alpha = radian_set_boundaries(alpha);
-	dir = radian_get_direction(alpha);
-	if (NORTH == dir)
+	ray_data->dir = radian_get_direction(alpha);
+	if (NORTH == ray_data->dir)
 		ray_data->incrementor = point_init(0, 1);
-	else if (SOUTH == dir)
+	else if (SOUTH == ray_data->dir)
 		ray_data->incrementor = point_init(0, -1);
-	else if (EAST == dir)
+	else if (EAST == ray_data->dir)
 		ray_data->incrementor = point_init(1, 0);
-	else if (WEST == dir)
+	else if (WEST == ray_data->dir)
 		ray_data->incrementor = point_init(-1, 0);
-	else if (NE == dir)
+	else if (NE == ray_data->dir)
 		ray_data->incrementor = point_init(1, 1);
-	else if (NW == dir)
+	else if (NW == ray_data->dir)
 		ray_data->incrementor = point_init(-1, 1);
-	else if (SW == dir)
+	else if (SW == ray_data->dir)
 		ray_data->incrementor = point_init(-1, -1);
-	else if (SE == dir)
+	else if (SE == ray_data->dir)
 		ray_data->incrementor = point_init(1, -1);
 }
 

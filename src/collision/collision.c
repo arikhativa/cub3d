@@ -6,7 +6,7 @@
 /*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 14:59:18 by ycarro            #+#    #+#             */
-/*   Updated: 2023/03/30 13:17:24 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/04/08 16:52:07 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	is_collides(t_ray *ray_data, char **map, t_collinfo *collinfo)
 {
 	int	ray_num;
 
-	ray_num = check_in_range(ray_data, map);
+	ray_num = check_in_range(ray_data, map, collinfo);
 	if (ray_num == X_COLLISION)
 	{
 		collinfo->collision = fpoint_copy(ray_data->x_pos);
@@ -32,15 +32,13 @@ int	is_collides(t_ray *ray_data, char **map, t_collinfo *collinfo)
 	return (NO_COLLISION);
 }
 
-t_collision	check_in_range(t_ray *ray_data, char **map)
+t_collision	check_in_range(t_ray *ray_data, char **map, t_collinfo *collinfo)
 {
-	t_point	collider;
-
-	collider = fpoint_to_point(ray_data->x_pos);
-	if (map[collider.y][collider.x] == WALL_CHAR)
+	collinfo->collider = fpoint_to_point(ray_data->x_pos);
+	if (map[collinfo->collider.y][collinfo->collider.x] == WALL_CHAR)
 		return (X_COLLISION);
-	collider = fpoint_to_point(ray_data->y_pos);
-	if (map[collider.y][collider.x] == WALL_CHAR)
+	collinfo->collider = fpoint_to_point(ray_data->y_pos);
+	if (map[collinfo->collider.y][collinfo->collider.x] == WALL_CHAR)
 		return (Y_COLLISION);
 	return (NO_COLLISION);
 }
