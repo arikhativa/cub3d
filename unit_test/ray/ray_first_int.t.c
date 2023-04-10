@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_utest.t.c                                     :+:      :+:    :+:   */
+/*   utest.t.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 10:05:13 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/14 10:09:20 by yrabby           ###   ########.fr       */
+/*   Created: 2022/09/06 14:21:17 by yoav              #+#    #+#             */
+/*   Updated: 2023/02/14 12:27:39 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ray.h"
 #include "unit_test.h"
 
-CU_TestInfo	g_ray_tests[] = {
+double		get_first_inc(double pos, double inc);
+
+// start   {x: 6.326352, y: 4.484808}
+// coll    {x: 3.721123, y: 2.055392}
+void	test_0_33(void)
 {
-	"test_ray_first_inc",
-	test_ray_first_inc,
-},
+	double	pos = -6234.326352;
+	double	inc = -1;
+	double	res;
+
+	res = get_first_inc(pos, inc);
+	printf("res = %lf\n", res);
+	CU_ASSERT_DOUBLE_EQUAL(res, 0.33, 0.01);
+
+}
+
+void	test_ray_first_inc(void)
 {
-	"test_ray_inc_x",
-	test_ray_inc_x,
-},
-{
-	"test_ray_set_incrementor",
-	test_ray_set_incrementor,
-},
-{
-	"test_ray_inc_y",
-	test_ray_inc_y,
-},
-	CU_TEST_INFO_NULL,
-};
+	test_0_33();
+}

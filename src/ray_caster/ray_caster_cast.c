@@ -59,9 +59,14 @@ void	ray_caster_cast(t_ray_caster *rc)
 	screen_pos = point_init(0, 0);
 	rc->num_of_rays = rc->vs->screen->size.x;
 	rc->ray.to_cast = rc->direction + radian(FOV_IN_DEGREE / 2);
+	printf("start\t"); fpoint_print(rc->start); printf("\n");
 	while (screen_pos.x < rc->num_of_rays)
 	{
 		dda(rc->map->map, rc->start, &rc->ray, &collinfo);
+		if (!screen_pos.x)
+		{
+			printf("coll\t"); fpoint_print(collinfo.pos); printf("\n");
+		}
 		set_sprite_index(rc, &collinfo);
 		stripe_index = sprite_get_stripe(rc->vs->sprite, collinfo.pos);
 		pixels = get_pixels_by_distance(rc, collinfo.pos);

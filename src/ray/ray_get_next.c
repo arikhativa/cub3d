@@ -13,14 +13,27 @@
 #include "ray.h"
 
 // TODO make sure this func is correct and crea unit test for it
-static double	get_first_inc(double pos, double inc)
+// it is agly but working
+double	get_first_inc(double pos, double inc)
 {
 	double	rem;
 
 	rem = fmod(pos, 1);
+	if (rem > 0)
+	{
+		if (1 == inc)
+			return ((double)1 - rem);
+		else if (-1 == inc)
+			return (rem * -1);
+	}
 	if (rem < 0)
-		rem *= -1;
-	return (inc * ((double)1 - rem));
+	{
+		if (1 == inc)
+			return (rem * -1);
+		else if (-1 == inc)
+			return (((double)1 + rem) * -1);
+	}
+	return (inc);
 }
 
 t_fpoint	ray_get_next_y(t_ray *ray_data)
