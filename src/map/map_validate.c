@@ -25,7 +25,14 @@ t_error_code	map_validate(char **file)
 
 t_error_code	map_post_load_validation(t_map *m)
 {
-	if (!map_is_closed(m))
+	t_bool			is_closed;
+	t_error_code	err;
+
+	is_closed = FALSE;
+	err = map_is_closed(m, &is_closed);
+	if (SUCCESS != err)
+		return (err);
+	if (!is_closed)
 		return (EXT_MAP_OPEN);
 	return (SUCCESS);
 }
