@@ -16,13 +16,13 @@ int	get_sprite_index(t_collinfo *collinfo)
 {
 	if (collinfo->axis == X_COLLISION)
 	{
-		if (collinfo->collision.x > collinfo->collider.x)
+		if (collinfo->pos.x > collinfo->coll_index.x)
 			return (EAST);
 		return (WEST);
 	}
 	else
 	{
-		if (collinfo->collision.y > collinfo->collider.y)
+		if (collinfo->pos.y > collinfo->coll_index.y)
 			return (NORTH);
 		return (SOUTH);
 	}
@@ -63,8 +63,8 @@ void	ray_caster_cast(t_ray_caster *rc)
 	{
 		dda(rc->map->map, rc->start, &rc->ray, &collinfo);
 		set_sprite_index(rc, &collinfo);
-		stripe_index = sprite_get_stripe(rc->vs->sprite, collinfo.collision);
-		pixels = get_pixels_by_distance(rc, collinfo.collision);
+		stripe_index = sprite_get_stripe(rc->vs->sprite, collinfo.pos);
+		pixels = get_pixels_by_distance(rc, collinfo.pos);
 		screen_pos.y = (SCREEN_SIZE_Y / 2) - (pixels / 2);
 		vertical_stripe_set_arg(rc->vs, screen_pos, stripe_index, pixels);
 		vertical_stripe_draw(rc->vs);

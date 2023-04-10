@@ -25,8 +25,8 @@ typedef enum e_collision
 
 typedef struct s_collinfo
 {
-	t_fpoint	collision;
-	t_point		collider;
+	t_fpoint	pos;
+	t_point		coll_index;
 	int			axis;
 
 }				t_collinfo;
