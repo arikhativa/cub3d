@@ -36,6 +36,8 @@ void xxx(t_ray *r, t_collinfo *collinfo)
 {
 	double	alpha;
 
+	if (fpoint_equal(r->start, r->x_pos))
+		return ;
 	alpha = r->to_cast;
 	if (radian_is_north_west(alpha) || radian_is_south_west(alpha))
 		--collinfo->coll_index.x;
@@ -47,6 +49,8 @@ void yyy(t_ray *r, t_collinfo *collinfo)
 {
 	double	alpha;
 
+	if (fpoint_equal(r->start, r->y_pos))
+		return ;
 	alpha = r->to_cast;
 	if (radian_is_south_east(alpha) || radian_is_south_west(alpha))
 		--collinfo->coll_index.y;
@@ -56,10 +60,12 @@ void yyy(t_ray *r, t_collinfo *collinfo)
 
 t_collision	check_in_range(t_ray *ray_data, char **map, t_collinfo *collinfo)
 {
+	printf("X: x: %f, y: %f\n", ray_data->x_pos.x, ray_data->x_pos.y);
 	collinfo->coll_index = fpoint_to_point(ray_data->x_pos);
 	xxx(ray_data, collinfo);
 	if (map[collinfo->coll_index.y][collinfo->coll_index.x] == WALL_CHAR)
 		return (X_COLLISION);
+	printf("Y: x: %f, y: %f\n", ray_data->y_pos.x, ray_data->y_pos.y);
 	collinfo->coll_index = fpoint_to_point(ray_data->y_pos);
 	yyy(ray_data, collinfo);
 	if (map[collinfo->coll_index.y][collinfo->coll_index.x] == WALL_CHAR)
