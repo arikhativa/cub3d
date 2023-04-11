@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dda.t.c                                            :+:      :+:    :+:   */
+/*   ray_set_incrementor.t.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 14:21:17 by yoav              #+#    #+#             */
-/*   Updated: 2023/03/23 12:14:46 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/04/11 16:02:12 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 void	test_ray_set_incrementor(void)
 {
-	t_ray	r = {0};
+	t_ray	r;
 	double	rad = radian(0);
 	
 	ray_set_incrementor(&r, rad);

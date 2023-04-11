@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utest.t.c                                          :+:      :+:    :+:   */
+/*   ray_inc_y.t.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 14:21:17 by yoav              #+#    #+#             */
-/*   Updated: 2023/02/14 12:27:39 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/04/11 16:02:05 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	test_inc_y_63(void)
 {
-	t_ray	r = {0};
+	t_ray	r;
 	t_fpoint p = {0};
 	t_fpoint	ret;
 
@@ -40,7 +40,7 @@ void	test_inc_y_63(void)
 
 void	test_inc_y_165(void)
 {
-	t_ray	r = {0};
+	t_ray	r;
 	t_fpoint p = {0};
 	t_fpoint	ret;
 
@@ -64,7 +64,7 @@ void	test_inc_y_165(void)
 
 void	test_inc_y_264(void)
 {
-	t_ray	r = {0};
+	t_ray	r;
 	t_fpoint p = {0};
 	t_fpoint	ret;
 
@@ -88,7 +88,7 @@ void	test_inc_y_264(void)
 
 void	test_inc_y_288(void)
 {
-	t_ray	r = {0};
+	t_ray	r;
 	t_fpoint p = {0};
 	t_fpoint	ret;
 
