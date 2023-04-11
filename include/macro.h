@@ -25,7 +25,6 @@
 # define SCREEN_SIZE_Y		768
 # define BITS_IN_CHAR		8
 # define FOV_IN_DEGREE		66
-# define MIN_DISTANCE_CONST	0.5
 
 typedef enum e_bool
 {

@@ -24,8 +24,11 @@ void	vertical_stripe_draw(t_vertical_stripe *vs)
 	while (vs->num_of_pixels)
 	{
 		sprite_pos = point_init(vs->sprite_x_pos, sprite_y);
-		color = sprite_get_pixel_color(vs->sprite, sprite_pos);
-		screen_color_pixel(vs->screen, vs->screen_pos, color);
+		if (vs->screen_pos.y > 0 && vs->screen_pos.y < vs->screen->size.y)
+		{
+			color = sprite_get_pixel_color(vs->sprite, sprite_pos);
+			screen_color_pixel(vs->screen, vs->screen_pos, color);
+		}
 		sprite_y += inc;
 		++vs->screen_pos.y;
 		--vs->num_of_pixels;
