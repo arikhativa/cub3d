@@ -21,13 +21,19 @@ int	key_press(int keycode, t_game *g)
 	if (mlx_keys_is_exit(keycode))
 		game_handler_exit(g, keycode);
 	game_draw(g);
-	return (0);
+	return (SUCCESS);
+}
+
+static int	game_draw_handler(t_game *g)
+{
+	game_draw(g);
+	return (SUCCESS);
 }
 
 t_error_code	game_start(t_game *g)
 {
-	game_draw(g);
 	mlx_key_hook(g->screen->win, key_press, g);
+	mlx_expose_hook(g->screen->win, game_draw_handler, g);
 	mlx_loop(g->mlx);
 	return (SUCCESS);
 }
