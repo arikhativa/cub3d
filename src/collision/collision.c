@@ -32,16 +32,45 @@ int	is_collides(t_ray *ray_data, char **map, t_collinfo *collinfo)
 	return (NO_COLLISION);
 }
 
+t_bool		fpoint_equal(t_fpoint a, t_fpoint b)
+{
+	return (a.x == b.x && a.y == b.y);
+}
+
+void xxx(t_ray *r, t_collinfo *collinfo)
+{
+	double	alpha;
+
+	if (fpoint_equal(r->start, r->x_pos))
+		return ;
+	alpha = r->to_cast;
+	if (radian_is_north_west(alpha) || radian_is_south_west(alpha))
+		--collinfo->collider.x;
+	if (radian(225) == alpha)
+		--collinfo->collider.y;
+}
+
+void yyy(t_ray *r, t_collinfo *collinfo)
+{
+	double	alpha;
+
+	if (fpoint_equal(r->start, r->y_pos))
+		return ;
+	alpha = r->to_cast;
+	if (radian_is_south_east(alpha) || radian_is_south_west(alpha))
+		--collinfo->collider.y;
+	if (radian(225) == alpha)
+		--collinfo->collider.x;
+}
+
 t_collision	check_in_range(t_ray *ray_data, char **map, t_collinfo *collinfo)
 {
 	collinfo->collider = fpoint_to_point(ray_data->x_pos);
-	if (ray_data->incrementor.x == -1)
-		collinfo->collider.x--;
+	xxx(ray_data, collinfo);
 	if (map[collinfo->collider.y][collinfo->collider.x] == WALL_CHAR)
 		return (X_COLLISION);
 	collinfo->collider = fpoint_to_point(ray_data->y_pos);
-	if (ray_data->incrementor.y == -1)
-		collinfo->collider.y--;
+	yyy(ray_data, collinfo);
 	if (map[collinfo->collider.y][collinfo->collider.x] == WALL_CHAR)
 		return (Y_COLLISION);
 	return (NO_COLLISION);

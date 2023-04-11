@@ -36,7 +36,7 @@ void	set_sprite_index(t_ray_caster *rc, t_collinfo *collinfo)
 	rc->vs->sprite = rc->map->sm->sprites[sprite_index];
 }
 
-int	get_pixels_by_distance(t_ray_caster *rc, t_fpoint collision)
+size_t	get_pixels_by_distance(t_ray_caster *rc, t_fpoint collision)
 {
 	double	hypotenuse;
 	double	alpha;
@@ -52,7 +52,7 @@ void	ray_caster_cast(t_ray_caster *rc)
 {
 	t_collinfo	collinfo;
 	int			stripe_index;
-	int			pixels;
+	size_t			pixels;
 	t_point		screen_pos;
 
 	screen_pos = point_init(0, 0);
@@ -65,6 +65,12 @@ void	ray_caster_cast(t_ray_caster *rc)
 		stripe_index = sprite_get_stripe(rc->vs->sprite, collinfo.collision);
 		pixels = get_pixels_by_distance(rc, collinfo.collision);
 		screen_pos.y = (SCREEN_SIZE_Y / 2) - (pixels / 2);
+		if (!pixels)
+		{
+			printf("coll \t"); fpoint_print(collinfo.collision); printf("\n");
+			printf("pixels: %ld\n", pixels);
+			printf("screen: "); point_print(screen_pos); printf("\n");
+		}
 		vertical_stripe_set_arg(rc->vs, screen_pos, stripe_index, pixels);
 		vertical_stripe_draw(rc->vs);
 		++screen_pos.x;

@@ -27,6 +27,8 @@ static t_bool	is_wall(t_fpoint p, char **map)
 
 	x = (int)p.x;
 	y = (int)p.y;
+	printf("wall: x: %d, y: %d\n", x, y);
+	fpoint_print(p); printf("\n");
 	return (map[y][x] == WALL_CHAR);
 }
 
