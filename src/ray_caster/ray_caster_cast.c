@@ -45,7 +45,6 @@ int	get_pixels_by_distance(t_ray_caster *rc, t_fpoint collision)
 	alpha = rc->direction + radian(90) - rc->ray.to_cast;
 	hypotenuse = fpoint_get_distance(rc->start, collision);
 	distance = sin(alpha) * hypotenuse;
-	distance += MIN_DISTANCE_CONST;
 	return (rc->vs->screen->size.y / distance);
 }
 
