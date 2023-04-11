@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   collision.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 14:57:33 by ycarro            #+#    #+#             */
-/*   Updated: 2023/04/08 16:55:25 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/04/11 16:53:20 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,8 @@ typedef struct s_collinfo
 int				is_collides(t_ray *ray_data, char **map, t_collinfo *collinfo);
 t_collision		check_in_range(t_ray *ray_data, char **map, \
 				t_collinfo *collinfo);
+void			get_map_index(t_ray *ray_data, t_fpoint pos, \
+				int incrementor, int *point);
+void			corner_check(double alpha, int *point);
 
 #endif
