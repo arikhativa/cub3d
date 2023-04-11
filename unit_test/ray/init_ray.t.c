@@ -11,8 +11,11 @@
 /* ************************************************************************** */
 
 #include "unit_test.h"
-
 CU_TestInfo	g_ray_tests[] = {
+{
+	"test_ray_first_inc",
+	test_ray_first_inc,
+},
 {
 	"test_ray_inc_x",
 	test_ray_inc_x,
