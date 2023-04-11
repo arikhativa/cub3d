@@ -26,7 +26,7 @@ typedef struct s_vertical_stripe
 	t_sprite	*sprite;
 	t_point		screen_pos;
 	double		sprite_x_pos;
-	double		num_of_pixels;
+	int			num_of_pixels;
 }				t_vertical_stripe;
 
 t_error_code	vertical_stripe_create(t_vertical_stripe **ret);
