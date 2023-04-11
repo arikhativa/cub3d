@@ -40,5 +40,6 @@ void		ray_set_incrementor(t_ray *ray_data, double alpha);
 t_fpoint	ray_get_next_x(t_ray *ray_data);
 t_fpoint	ray_get_next_y(t_ray *ray_data);
 void		rey_init(t_ray *ray_data, double alpha, t_fpoint player_pos);
+double		get_first_inc(double pos, double inc);
 
 #endif
