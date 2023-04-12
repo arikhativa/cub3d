@@ -12,12 +12,30 @@
 
 #include "ray_caster.h"
 
-int	get_sprite_index(t_collinfo *collinfo)
+int	get_sprite_index(t_collinfo *collinfo, char **map)
 {
+	if (fpoint_is_corner(collinfo->collision))
+	{
+		t_corner_type t =  get_corner_type(map, collinfo->collision);
+		if (PART_OF_TOP_WALL == t)
+			return (SOUTH);
+		else if (PART_OF_RIGHT_WALL == t)
+			return (WEST);
+		// printf("found type %d\t", t);
+		// fpoint_print(collinfo->collision);
+		// printf("\n");
+	}
 	if (collinfo->axis == X_COLLISION)
 	{
 		if (collinfo->collision.x > collinfo->collider.x)
 			return (EAST);
+		// if (fpoint_is_corner(collinfo->collision))
+		// {
+		// 	printf("green \t");
+		// 	fpoint_print(collinfo->collision);
+		// 	printf("\n");
+		// 	return (NORTH);
+		// }
 		return (WEST);
 	}
 	else
@@ -32,7 +50,7 @@ void	set_sprite_index(t_ray_caster *rc, t_collinfo *collinfo)
 {
 	t_direction	sprite_index;
 
-	sprite_index = get_sprite_index(collinfo);
+	sprite_index = get_sprite_index(collinfo, rc->map->map);
 	rc->vs->sprite = rc->map->sm->sprites[sprite_index];
 }
 
@@ -58,6 +76,7 @@ void	ray_caster_cast(t_ray_caster *rc)
 	screen_pos = point_init(0, 0);
 	rc->num_of_rays = rc->vs->screen->size.x;
 	rc->ray.to_cast = rc->direction + radian(FOV_IN_DEGREE / 2);
+	// printf("\n --- round --- \n");
 	while (screen_pos.x < rc->num_of_rays)
 	{
 		dda(rc->map->map, rc->start, &rc->ray, &collinfo);

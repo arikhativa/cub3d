@@ -20,6 +20,7 @@
 # include "dda.h"
 # include "libft.h"
 # include "map.h"
+# include "corner.h"
 # include "error_code.h"
 
 typedef struct s_ray_caster
