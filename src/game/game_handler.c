@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   class.c                                            :+:      :+:    :+:   */
+/*   game_handler.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/15 13:55:57 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/04/12 11:18:51 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,14 @@ void	game_handler_movement(t_game *g, int key)
 		player_move_right(p, g->map->map);
 }
 
-void	game_handler_exit(t_game *g, int key)
+void	game_handler_exit(t_game *g)
 {
-	(void)g;
-	(void)key;
+	game_destroy(&g);
+	exit(0);
+}
+
+int	game_handler_x_button(t_game *g)
+{
+	game_handler_exit(g);
+	return (0);
 }
