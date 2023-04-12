@@ -25,6 +25,7 @@ typedef enum e_corner_type
 	PART_OF_BOTTOM_WALL,
 	PART_OF_LEFT_WALL,
 	PART_OF_RIGHT_WALL,
+	BOTTOM_RIGHT_CORNER,
 	NOT_A_CORNER,
 }	t_corner_type;
 
@@ -37,5 +38,6 @@ typedef struct s_corner
 }	t_corner;
 
 t_corner_type	get_corner_type(char **map, t_fpoint corner);
+t_point			get_index_by_corner_type(char **map, t_fpoint pos);
 
 #endif

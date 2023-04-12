@@ -32,33 +32,39 @@ int	is_collides(t_ray *ray_data, char **map, t_collinfo *collinfo)
 	return (NO_COLLISION);
 }
 
-t_collision	check_in_range(t_ray *ray_data, char **map, t_collinfo *collinfo)
+
+void	get_map_index_x(t_ray *r, char **map, t_collinfo *collinfo)
 {
-	collinfo->collider = fpoint_to_point(ray_data->x_pos);
-	get_map_index(ray_data, ray_data->x_pos, \
-		ray_data->incrementor.x, &collinfo->collider.x);
-	corner_check(ray_data->to_cast, &collinfo->collider.y);
-	if (map[collinfo->collider.y][collinfo->collider.x] == WALL_CHAR)
-		return (X_COLLISION);
-	collinfo->collider = fpoint_to_point(ray_data->y_pos);
-	get_map_index(ray_data, ray_data->y_pos, \
-		ray_data->incrementor.y, &collinfo->collider.y);
-	corner_check(ray_data->to_cast, &collinfo->collider.x);
-	if (map[collinfo->collider.y][collinfo->collider.x] == WALL_CHAR)
-		return (Y_COLLISION);
-	return (NO_COLLISION);
+	if (fpoint_is_corner(r->x_pos))
+		collinfo->collider = get_index_by_corner_type(map, r->x_pos);
+	else
+		get_map_index(r, r->x_pos, r->incrementor.x, &collinfo->collider.x);
 }
 
-void	get_map_index(t_ray *ray_data, t_fpoint pos, \
-	int incrementor, int *point)
+void	get_map_index_y(t_ray *r, char **map, t_collinfo *collinfo)
+{
+	if (fpoint_is_corner(r->y_pos))
+		collinfo->collider = get_index_by_corner_type(map, r->y_pos);
+	else
+		get_map_index(r, r->y_pos, r->incrementor.y, &collinfo->collider.y);
+}
+
+void	get_map_index(t_ray *ray_data, t_fpoint pos, int inc, int *point)
 {
 	if (!(fpoint_equal(ray_data->start, pos)))
-		if (incrementor == -1)
+		if (inc == -1)
 			(*point)--;
 }
 
-void	corner_check(double alpha, int *point)
+t_collision	check_in_range(t_ray *ray_data, char **map, t_collinfo *collinfo)
 {
-	if (radian(225) == alpha)
-		(*point)--;
+	collinfo->collider = fpoint_to_point(ray_data->x_pos);
+	get_map_index_x(ray_data, map, collinfo);
+	if (map[collinfo->collider.y][collinfo->collider.x] == WALL_CHAR)
+		return (X_COLLISION);
+	collinfo->collider = fpoint_to_point(ray_data->y_pos);
+	get_map_index_y(ray_data, map, collinfo);
+	if (map[collinfo->collider.y][collinfo->collider.x] == WALL_CHAR)
+		return (Y_COLLISION);
+	return (NO_COLLISION);
 }

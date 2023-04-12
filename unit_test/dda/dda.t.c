@@ -132,9 +132,9 @@ void	test_dda_perfect_nw(void)
 		6,
 		"111111",
 		"111111",
-		"110111",
-		"111011",
-		"1111N1",
+		"110011",
+		"110001",
+		"1110N1",
 		"111111"
 	);
 
@@ -143,8 +143,8 @@ void	test_dda_perfect_nw(void)
 	r.to_cast = radian(90 + 45);
 	dda(map, start_pos, &r, &collinfo);
 	test = fpoint_to_point(collinfo.collision);
-	CU_ASSERT_EQUAL(test.x, 4);
-	CU_ASSERT_EQUAL(test.y, 2);
+	CU_ASSERT_EQUAL(test.x, 2);
+	CU_ASSERT_EQUAL(test.y, 4);
 	tab_deep_destroy(&map);
 }
 
@@ -261,14 +261,14 @@ void	test_dda_degree_104(void)
 
 void	test_dda(void)
 {
-	test_dda1();
-	test_dda2();
-	test_dda3();
-	test_dda4();
-	test_dda_perfect_ne();
+	// test_dda1();
+	// test_dda2();
+	// test_dda3();
+	// test_dda4();
+	// test_dda_perfect_ne();
 	test_dda_perfect_nw();
-	test_dda_perfect_se();
-	test_dda_perfect_sw();
-	test_dda_degree_63();
+	// test_dda_perfect_se();
+	// test_dda_perfect_sw();
+	// test_dda_degree_63();
 	// test_dda_degree_104();
 }

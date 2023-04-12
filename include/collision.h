@@ -14,6 +14,7 @@
 # define COLLISION_H
 
 # include "macro.h"
+# include "corner.h"
 # include "ray.h"
 
 typedef enum e_collision
