@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda_ray_infi.t.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
+/*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 14:21:17 by yoav              #+#    #+#             */
-/*   Updated: 2023/04/11 16:01:14 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/04/12 12:14:53 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	test_dda_ray_infi(void)
 	t_ray	r;
 	t_fpoint p_pos = {0};
 
+	ft_bzero(&r, sizeof(t_ray));
 	r.to_cast = radian(0);
 	ray_set_incrementor(&r, r.to_cast);
 	rey_init(&r, r.to_cast, p_pos);

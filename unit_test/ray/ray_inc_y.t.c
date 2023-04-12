@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_inc_y.t.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
+/*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 14:21:17 by yoav              #+#    #+#             */
-/*   Updated: 2023/04/11 16:02:05 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/04/12 12:16:55 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	test_inc_y_63(void)
 	t_fpoint p = {0};
 	t_fpoint	ret;
 
+	ft_bzero(&r, sizeof(t_ray));
 	r.to_cast = radian(63.434948822922);
 	p.y = 2.5;
 	p.x = 10.5;
@@ -44,6 +45,7 @@ void	test_inc_y_165(void)
 	t_fpoint p = {0};
 	t_fpoint	ret;
 
+	ft_bzero(&r, sizeof(t_ray));
 	r.to_cast = radian(165.96375653207);
 	p.y = 5;
 	p.x = -1;
@@ -68,6 +70,7 @@ void	test_inc_y_264(void)
 	t_fpoint p = {0};
 	t_fpoint	ret;
 
+	ft_bzero(&r, sizeof(t_ray));
 	r.to_cast = radian(264.2894068625);
 	p.y = 5;
 	p.x = 5;
@@ -92,6 +95,7 @@ void	test_inc_y_288(void)
 	t_fpoint p = {0};
 	t_fpoint	ret;
 
+	ft_bzero(&r, sizeof(t_ray));
 	r.to_cast = radian(288.43494882292);
 	p.y = -1;
 	p.x = -6;

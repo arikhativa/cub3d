@@ -6,7 +6,7 @@
 /*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 14:21:17 by yoav              #+#    #+#             */
-/*   Updated: 2023/04/12 12:10:42 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/04/12 12:14:00 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	test_dda2(void)
 		"N"
 	);
 
+	ft_bzero(&r, sizeof(t_ray));
 	start_pos = fpoint_init(0, 0);
 	r.to_cast = radian(90);
 	dda(map, start_pos, &r, &collinfo);
@@ -63,6 +64,7 @@ void	test_dda3(void)
 		"W00101"
 	);
 
+	ft_bzero(&r, sizeof(t_ray));
 	start_pos = fpoint_init(0, 0);
 	r.to_cast = radian(0);
 	dda(map, start_pos, &r, &collinfo);
@@ -88,6 +90,7 @@ void	test_dda4(void)
 		"1"
 	);
 
+	ft_bzero(&r, sizeof(t_ray));
 	start_pos = fpoint_init(0, 7);
 	r.to_cast = radian(-90);
 	dda(map, start_pos, &r, &collinfo);
@@ -110,6 +113,7 @@ void	test_dda_perfect_ne(void)
 		"11111"
 	);
 
+	ft_bzero(&r, sizeof(t_ray));
 	start_pos = fpoint_init(1, 1);
 	r.to_cast = radian(45);
 	dda(map, start_pos, &r, &collinfo);
@@ -134,6 +138,7 @@ void	test_dda_perfect_nw(void)
 		"111111"
 	);
 
+	ft_bzero(&r, sizeof(t_ray));
 	start_pos = fpoint_init(4.5, 1.5);
 	r.to_cast = radian(90 + 45);
 	dda(map, start_pos, &r, &collinfo);
@@ -160,6 +165,7 @@ void	test_dda_perfect_se(void)
 		"1111111"
 	);
 
+	ft_bzero(&r, sizeof(t_ray));
 	start_pos = fpoint_init(0.5, 6.5);
 	r.to_cast = radian(-45);
 	dda(map, start_pos, &r, &collinfo);
@@ -192,6 +198,7 @@ void	test_dda_perfect_sw(void)
 		"1011"
 	);
 
+	ft_bzero(&r, sizeof(t_ray));
 	start_pos = fpoint_init(12.5, 12.5);
 	r.to_cast = radian(180 + 45);
 	dda(map, start_pos, &r, &collinfo);
@@ -218,6 +225,7 @@ void	test_dda_degree_63(void)
 		"N1111111"
 	);
 
+	ft_bzero(&r, sizeof(t_ray));
 	start_pos = fpoint_init(0, 0);
 	r.to_cast = radian(63.434948822922);
 	dda(map, start_pos, &r, &collinfo);
@@ -242,6 +250,7 @@ void	test_dda_degree_104(void)
 		"00N101"
 	);
 
+	ft_bzero(&r, sizeof(t_ray));
 	start_pos = fpoint_init(2.5, 0.5);
 	r.to_cast = radian(104.03624346793);
 	dda(map, start_pos, &r, &collinfo);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_set_incrementor.t.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
+/*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 14:21:17 by yoav              #+#    #+#             */
-/*   Updated: 2023/04/11 16:02:12 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/04/12 12:17:16 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	test_ray_set_incrementor(void)
 	t_ray	r;
 	double	rad = radian(0);
 	
+	ft_bzero(&r, sizeof(t_ray));
 	ray_set_incrementor(&r, rad);
 	CU_ASSERT_EQUAL(r.incrementor.x, 1);
 	CU_ASSERT_EQUAL(r.incrementor.y, 0);
