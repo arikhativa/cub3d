@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda.t.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
+/*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 14:21:17 by yoav              #+#    #+#             */
-/*   Updated: 2023/04/11 16:14:28 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/04/12 12:10:42 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	test_dda1(void)
 		"N"
 	);
 
+	ft_bzero(&r, sizeof(t_ray));
 	start_pos = fpoint_init(0, 0);
 	r.to_cast = radian(90);
 	dda(map, start_pos, &r, &collinfo);
@@ -133,11 +134,11 @@ void	test_dda_perfect_nw(void)
 		"111111"
 	);
 
-	start_pos = fpoint_init(4, 1);
+	start_pos = fpoint_init(4.5, 1.5);
 	r.to_cast = radian(90 + 45);
 	dda(map, start_pos, &r, &collinfo);
 	test = fpoint_to_point(collinfo.collision);
-	CU_ASSERT_EQUAL(test.x, 3);
+	CU_ASSERT_EQUAL(test.x, 4);
 	CU_ASSERT_EQUAL(test.y, 2);
 	tab_deep_destroy(&map);
 }
@@ -159,12 +160,12 @@ void	test_dda_perfect_se(void)
 		"1111111"
 	);
 
-	start_pos = fpoint_init(0, 6);
+	start_pos = fpoint_init(0.5, 6.5);
 	r.to_cast = radian(-45);
 	dda(map, start_pos, &r, &collinfo);
 	test = fpoint_to_point(collinfo.collision);
 	CU_ASSERT_EQUAL(test.x, 1);
-	CU_ASSERT_EQUAL(test.y, 5);
+	CU_ASSERT_EQUAL(test.y, 6);
 	tab_deep_destroy(&map);
 }
 
@@ -176,27 +177,27 @@ void	test_dda_perfect_sw(void)
 	t_collinfo	collinfo;
 	char **map = util_create_rev_map(
 		13,
-		"111111111111S",
-		"1111111111101",
-		"1111111111011",
-		"1111111110111",
-		"111111110111",
-		"11111110111",
-		"1111110111",
-		"111110111",
-		"11110111",
-		"1110111",
-		"110111",
-		"10111",
-		"1111"
+		"111111111110S1",
+		"11111111111001",
+		"1111111110001",
+		"1111111100011",
+		"111111100011",
+		"11111100011",
+		"1111100011",
+		"111100011",
+		"11100011",
+		"1100011",
+		"100011",
+		"00011",
+		"1011"
 	);
 
-	start_pos = fpoint_init(12, 12);
+	start_pos = fpoint_init(12.5, 12.5);
 	r.to_cast = radian(180 + 45);
 	dda(map, start_pos, &r, &collinfo);
 	test = fpoint_to_point(collinfo.collision);
-	CU_ASSERT_EQUAL(test.x, 11);
-	CU_ASSERT_EQUAL(test.y, 11);
+	CU_ASSERT_EQUAL(test.x, 1);
+	CU_ASSERT_EQUAL(test.y, 1);
 	tab_deep_destroy(&map);
 }
 

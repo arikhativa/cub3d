@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   collision.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
+/*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 14:59:18 by ycarro            #+#    #+#             */
-/*   Updated: 2023/04/11 16:53:08 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/04/12 12:02:09 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ void	get_map_index(t_ray *ray_data, t_fpoint pos, \
 	if (!(fpoint_equal(ray_data->start, pos)))
 		if (incrementor == -1)
 			(*point)--;
-	if (radian(225) == ray_data->to_cast)
-		(*point)--;
 }
 
 void	corner_check(double alpha, int *point)
