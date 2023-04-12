@@ -6,7 +6,7 @@
 /*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/04/12 11:15:04 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/04/12 11:18:51 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	game_handler_exit(t_game *g)
 	exit(0);
 }
 
-int		game_handler_x_button(t_game *g)
+int	game_handler_x_button(t_game *g)
 {
 	game_handler_exit(g);
-	return(0);
+	return (0);
 }
