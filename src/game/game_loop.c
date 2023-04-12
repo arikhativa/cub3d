@@ -6,7 +6,7 @@
 /*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/04/11 23:32:18 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/04/12 11:15:22 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static int	game_draw_handler(t_game *g)
 t_error_code	game_start(t_game *g)
 {
 	mlx_key_hook(g->screen->win, key_press, g);
+	mlx_hook(g->screen->win, ON_DESTROY, 0, game_handler_x_button, g);
 	mlx_expose_hook(g->screen->win, game_draw_handler, g);
 	mlx_loop(g->mlx);
 	return (SUCCESS);

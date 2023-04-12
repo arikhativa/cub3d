@@ -6,7 +6,7 @@
 /*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/04/11 23:32:26 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/04/12 11:15:13 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ void			game_draw(t_game *g);
 void			game_handler_vision(t_game *g, int key);
 void			game_handler_movement(t_game *g, int key);
 void			game_handler_exit(t_game *g);
+int				game_handler_x_button(t_game *g);
 
 #endif
