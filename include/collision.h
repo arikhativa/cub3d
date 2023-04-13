@@ -36,6 +36,5 @@ t_collision		check_in_range(t_ray *ray_data, char **map, \
 				t_collinfo *collinfo);
 void			get_map_index(t_ray *ray_data, t_fpoint pos, \
 				int incrementor, int *point);
-void			corner_check(double alpha, int *point);
 
 #endif
