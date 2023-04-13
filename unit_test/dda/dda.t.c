@@ -25,11 +25,11 @@ void	test_dda1(void)
 	);
 
 	ft_bzero(&r, sizeof(t_ray));
-	start_pos = fpoint_init(0, 0);
+	start_pos = fpoint_init(0.5, 0.5);
 	r.to_cast = radian(90);
 	dda(map, start_pos, &r, &collinfo);
-	CU_ASSERT_EQUAL(collinfo.collision.x, 0);
-	CU_ASSERT_EQUAL(collinfo.collision.y, 1);
+	CU_ASSERT_DOUBLE_EQUAL(collinfo.collision.x, 0.5, 0.0000001);
+	CU_ASSERT_DOUBLE_EQUAL(collinfo.collision.y, 1, 0.0000001);
 	tab_deep_destroy(&map);
 }
 
@@ -46,11 +46,11 @@ void	test_dda2(void)
 	);
 
 	ft_bzero(&r, sizeof(t_ray));
-	start_pos = fpoint_init(0, 0);
+	start_pos = fpoint_init(0.5, 0.5);
 	r.to_cast = radian(90);
 	dda(map, start_pos, &r, &collinfo);
-	CU_ASSERT_EQUAL(collinfo.collision.x, 0);
-	CU_ASSERT_EQUAL(collinfo.collision.y, 2);
+	CU_ASSERT_DOUBLE_EQUAL(collinfo.collision.x, 0.5, 0.0000001);
+	CU_ASSERT_DOUBLE_EQUAL(collinfo.collision.y, 2, 0.0000001);
 	tab_deep_destroy(&map);
 }
 
@@ -65,11 +65,11 @@ void	test_dda3(void)
 	);
 
 	ft_bzero(&r, sizeof(t_ray));
-	start_pos = fpoint_init(0, 0);
+	start_pos = fpoint_init(0.5, 0.5);
 	r.to_cast = radian(0);
 	dda(map, start_pos, &r, &collinfo);
-	CU_ASSERT_EQUAL(collinfo.collision.x, 3);
-	CU_ASSERT_EQUAL(collinfo.collision.y, 0);
+	CU_ASSERT_DOUBLE_EQUAL(collinfo.collision.x, 3, 0.0000001);
+	CU_ASSERT_DOUBLE_EQUAL(collinfo.collision.y, 0.5, 0.0000001);
 	tab_deep_destroy(&map);
 }
 
@@ -91,11 +91,11 @@ void	test_dda4(void)
 	);
 
 	ft_bzero(&r, sizeof(t_ray));
-	start_pos = fpoint_init(0, 7);
+	start_pos = fpoint_init(0.5, 7.5);
 	r.to_cast = radian(-90);
 	dda(map, start_pos, &r, &collinfo);
-	CU_ASSERT_EQUAL(collinfo.collision.x, 0);
-	CU_ASSERT_EQUAL(collinfo.collision.y, 2);
+	CU_ASSERT_DOUBLE_EQUAL(collinfo.collision.x, 0.5, 0.0000001);
+	CU_ASSERT_DOUBLE_EQUAL(collinfo.collision.y, 2, 0.0000001);
 	tab_deep_destroy(&map);
 }
 
@@ -109,16 +109,16 @@ void	test_dda_perfect_ne(void)
 		"11111",
 		"10011",
 		"10001",
-		"1S001",
+		"1N001",
 		"11111"
 	);
 
 	ft_bzero(&r, sizeof(t_ray));
-	start_pos = fpoint_init(1, 1);
+	start_pos = fpoint_init(1.5, 1.5);
 	r.to_cast = radian(45);
 	dda(map, start_pos, &r, &collinfo);
-	CU_ASSERT_EQUAL(collinfo.collision.x, 3);
-	CU_ASSERT_EQUAL(collinfo.collision.y, 3);
+	CU_ASSERT_DOUBLE_EQUAL(collinfo.collision.x, 3, 0.0000001);
+	CU_ASSERT_DOUBLE_EQUAL(collinfo.collision.y, 3, 0.0000001);
 	tab_deep_destroy(&map);
 }
 
@@ -131,10 +131,10 @@ void	test_dda_perfect_nw(void)
 	char **map = util_create_rev_map(
 		6,
 		"111111",
-		"111111",
 		"110111",
-		"111011",
-		"1111N1",
+		"100011",
+		"110001",
+		"1110N1",
 		"111111"
 	);
 
@@ -143,8 +143,8 @@ void	test_dda_perfect_nw(void)
 	r.to_cast = radian(90 + 45);
 	dda(map, start_pos, &r, &collinfo);
 	test = fpoint_to_point(collinfo.collision);
-	CU_ASSERT_EQUAL(test.x, 4);
-	CU_ASSERT_EQUAL(test.y, 2);
+	CU_ASSERT_EQUAL(test.x, 2);
+	CU_ASSERT_EQUAL(test.y, 4);
 	tab_deep_destroy(&map);
 }
 
@@ -156,13 +156,13 @@ void	test_dda_perfect_se(void)
 	t_collinfo	collinfo;
 	char **map = util_create_rev_map(
 		7,
-		"S11111",
-		"101111",
-		"110111",
-		"111011",
-		"111101",
-		"1111101",
-		"1111111"
+		"S01111",
+		"000111",
+		"100011",
+		"110001",
+		"111000",
+		"1111000",
+		"1111101"
 	);
 
 	ft_bzero(&r, sizeof(t_ray));
@@ -170,8 +170,8 @@ void	test_dda_perfect_se(void)
 	r.to_cast = radian(-45);
 	dda(map, start_pos, &r, &collinfo);
 	test = fpoint_to_point(collinfo.collision);
-	CU_ASSERT_EQUAL(test.x, 1);
-	CU_ASSERT_EQUAL(test.y, 6);
+	CU_ASSERT_EQUAL(test.x, 6);
+	CU_ASSERT_EQUAL(test.y, 1);
 	tab_deep_destroy(&map);
 }
 
@@ -184,7 +184,7 @@ void	test_dda_perfect_sw(void)
 	char **map = util_create_rev_map(
 		13,
 		"111111111110S1",
-		"11111111111001",
+		"11111111110001",
 		"1111111110001",
 		"1111111100011",
 		"111111100011",
@@ -212,26 +212,26 @@ void	test_dda_degree_63(void)
 {
 	t_fpoint	start_pos = {0};
 	t_ray	r;
-	t_point	test = {0};
 	t_collinfo	collinfo;
 	char **map = util_create_rev_map(
-		7,
+		8,
 		"11111111",
-		"11010001",
-		"11010001",
-		"10100011",
-		"10101111",
-		"01011111",
+		"11010111",
+		"11001111",
+		"11011111",
+		"10011111",
+		"10111111",
+		"00111111",
 		"N1111111"
 	);
 
 	ft_bzero(&r, sizeof(t_ray));
-	start_pos = fpoint_init(0, 0);
+	start_pos = fpoint_init(0.5, 0.5);
 	r.to_cast = radian(63.434948822922);
 	dda(map, start_pos, &r, &collinfo);
-	test = fpoint_to_point(collinfo.collision);
-	CU_ASSERT_EQUAL(test.x, 3);
-	CU_ASSERT_EQUAL(test.y, 6);
+	CU_ASSERT_DOUBLE_EQUAL(collinfo.collision.x, 3.25, 0.0000001);
+	CU_ASSERT_DOUBLE_EQUAL(collinfo.collision.y, 6, 0.0000001);
+
 	tab_deep_destroy(&map);
 }
 
@@ -244,18 +244,18 @@ void	test_dda_degree_104(void)
 	char **map = util_create_rev_map(
 		5,
 		"111111",
-		"000111",
-		"110101",
-		"010111",
-		"00N101"
+		"100111",
+		"100101",
+		"100111",
+		"01N101"
 	);
 
 	ft_bzero(&r, sizeof(t_ray));
 	start_pos = fpoint_init(2.5, 0.5);
 	r.to_cast = radian(104.03624346793);
 	dda(map, start_pos, &r, &collinfo);
-	// fpoint_print(collinfo); printf("\n");
-	// CU_ASSERT_DOUBLE_EQUAL(collinfo.x, 3, 0.000001);
+	CU_ASSERT_DOUBLE_EQUAL(collinfo.collision.x, 1.625, 0.000001);
+	CU_ASSERT_DOUBLE_EQUAL(collinfo.collision.y, 4, 0.000001);
 	tab_deep_destroy(&map);
 }
 
@@ -270,5 +270,5 @@ void	test_dda(void)
 	test_dda_perfect_se();
 	test_dda_perfect_sw();
 	test_dda_degree_63();
-	// test_dda_degree_104();
+	test_dda_degree_104();
 }

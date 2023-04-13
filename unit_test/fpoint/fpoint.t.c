@@ -61,7 +61,7 @@ void	test_small_round_up(void)
 {
 	t_fpoint	fp;
 	t_point		p;
-	fp = fpoint_init(0, 2.999);
+	fp = fpoint_init(0, 2.999999999999999);
 	p = fpoint_to_point(fp);
 	CU_ASSERT_EQUAL(p.x, 0);
 	CU_ASSERT_EQUAL(p.y, 3);
