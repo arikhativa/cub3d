@@ -54,11 +54,13 @@ int				map_get_map_index(char **file);
 void			map_get_size(t_map *m);
 t_error_code	map_load_player(t_map *m);
 t_error_code	map_post_load_validation(t_map *m);
-t_bool			map_is_closed(t_map *m);
+t_error_code	map_is_closed(t_map *m, t_bool *is_closed);
 t_bool			map_is_valid_pos(char **m, t_point pos);
 t_bool			map_is_space(char **m, t_point pos);
 t_bool			map_is_old_pos(char **m, t_point pos);
 t_bool			map_is_wall(char **m, t_point pos);
 int				map_get_floor_color(t_map *m);
 int				map_get_celling_color(t_map *m);
+void			rev_loop_map_print(char **map);
+
 #endif

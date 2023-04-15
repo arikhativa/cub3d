@@ -12,11 +12,14 @@
 
 #include "map.h"
 
-static void	rev_loop_map_print(char **map, int size)
+void	rev_loop_map_print(char **map)
 {
 	int	i;
 
-	i = size - 1;
+	i = 0;
+	while (map[i])
+		++i;
+	--i;
 	while (i >= 0)
 	{
 		printf("%s\n", map[i]);
@@ -31,7 +34,6 @@ void	map_print(t_map *m)
 	printf("\n");
 	plane_mngr_print(m->pm);
 	player_print(m->p);
-	printf("\n");
-	rev_loop_map_print(m->map, m->size.y);
+	rev_loop_map_print(m->map);
 	printf("NOTE - map indexing start from bottom left (not top left)\n");
 }

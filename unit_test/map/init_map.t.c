@@ -14,6 +14,10 @@
 
 CU_TestInfo	g_map_tests[] = {
 {
+	"test_map_is_closed_large",
+	test_map_is_closed_large,
+},
+{
 	"test_map_is_closed_err1",
 	test_map_is_closed_err1,
 },
