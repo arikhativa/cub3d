@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 09:45:15 by yoav              #+#    #+#             */
-/*   Updated: 2023/04/18 15:53:04 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/04/18 17:18:08 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,7 @@ typedef enum s_error_code
 
 t_error_code	error_code_print_on_exit(t_error_code err);
 void			error_code_print(int size, ...);
+t_error_code	error_code_print_ext3(t_error_code err);
+t_error_code	error_code_print_msg(char *msg, t_error_code err);
 
 #endif
