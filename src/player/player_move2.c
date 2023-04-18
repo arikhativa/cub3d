@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:46:30 by yrabby            #+#    #+#             */
-/*   Updated: 2023/04/18 16:55:27 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/04/18 17:08:38 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static t_fpoint	get_next_fpoint(t_fpoint p, double sloop)
 {
-	t_fpoint tmp;
+	t_fpoint	tmp;
 
 	tmp = fpoint_copy(p);
 	p.y += sin(sloop) * MOVEMENT_SPEED;
