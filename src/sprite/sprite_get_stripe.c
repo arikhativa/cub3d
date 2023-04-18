@@ -6,13 +6,12 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/04/18 14:31:49 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/04/18 17:30:34 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sprite.h"
 
-// TODO this func is just a placement. plz replace with the correct logic
 double	get_sprite_index_by_axis(t_sprite *s, t_fpoint collision)
 {
 	double	x;
