@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_caster_cast.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/04/08 16:54:50 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/04/18 14:31:05 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	set_sprite_index(t_ray_caster *rc, t_collinfo *collinfo)
 
 	sprite_index = get_sprite_index(collinfo);
 	rc->vs->sprite = rc->map->sm->sprites[sprite_index];
+	rc->vs->sprite->index = sprite_index;
 }
 
 int	get_pixels_by_distance(t_ray_caster *rc, t_fpoint collision)
