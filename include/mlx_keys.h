@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_keys.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:57:17 by ycarro            #+#    #+#             */
-/*   Updated: 2023/03/29 15:38:48 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/04/18 14:35:18 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 #  define KEY_S		1
 #  define KEY_LEFT	123
 #  define KEY_RIGHT	124
-#  define KEY_ESC	18
+#  define KEY_ESC	53
 # endif
 
 t_bool	mlx_keys_is_vision(int keycode);
