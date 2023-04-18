@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/15 13:46:21 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/04/18 13:39:02 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "libft.h"
 # include "error_code.h"
 # include "direction.h"
+# include "dda.h"
 # include "fpoint.h"
 # include "radian.h"
 
