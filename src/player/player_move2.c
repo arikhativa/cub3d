@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:46:30 by yrabby            #+#    #+#             */
-/*   Updated: 2023/04/18 14:08:20 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/04/18 16:55:27 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,26 @@
 
 static t_fpoint	get_next_fpoint(t_fpoint p, double sloop)
 {
+	t_fpoint tmp;
+
+	tmp = fpoint_copy(p);
 	p.y += sin(sloop) * MOVEMENT_SPEED;
 	p.x += cos(sloop) * MOVEMENT_SPEED;
+	if (0 == fmod(p.x, 1.0) || 0 == fmod(p.y, 1.0))
+	{
+		tmp.y += sin(sloop) * (MOVEMENT_SPEED - 0.05);
+		tmp.x += cos(sloop) * (MOVEMENT_SPEED - 0.05);
+		p = fpoint_copy(tmp);
+	}
 	return (p);
 }
 
-// TODO bad func! does not work
 static t_bool	is_wall(t_fpoint p, char **map)
 {
-	int		x;
-	int		y;
+	t_point	pos;
 
-	x = (int)p.x;
-	y = (int)p.y;
-	return (map[y][x] == WALL_CHAR);
+	pos = fpoint_to_point(p);
+	return (map[pos.y][pos.x] == WALL_CHAR);
 }
 
 t_bool	can_player_move(t_player *p, char **map, double sloop)

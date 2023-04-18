@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fpoint.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/03/24 17:20:29 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/04/18 16:54:10 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_fpoint	fpoint_copy(t_fpoint src)
 
 void	fpoint_print(t_fpoint p)
 {
-	printf("{x: %lf, y: %lf}", p.x, p.y);
+	printf("{x: %.20lf, y: %.20lf}", p.x, p.y);
 }
 
 double	fpoint_get_distance(t_fpoint p1, t_fpoint p2)

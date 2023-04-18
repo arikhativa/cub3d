@@ -1,21 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fpoint.c                                           :+:      :+:    :+:   */
+/*   fpoint_convert.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/03/24 17:20:29 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/04/18 15:55:34 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fpoint.h"
 
-// TODO in a case of a very small reminder we should round to the nearest int
-// e.g.
-// 0.999
-// should be rounded to 1
 static int	round_if_needed(double d)
 {
 	double	rem;
