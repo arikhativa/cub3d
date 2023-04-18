@@ -12,7 +12,7 @@
 
 include makefile_util.mk
 
-NAME 					= cub3d
+NAME 					= cub3D
 export ROOT_DIR			= $(CURDIR)
 
 # MAC vs Linux
