@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_code.c                                       :+:      :+:    :+:   */
+/*   error_code2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 09:42:34 by yoav              #+#    #+#             */
-/*   Updated: 2023/02/15 11:16:30 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/04/18 17:17:48 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,17 @@ void	error_code_print(int size, ...)
 	}
 	va_end(list);
 	ft_putstr_fd(NEW_LINE_STR, STDERR_FILENO);
+}
+
+t_error_code	error_code_print_ext3(t_error_code err)
+{
+	if (EXT_MLX_ERROR == err)
+		err = error_code_print_msg(EXT_MLX_ERROR_MSG, err);
+	else if (EXT_MISSING_PLAYER == err)
+		err = error_code_print_msg(EXT_MISSING_PLAYER_MSG, err);
+	else if (EXT_MAP_OPEN == err)
+		err = error_code_print_msg(EXT_MAP_OPEN_MSG, err);
+	else if (EXT_DUPLICATE_SETTING == err)
+		err = error_code_print_msg(EXT_DUPLICATE_SETTING_MSG, err);
+	return (err);
 }

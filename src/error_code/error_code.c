@@ -6,13 +6,13 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 09:42:34 by yoav              #+#    #+#             */
-/*   Updated: 2023/02/15 11:16:30 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/04/18 17:18:02 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "error_code.h"
 
-static t_error_code	error_code_print_msg(char *msg, t_error_code err)
+t_error_code	error_code_print_msg(char *msg, t_error_code err)
 {
 	ft_putstr_fd("Error\n", STDERR_FILENO);
 	ft_putstr_fd(CUB3D_STR, STDERR_FILENO);
@@ -53,6 +53,8 @@ static t_error_code	error_code_print_ext2(t_error_code err)
 		err = error_code_print_msg(EXT_BAD_PREFIX_MSG, err);
 	else if (EXT_TOO_MANY_ARG == err)
 		err = error_code_print_msg(EXT_TOO_MANY_ARG_MSG, err);
+	else
+		err = error_code_print_ext3(err);
 	return (err);
 }
 
