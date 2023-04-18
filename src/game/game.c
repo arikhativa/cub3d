@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   class.c                                            :+:      :+:    :+:   */
+/*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/15 13:55:57 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/04/18 14:36:19 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,7 @@ void	game_destroy(t_game **obj)
 	if (tmp->rc)
 		ray_caster_destroy(&(tmp->rc));
 	if (tmp->mlx)
-	{
-		mlx_destroy_display(tmp->mlx);
 		free(tmp->mlx);
-	}
 	ft_bzero(tmp, sizeof(t_game));
 	free(tmp);
 	*obj = NULL;
