@@ -21,39 +21,34 @@ static char	mark_pos( char **map, t_point pos)
 	return (ch);
 }
 
-static void	unmark_pos( char **map, t_point pos, char ch)
-{
-	map[pos.y][pos.x] = ch;
-}
-
 t_bool	rec_is_bad_map(char **map, t_point pos)
 {
-	char	ch;
 	t_bool	stt;
 
 	if (!map_is_valid_pos(map, pos) || map_is_space(map, pos))
 		return (TRUE);
 	if (map_is_old_pos(map, pos) || map_is_wall(map, pos))
 		return (FALSE);
-	ch = mark_pos(map, pos);
+	mark_pos(map, pos);
 	stt = rec_is_bad_map(map, point_up(pos));
 	stt += rec_is_bad_map(map, point_down(pos));
 	stt += rec_is_bad_map(map, point_left(pos));
 	stt += rec_is_bad_map(map, point_right(pos));
-	unmark_pos(map, pos, ch);
 	return (!!stt);
 }
 
-t_bool	map_is_closed(t_map *m)
+t_error_code	map_is_closed(t_map *m, t_bool *is_closed)
 {
-	t_bool	ret;
-	t_point	pos;
-	char	ch;
+	t_point			pos;
+	char			**tmp_map;
+	t_error_code	err;
 
+	err = tab_dup(&tmp_map, m->map);
+	if (err != SUCCESS)
+		return (err);
 	pos = fpoint_to_point(m->p->pos);
-	ch = m->map[pos.y][pos.x];
-	m->map[pos.y][pos.x] = EMPTY_SPACE_CHAR;
-	ret = rec_is_bad_map(m->map, pos);
-	m->map[pos.y][pos.x] = ch;
-	return (!ret);
+	tmp_map[pos.y][pos.x] = EMPTY_SPACE_CHAR;
+	*is_closed = !rec_is_bad_map(tmp_map, pos);
+	tab_deep_destroy(&tmp_map);
+	return (SUCCESS);
 }

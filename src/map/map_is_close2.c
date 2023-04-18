@@ -14,6 +14,8 @@
 
 t_bool	map_is_valid_pos(char **m, t_point pos)
 {
+	if (pos.x < 0 || pos.y < 0)
+		return (FALSE);
 	return (m && m[pos.y] && m[pos.y][pos.x]);
 }
 
