@@ -1,7 +1,7 @@
-NO ./resource/xpm/blue.xpm
-SO ./resource/xpm/red.xpm
-WE ./resource/xpm/green.xpm
-EA ./resource/xpm/yellow.xpm
+NO ./resource/xpm/wall_blue.xpm
+SO ./resource/xpm/wall_violet.xpm
+WE ./resource/xpm/wall_green.xpm
+EA ./resource/xpm/wall_orange.xpm
 
 C 160,198,242
 F 86,69,87
