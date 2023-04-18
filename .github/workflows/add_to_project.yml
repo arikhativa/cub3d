@@ -1,17 +1,17 @@
 
-name: Link PR to Project
+# name: Link PR to Project
 
-on:
-  pull_request:
-    branches: [ main ]
-  workflow_dispatch:
+# on:
+#   pull_request:
+#     branches: [ main ]
+#   workflow_dispatch:
 
-jobs:
-  link-pr-to-project:
-    name: Link PR to Project
-    runs-on: ubuntu-22.04
-    steps:
-      - uses: actions/add-to-project@v0.4.0
-        with:
-          project-url: https://github.com/users/arikhativa/projects/2
-          github-token: ${{ secrets.ADD_TO_PROJECT_PAT }}
+# jobs:
+#   link-pr-to-project:
+#     name: Link PR to Project
+#     runs-on: ubuntu-22.04
+#     steps:
+#       - uses: actions/add-to-project@v0.4.0
+#         with:
+#           project-url: https://github.com/users/arikhativa/projects/2
+#           github-token: ${{ secrets.ADD_TO_PROJECT_PAT }}
