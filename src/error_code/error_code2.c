@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 09:42:34 by yoav              #+#    #+#             */
-/*   Updated: 2023/04/18 17:17:48 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/04/18 17:46:56 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,7 @@ t_error_code	error_code_print_ext3(t_error_code err)
 		err = error_code_print_msg(EXT_MAP_OPEN_MSG, err);
 	else if (EXT_DUPLICATE_SETTING == err)
 		err = error_code_print_msg(EXT_DUPLICATE_SETTING_MSG, err);
+	else if (EXT_MAP_TOO_BIG == err)
+		err = error_code_print_msg(EXT_MAP_TOO_BIG_MSG, err);
 	return (err);
 }

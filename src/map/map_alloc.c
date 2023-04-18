@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   map_alloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/15 13:58:46 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/04/18 17:47:00 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ t_error_code	map_alloc_map(t_map *m)
 	t_error_code	err;
 
 	map_get_size(m);
+	if (m->size.x > MAP_MAX_SIZE_X || m->size.y > MAP_MAX_SIZE_Y)
+		return (EXT_MAP_TOO_BIG);
 	err = tab_create(&m->map, m->size.y);
 	if (SUCCESS == err)
 		map_init_lines(m);
