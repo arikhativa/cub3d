@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 09:45:15 by yoav              #+#    #+#             */
-/*   Updated: 2023/02/16 10:59:57 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/04/18 17:18:08 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 # define EXT_TOO_MANY_ARG_MSG	"Too many arguments"
 # define EXT_INVALID_FILE_MSG	"Invalid file suffix.\
 	 format should be -> <file>.cub"
-// TODO add msgs
 # define EXT_INVALID_LINE_MSG			"EXT_INVALID_LINE"
 # define EXT_BAD_COLOR_MSG				"EXT_BAD_COLOR"
 # define EXT_MISSING_PLANE_COLOR_MSG	"EXT_MISSING_PLANE_COLOR"
@@ -34,6 +33,10 @@
 # define EXT_BAD_SPRITE_FILE_MSG		"EXT_BAD_SPRITE_FILE"
 # define EXT_BAD_PREFIX_MSG				"EXT_BAD_PREFIX"
 # define EXT_MAP_NOT_AT_BOTTOM_MSG		"EXT_MAP_NOT_AT_BOTTOM"
+# define EXT_MLX_ERROR_MSG				"EXT_MLX_ERROR"
+# define EXT_MISSING_PLAYER_MSG			"EXT_MISSING_PLAYER"
+# define EXT_MAP_OPEN_MSG				"EXT_MISSING_PLAYER"
+# define EXT_DUPLICATE_SETTING_MSG		"EXT_DUPLICATE_SETTING"
 
 typedef enum s_error_code
 {
@@ -65,5 +68,7 @@ typedef enum s_error_code
 
 t_error_code	error_code_print_on_exit(t_error_code err);
 void			error_code_print(int size, ...);
+t_error_code	error_code_print_ext3(t_error_code err);
+t_error_code	error_code_print_msg(char *msg, t_error_code err);
 
 #endif
