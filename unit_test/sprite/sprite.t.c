@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 14:21:17 by yoav              #+#    #+#             */
-/*   Updated: 2023/02/16 10:49:07 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/04/18 14:41:31 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ void	test_sprite_get_stripe(void)
 	CU_ASSERT_EQUAL(ret, 32);
 	pos = fpoint_init(30.25, 0);
 	ret = sprite_get_stripe(obj, pos);
-	CU_ASSERT_EQUAL(ret, 16);
+	CU_ASSERT_EQUAL(ret, 48);
 	pos = fpoint_init(30.1, 0);
 	ret = sprite_get_stripe(obj, pos);
-	CU_ASSERT_EQUAL(ret, 6);
+	CU_ASSERT_EQUAL(ret, 57);
 	sprite_destroy(&obj);
 }
