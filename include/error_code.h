@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 09:45:15 by yoav              #+#    #+#             */
-/*   Updated: 2023/04/18 17:18:08 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/04/18 17:46:40 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@
 # define EXT_MAP_NOT_AT_BOTTOM_MSG		"EXT_MAP_NOT_AT_BOTTOM"
 # define EXT_MLX_ERROR_MSG				"EXT_MLX_ERROR"
 # define EXT_MISSING_PLAYER_MSG			"EXT_MISSING_PLAYER"
-# define EXT_MAP_OPEN_MSG				"EXT_MISSING_PLAYER"
+# define EXT_MAP_OPEN_MSG				"EXT_MAP_OPEN"
 # define EXT_DUPLICATE_SETTING_MSG		"EXT_DUPLICATE_SETTING"
+# define EXT_MAP_TOO_BIG_MSG			"EXT_MAP_TOO_BIG"
 
 typedef enum s_error_code
 {
@@ -64,6 +65,7 @@ typedef enum s_error_code
 	EXT_MISSING_PLAYER,
 	EXT_MAP_OPEN,
 	EXT_DUPLICATE_SETTING,
+	EXT_MAP_TOO_BIG,
 }	t_error_code;
 
 t_error_code	error_code_print_on_exit(t_error_code err);

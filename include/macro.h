@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   macro.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ycarro <ycarro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 12:35:42 by yoav              #+#    #+#             */
-/*   Updated: 2023/04/12 11:08:32 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/04/18 17:45:59 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # define BITS_IN_CHAR		8
 # define FOV_IN_DEGREE		66
 # define ON_DESTROY			17
+# define MAP_MAX_SIZE_X		200
+# define MAP_MAX_SIZE_Y		200
 
 typedef enum e_bool
 {
