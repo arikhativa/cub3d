@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/16 10:48:47 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/04/18 14:30:12 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 # include "mlx.h"
 # include "libft.h"
+# include "radian.h"
 # include "error_code.h"
 # include "macro.h"
 # include "fpoint.h"
@@ -33,6 +34,7 @@ typedef struct s_sprite
 	int			bits_per_pixel;
 	int			line_size;
 	int			endian;
+	t_direction	index;
 }				t_sprite;
 
 t_error_code	sprite_create(t_sprite **ret);
