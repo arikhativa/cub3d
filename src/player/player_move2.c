@@ -6,7 +6,7 @@
 /*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:46:30 by yrabby            #+#    #+#             */
-/*   Updated: 2023/04/19 11:41:08 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/04/19 11:55:34 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static t_fpoint	get_next_fpoint(t_fpoint p, double sloop)
 	p.x += cos(sloop) * MOVEMENT_SPEED;
 	if (0 == fmod(p.x, 1.0) || 0 == fmod(p.y, 1.0))
 	{
-		tmp.y += sin(sloop) * (MOVEMENT_SPEED - 0.05);
-		tmp.x += cos(sloop) * (MOVEMENT_SPEED - 0.05);
+		tmp.y += sin(sloop) * (MOVEMENT_SPEED - 0.1);
+		tmp.x += cos(sloop) * (MOVEMENT_SPEED - 0.1);
 		p = fpoint_copy(tmp);
 	}
 	return (p);
