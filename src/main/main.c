@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 09:50:39 by al7aro            #+#    #+#             */
-/*   Updated: 2023/02/16 11:19:44 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/04/19 14:32:46 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ int	main(int argc, char **argv)
 		err = game_create(&game);
 		if (SUCCESS == err)
 		{
-			err = game_init(game);
+			err = map_read_raw(game->map, argv[1]);
 			if (SUCCESS == err)
-				err = game_load(game, argv[1]);
+				err = game_init(game);
+			if (SUCCESS == err)
+				err = game_load(game);
 			if (SUCCESS == err)
 				err = game_start(game);
 			game_destroy(&game);
