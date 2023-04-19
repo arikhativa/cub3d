@@ -6,11 +6,15 @@
 #    By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/07 10:47:18 by yrabby            #+#    #+#              #
-#    Updated: 2023/02/16 11:21:21 by yrabby           ###   ########.fr        #
+#    Updated: 2023/04/19 11:37:07 by yrabby           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-include makefile_util.mk
+RED				= \033[0;31m
+CYAN			= \033[0;36m
+GREEN 			= \033[1;32m
+YELLOW 			= \033[1;33m
+NC 				= \033[0m
 
 NAME 					= cub3D
 export ROOT_DIR			= $(CURDIR)
@@ -54,45 +58,19 @@ export LIBFT_DIR		= libft
 LIBFT_HEAD_DIR			= $(LIBFT_DIR)
 LIBFT					= $(addprefix $(LIBFT_DIR)/, $(LIBFT_NAME))
 
-#---------- TEST ----------
-export TEST_DIR			= unit_test
-TEST_HEAD_DIR			= $(addprefix $(TEST_DIR)/, include)
-TEST_HEAD_NAME			= $(notdir $(wildcard $(TEST_HEAD_DIR)/*.h))
-TEST_HEAD				= $(addprefix $(TEST_HEAD_DIR)/, $(TEST_HEAD_NAME))
-TEST_HEAD_FLAG			= -I$(TEST_HEAD_DIR)
-TEST_LDLIBS				= -lcunit -lft $(LIBX_FLAGS)
-export TEST_EXEC		= test.out
-export TEST_RES			= unit_test_result.txt
-export VALGRIND_OUTPUT 	= valgrind_out.txt
-export NORMINETTE_OUTPUT	= norm_out.txt
-export NORMINETTE_RES	= norminette_result.txt
-TEST_SRC 				= $(wildcard $(TEST_DIR)/**/*.t.c)
-TEST_OBJ 				= $(TEST_SRC:.t.c=.t.o)
-
-#---------- CUNIT -----------
-CUNIT_DIR				:= $(HOME)/.brew/Cellar/cunit/2.1-3/include
-LCUNIT_DIR				:= $(HOME)/.brew/Cellar/cunit/2.1-3/lib
-
-#---------- SCRIPT ----------
-SCRIPT_DIR				= script
-TEST_SCRIPT				= $(addprefix $(SCRIPT_DIR)/, test.sh)
-
 #---------- FLAGS ----------
 CC 						= cc
-HEAD_FLAG				= -I$(HEAD_DIR) -I$(LIBFT_HEAD_DIR) -I$(LIBX_HEAD_DIR) -I$(CUNIT_DIR)
+HEAD_FLAG				= -I$(HEAD_DIR) -I$(LIBFT_HEAD_DIR) -I$(LIBX_HEAD_DIR) 
 CFLAGS 					= -c -Wall -Wextra -Werror $(HEAD_FLAG) $(OS_TYPE)
-LDFLAGS 				= -L$(LIBFT_DIR) -L$(LIBX_DIR) -L$(LCUNIT_DIR)
+LDFLAGS 				= -L$(LIBFT_DIR) -L$(LIBX_DIR) 
 LDLIBS 					= -lft $(LIBX_FLAGS)
 
 #---------- IMPLICT RULES ----------
 $(addprefix $(OBJ_DIR)/, %.o): $(addprefix $(SRC_DIR)/, %.c) $(HEAD)
 	@$(CC) $(CFLAGS) $< -o $(@)
 
-$(addprefix $(TEST_DIR)/, %.t.o): $(addprefix $(TEST_DIR)/, %.t.c) $(TEST_HEAD)
-	@$(CC) $(CFLAGS) $(TEST_HEAD_FLAG) $< -o $@
-
 #---------- RULES ----------
-.PHONY: clean fclean re all check check/leaks check/norm
+.PHONY: clean fclean re all
 
 all: $(OBJ_DIR) $(NAME)
 
@@ -112,33 +90,15 @@ $(NAME): $(OBJ) $(LIBFT) $(LIBX)
 	@$(CC) $(LDFLAGS) $(OBJ) $(LDLIBS) -o $@
 	@echo "$(GREEN)$(NAME) READY!$(NC)"
 
-$(TEST_EXEC): $(OBJ_DIR) $(OBJ_NO_MAIN) $(TEST_OBJ) $(LIBFT) $(LIBX)
-	@$(CC) $(LDFLAGS) $(OBJ_NO_MAIN) $(TEST_OBJ) $(TEST_LDLIBS) -o $(TEST_EXEC)
-
-check: $(TEST_EXEC)
-	@bash $(TEST_SCRIPT) unit_test
-
-check/all: check check/leaks check/norm
-
-check/leaks: $(TEST_EXEC)
-	@bash $(TEST_SCRIPT) memory
-
-check/norm:
-	@bash $(TEST_SCRIPT) norm
-
 clean:
 	@$(MAKE) clean -sC $(LIBFT_DIR)
 	@$(RM) -rf $(OBJ_DIR)
-	@$(RM) $(VALGRIND_OUTPUT)
-	@$(RM) $(TEST_RES)
-	@$(RM) $(TEST_OBJ)
 	@$(RM) $(LIBX)
 	@$(RM) $(LIBX_LINUX_EXTRA)
 	@echo "$(RED)Objects Removed!$(NC)"
 
 fclean: clean
 	@$(MAKE) fclean -sC $(LIBFT_DIR)
-	@$(RM) $(TEST_EXEC)
 	@$(RM) $(NAME)
 	@echo "$(RED)$(NAME) Removed!$(NC)"
 
