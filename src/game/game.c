@@ -53,8 +53,6 @@ void	game_destroy(t_game **obj)
 		vertical_stripe_destroy(&(tmp->vs));
 	if (tmp->rc)
 		ray_caster_destroy(&(tmp->rc));
-	if (tmp->mlx)
-		free(tmp->mlx);
 	ft_bzero(tmp, sizeof(t_game));
 	free(tmp);
 	*obj = NULL;
