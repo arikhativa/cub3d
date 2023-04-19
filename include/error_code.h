@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 09:45:15 by yoav              #+#    #+#             */
-/*   Updated: 2023/04/18 17:46:40 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/04/19 12:00:46 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 # define EXT_MAP_OPEN_MSG				"EXT_MAP_OPEN"
 # define EXT_DUPLICATE_SETTING_MSG		"EXT_DUPLICATE_SETTING"
 # define EXT_MAP_TOO_BIG_MSG			"EXT_MAP_TOO_BIG"
+# define EXT_EMPTY_FILE_MSG				"EXT_EMPTY_FILE"
 
 typedef enum s_error_code
 {
@@ -66,6 +67,7 @@ typedef enum s_error_code
 	EXT_MAP_OPEN,
 	EXT_DUPLICATE_SETTING,
 	EXT_MAP_TOO_BIG,
+	EXT_EMPTY_FILE,
 }	t_error_code;
 
 t_error_code	error_code_print_on_exit(t_error_code err);
