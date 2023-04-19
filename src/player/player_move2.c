@@ -6,7 +6,7 @@
 /*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:46:30 by yrabby            #+#    #+#             */
-/*   Updated: 2023/04/19 11:38:44 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/04/19 11:41:08 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static t_bool	is_wall(t_fpoint p, char **map)
 	t_point	pos;
 
 	pos.x = (int)p.x;
-    pos.y = (int)p.y;
+	pos.y = (int)p.y;
 	return (map[pos.y][pos.x] == WALL_CHAR);
 }
 
