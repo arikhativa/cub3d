@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   map_read.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 14:00:59 by yrabby            #+#    #+#             */
-/*   Updated: 2023/02/15 13:58:46 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/04/19 12:02:33 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static char	*get_line(int fd)
 	char	*line;
 
 	line = get_next_line(fd);
+	if (!line)
+		return (NULL);
 	len = ft_strlen(line);
 	if (len > 0 && NEW_LINE_CHAR == line[len - 1])
 		line[len - 1] = 0;
@@ -30,6 +32,8 @@ static t_error_code	read_all_file(t_map *m, int fd)
 	t_error_code	err;
 
 	line = get_line(fd);
+	if (!line)
+		return (EXT_EMPTY_FILE);
 	err = tab_add(&(m->file), line);
 	while (line && SUCCESS == err)
 	{
@@ -57,5 +61,5 @@ t_error_code	map_read_raw(t_map *m, char *path)
 	if (SUCCESS != err)
 		tab_deep_destroy(&(m->file));
 	close(fd);
-	return (SUCCESS);
+	return (err);
 }
