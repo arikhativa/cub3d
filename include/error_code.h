@@ -39,6 +39,7 @@
 # define EXT_DUPLICATE_SETTING_MSG		"EXT_DUPLICATE_SETTING"
 # define EXT_MAP_TOO_BIG_MSG			"EXT_MAP_TOO_BIG"
 # define EXT_EMPTY_FILE_MSG				"EXT_EMPTY_FILE"
+# define EXT_NO_FILE_MSG				"EXT_NO_FILE"
 
 typedef enum s_error_code
 {
@@ -68,6 +69,7 @@ typedef enum s_error_code
 	EXT_DUPLICATE_SETTING,
 	EXT_MAP_TOO_BIG,
 	EXT_EMPTY_FILE,
+	EXT_NO_FILE,
 }	t_error_code;
 
 t_error_code	error_code_print_on_exit(t_error_code err);

@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 
+# include "file_mngr.h"
 # include "error_code.h"
 # include "libft.h"
 
