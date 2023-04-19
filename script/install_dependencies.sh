@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo run apt-get update --fix-missing
+
 # CUnit - (unit test in c)
 sudo apt-get install libcunit1 libcunit1-doc libcunit1-dev
 
