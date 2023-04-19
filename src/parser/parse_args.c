@@ -33,7 +33,15 @@ t_error_code	parser_check_arg_count(int argc)
 
 t_error_code	parser_check_first_arg(char *file_name)
 {
-	return (parser_check_extension(file_name));
+	t_error_code	err;
+
+	err = parser_check_extension(file_name);
+	if (SUCCESS == err)
+	{
+		if (!file_mngr_is_file(file_name))
+			return (EXT_NO_FILE);
+	}
+	return (err);
 }
 
 t_error_code	parser_check_extension(char *file_name)

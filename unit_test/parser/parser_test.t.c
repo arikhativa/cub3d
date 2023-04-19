@@ -27,12 +27,12 @@ void	test_parser(void)
 
 void	test_suffix(void)
 {
-	char	bad_ext[] = "file.tv";
-	char	good_ext[] = "file.cub";
+	char	bad_ext[] = "./resource/maps/asdasdasd.cub";
+	char	good_ext[] = "./resource/maps/basic.cub";
 	t_error_code	err;
 
 	err = parser_check_first_arg(good_ext);
 	CU_ASSERT_EQUAL(err, SUCCESS);
 	err = parser_check_first_arg(bad_ext);
-	CU_ASSERT_EQUAL(err, EXT_INVALID_FILE);
+	CU_ASSERT_EQUAL(err, EXT_NO_FILE);
 }

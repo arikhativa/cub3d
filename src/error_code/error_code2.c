@@ -46,5 +46,7 @@ t_error_code	error_code_print_ext3(t_error_code err)
 		err = error_code_print_msg(EXT_MAP_TOO_BIG_MSG, err);
 	else if (EXT_EMPTY_FILE == err)
 		err = error_code_print_msg(EXT_EMPTY_FILE_MSG, err);
+	else if (EXT_NO_FILE == err)
+		err = error_code_print_msg(EXT_NO_FILE_MSG, err);
 	return (err);
 }
