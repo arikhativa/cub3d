@@ -6,7 +6,7 @@
 /*   By: ycarro <ycarro@student.42madrid.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 09:50:39 by al7aro            #+#    #+#             */
-/*   Updated: 2023/04/19 16:04:54 by ycarro           ###   ########.fr       */
+/*   Updated: 2023/04/20 13:50:03 by ycarro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int	main(int argc, char **argv)
 			}
 			if (SUCCESS == err)
 				err = game_start(game);
+			game_destroy(&game);
 		}
-		game_destroy(&game);
 	}
 	return (error_code_print_on_exit(err));
 }
